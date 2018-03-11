@@ -1,6 +1,6 @@
 ## Beaver Deployment Helm Chart
 
-This repository includes first step of Beaver Deployment Helm Chart. 
+This repository includes first step of Beaver Deployment Helm Chart. It includes a working Docker build and a deployment for kubernetes.
 
 ### Usage
 
