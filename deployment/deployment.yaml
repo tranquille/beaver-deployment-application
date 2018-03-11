@@ -1,8 +1,6 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  labels:
-    run: helm-server
   name: helm-server
   namespace: tools
 spec:
@@ -10,30 +8,26 @@ spec:
   template:
     metadata:
       labels:
-        run: helm-server
+        app: helm-server
     spec:
       containers:
-      - image: "wildbeavers/beaver-deployment-application"
-        imagePullPolicy: IfNotPresent
+      - name: helm-server
+        image: wildbeavers/beaver-deployment-application
         command: ["/bin/sh", "-c"]
         args: ["/bin/helm serve --address $ENDPOINT_IPADDR:8879 --url $ENDPOINT_URL"]
-        name: helm-server
         env:
         - name: ENDPOINT_IPADDR
           value: "0.0.0.0"
         - name: ENDPOINT_URL
-          value: "https://helm-registry.example.com"
+          value: "https://helm-server.example.com"
         ports:
         - containerPort: 8879
-          protocol: TCP
-        terminationMessagePath: /dev/termination-log
-      restartPolicy: Always
-      terminationGracePeriodSeconds: 5
 ---
 apiVersion: v1
 kind: Service
 metadata:
   name: helm-server
+  namespace: tools
 spec:
   ports:
     - port: 8879
@@ -42,17 +36,18 @@ spec:
       name: http
   selector:
     app: helm-server
+
 ---
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: web-routes
+  name: helm-server-routes
   namespace: tools
   annotations:
-    kolihub.io/helm-registry.example.com: primary
+    kolihub.io/helm-server.example.com: primary
 spec:
   rules:
-  - host: helm-registry.example.com
+  - host: helm-server.example.com
     http:
       paths:
       - path: /
