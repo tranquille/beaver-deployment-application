@@ -31,6 +31,6 @@ RUN cd /beaver-deployment-application && helm init --client-only && helm package
 
 WORKDIR /config
 
-EXPOSE 8879:8879
+EXPOSE 80:80
 
-ENTRYPOINT bash
+ENTRYPOINT /bin/helm serve --address 0.0.0.0:80 --url https://wild-beavers.com
