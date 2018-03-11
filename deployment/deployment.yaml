@@ -4,7 +4,7 @@ metadata:
   labels:
     run: helm-server
   name: helm-server
-  namespace: default
+  namespace: tools
 spec:
   replicas: 1
   selector:
@@ -30,7 +30,7 @@ spec:
         - name: ENDPOINT_IPADDR
           value: "0.0.0.0"
         - name: ENDPOINT_URL
-          value: "0.0.0.0"
+          value: "https://helm-registry.example.com"
         ports:
         - containerPort: 8879
           protocol: TCP
@@ -46,7 +46,7 @@ metadata:
   labels:
     run: helm-server
   name: helm-server
-  namespace: default
+  namespace: tools
 spec:
   ports:
   - nodePort:
@@ -59,3 +59,20 @@ spec:
   type: NodePort
 status:
   loadBalancer: {}
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: web-routes
+  namespace: tools
+  annotations:
+    kolihub.io/helm-registry.example.com: primary
+spec:
+  rules:
+  - host: helm-registry.example.com
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: helm-server
+          servicePort: 8879
