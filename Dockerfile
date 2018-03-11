@@ -27,8 +27,7 @@ COPY templates /beaver-deployment-application/
 COPY Chart.yaml /beaver-deployment-application/
 COPY requirements.yaml /beaver-deployment-application/
 COPY values.yaml /beaver-deployment-application/
-RUN cd /beaver-deployment-application && helm init || true
-RUN cd /beaver-deployment-application && helm package . && rm -rf /beaver-deployment-application/*
+RUN cd /beaver-deployment-application && helm init --client-only && helm package . && rm -rf /beaver-deployment-application/*
 
 WORKDIR /config
 
