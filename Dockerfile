@@ -36,4 +36,4 @@ WORKDIR /config
 
 EXPOSE 80:80
 
-ENTRYPOINT /bin/helm serve --address 0.0.0.0:80 --url https://wild-beavers.com
+ENTRYPOINT /bin/helm serve --address 0.0.0.0:80 --url https://repo.wild-beavers.com
