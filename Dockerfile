@@ -24,11 +24,11 @@ RUN apk add --update ca-certificates \
 
 
 RUN helm init --client-only
-RUN mkdir -p /charts
-COPY charts/* /charts/
+RUN helm repo add gitlab https://charts.gitlab.io
+COPY charts /charts
 RUN helm lint /charts/*
-RUN for chart in /charts/*; do helm dep up /charts/$chart; done
-RUN cd /charts && helm package /charts/*
+RUN cd / && for chart in charts/*; do helm dep up $chart; done || true
+RUN cd / && helm package /charts/*
 
 
 
