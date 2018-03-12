@@ -1,0 +1,17 @@
+{{- if .Values.redisDedicatedStorage }}
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: gitlab-redis-storage
+  namespace: gitlab
+  {{- if (eq .Values.provider "gke") }}
+  annotations:
+    volume.beta.kubernetes.io/storage-class: fast
+  {{- end }}
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: {{ .Values.redisStorageSize }}
+{{- end }}

@@ -22,12 +22,15 @@ RUN apk add --update ca-certificates \
     && rm /var/cache/apk/* \
     && rm -rf /tmp/*
 
-RUN mkdir -p /beaver-deployment-application
-COPY templates /beaver-deployment-application/
-COPY Chart.yaml /beaver-deployment-application/
-COPY requirements.yaml /beaver-deployment-application/
-COPY values.yaml /beaver-deployment-application/
-RUN cd /beaver-deployment-application && helm init --client-only && helm package . && rm -rf /beaver-deployment-application/*
+
+RUN helm init --client-only
+RUN mkdir -p /charts
+COPY charts/* /charts/
+RUN helm lint /charts/*
+RUN for chart in /charts/*; do helm dep up /charts/$chart; done
+RUN cd /charts && helm package /charts/*
+
+
 
 WORKDIR /config
 
