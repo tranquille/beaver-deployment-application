@@ -3,10 +3,9 @@
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: {{ template "fullname" . }}
+  name: {{ .Values.application.name }}
   labels:
-    app: {{ template "appname" . }}
-    chart: "{{ .Chart.Name }}-{{ .Chart.Version| replace "+" "_" }}"
+    app: {{ .Values.application.name }}
   annotations:
     kolihub.io/{{ .Values.service.hostname }}: primary
 spec:
