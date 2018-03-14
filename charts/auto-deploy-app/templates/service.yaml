@@ -3,16 +3,13 @@ apiVersion: v1
 kind: Service
 metadata:
   name: {{ .Values.application.name }}
-  labels:
-    app: {{ .Values.application.name }}
 spec:
   type: {{ .Values.service.type }}
   ports:
   - port: {{ .Values.service.externalPort }}
     targetPort: {{ .Values.service.internalPort }}
     protocol: TCP
-    name: {{ .Values.service.name }}
+    name: "{{ .Values.application.tier }}"
   selector:
-    app: {{ template "appname" . }}
-    tier: "{{ .Values.application.tier }}"
+    app: {{ .Values.application.name }}
 {{- end -}}
