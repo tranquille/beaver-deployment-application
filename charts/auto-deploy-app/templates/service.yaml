@@ -9,7 +9,7 @@ spec:
   - port: {{ .Values.service.externalPort }}
     targetPort: {{ .Values.service.internalPort }}
     protocol: TCP
-    name: "{{ .Values.application.tier }}"
+    name: {{ template "appname" . }}
   selector:
     app: {{ .Values.application.name }}
 {{- end -}}
