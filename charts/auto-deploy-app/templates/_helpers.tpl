@@ -29,5 +29,5 @@ We truncate at 63 chars because some Kubernetes name fields are limited to this 
 Get a hostname from URL
 */}}
 {{- define "hostname" -}}
-{{- . | trimPrefix "http://" |  trimPrefix "https://" | trimSuffix "/" -}}
+{{- . | trimPrefix "http://" |  trimPrefix "https://" | trimSuffix "/" | trunc 50 | trimSuffix "-" -}}
 {{- end -}}
