@@ -3,20 +3,20 @@
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: {{ template "appname" . }}
+  name: {{ .Values.service.name }}
   labels:
-    app: {{ template "appname" . }}
+    app: {{ .Values.service.name }}
     chart: "{{ .Chart.Name }}-{{ .Chart.Version| replace "+" "_" }}"
   annotations:
     kolihub.io/{{ .Values.service.hostname }}: primary
 spec:
   rules:
-  - host: {{ template "hostname" .Values.service.url }}
+  - host: {{ .Values.service.hostname }}
     http:
       paths:
       - path: /
         backend:
-          serviceName: {{ template "fullname" . }}
+          serviceName: {{ .Values.service.name }}
           servicePort: {{ .Values.service.externalPort }}
 
 {{- end -}}
