@@ -8,10 +8,10 @@ metadata:
     app: {{ template "appname" . }}
     chart: "{{ .Chart.Name }}-{{ .Chart.Version| replace "+" "_" }}"
   annotations:
-    kolihub.io/{{ printf "%.50s" .Values.service.hostname }}: primary
+    kolihub.io/{{ template "hostname" .Values.service.url }}: primary
 spec:
   rules:
-  - host: {{ template "hostname" .Values.service.url }}
+  - host: {{ template "hostname" .Values.service.url | quote}}
     http:
       paths:
       - path: /
