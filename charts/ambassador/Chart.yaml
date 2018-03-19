@@ -8,4 +8,4 @@ maintainers:
 name: ambassador
 sources:
 - https://github.com/datawire/ambassador
-version: 0.1.1
+version: 0.1.2

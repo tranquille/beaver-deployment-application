@@ -27,3 +27,17 @@ spec:
   selector:
     app: {{ template "ambassador.name" . }}
     release: {{ .Release.Name }}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    service: ambassador-prometheus-metrics
+  name: ambassador-prometheus-metrics
+spec:
+  ports:
+  - protocol: TCP
+    port: 9102
+    name: ambassador-prometheus-metrics
+  selector:
+    service: statsd-sink
