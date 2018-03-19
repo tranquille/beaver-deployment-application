@@ -10,14 +10,20 @@ metadata:
 spec:
   type: {{ .Values.service.type }}
   ports:
-    - port: {{ .Values.service.port }}
+    - port: {{ .Values.service.httpPort }}
       targetPort: http
       protocol: TCP
       name: http
-    - port: 443
+      {{- if .Values.service.type eq "NodePort" -}}
+      nodePort: {{ .Values.service.httpNodePort }}
+      {{- end -}}
+    - port: {{ .Values.service.httpsPort }}
       targetPort: https
       protocol: TCP
       name: https
+      {{- if .Values.service.type eq "NodePort" -}}
+      nodePort: {{ .Values.service.httpsNodePort }}
+      {{- end -}}
   selector:
     app: {{ template "ambassador.name" . }}
     release: {{ .Release.Name }}

@@ -10,8 +10,11 @@ image:
   pullPolicy: IfNotPresent
 
 service:
-  type: LoadBalancer
-  port: 80
+  type: NodePort
+  httpPort: 80
+  httpNodePort: 32080
+  httpsPort: 443
+  httpsNodePort: 32443
 
 adminService:
   create: true

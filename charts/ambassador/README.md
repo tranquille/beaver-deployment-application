@@ -52,7 +52,9 @@ The following tables lists the configurable parameters of the Ambassador chart a
 | `rbac.create` | If `true`, create and use RBAC resources | `true`
 | `serviceAccount.create` | If `true`, create a new service account | `true`
 | `serviceAccount.name` | Service account to be used | `ambassador`
-| `service.type` | Service type to be used | `LoadBalancer`
+| `service.type` | Service type to be used | `NodePort`
+| `service.httpNodePort` | If Service type is NodePort you can defined the http port to be used | `32080`
+| `service.httpsNodePort` | If Service type is NodePort you can defined the https port to be used | `32443`
 | `adminService.create` | If `true`, create a service for Ambassador's admin UI | `true`
 | `adminService.type` | Ambassador's admin service type to be used | `ClusterIP`
 | `exporter.image` | Prometheus exporter image | `datawire/prom-statsd-exporter:0.6.0`
