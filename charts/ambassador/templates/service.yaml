@@ -14,16 +14,16 @@ spec:
       targetPort: http
       protocol: TCP
       name: http
-      {{- if .Values.service.type eq "NodePort" -}}
+      {{ if eq .Values.service.type "NodePort" }}
       nodePort: {{ .Values.service.httpNodePort }}
-      {{- end -}}
+      {{ end }}
     - port: {{ .Values.service.httpsPort }}
       targetPort: https
       protocol: TCP
       name: https
-      {{- if .Values.service.type eq "NodePort" -}}
+      {{ if eq .Values.service.type "NodePort" }}
       nodePort: {{ .Values.service.httpsNodePort }}
-      {{- end -}}
+      {{ end }}
   selector:
     app: {{ template "ambassador.name" . }}
     release: {{ .Release.Name }}
