@@ -21,6 +21,7 @@ spec:
       annotations:
         prometheus.io/scrape: "true"
         prometheus.io/port: "9102"
+        prometheus.io/path: "/metrics"
     spec:
       serviceAccountName: {{ template "ambassador.serviceAccountName" . }}
       containers:
