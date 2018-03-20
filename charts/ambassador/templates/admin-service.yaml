@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ template "ambassador.fullname" . }}-admin
+  name: {{ template "ambassador.fullname" . }}_admin
   labels:
     app: {{ template "ambassador.name" . }}
     chart: {{ template "ambassador.chart" . }}
@@ -13,8 +13,8 @@ metadata:
       apiVersion: ambassador/v0
       kind:  Mapping
       name:  ambassador_admin_mapping
-      prefix: /ambassador-admin/
-      service: {{ template "ambassador.fullname" . }}-admin.ingress-system
+      prefix: /ambassadoradmin/
+      service: {{ template "ambassador.fullname" . }}_admin.ingress-system
 spec:
   type: {{ .Values.adminService.type }}
   ports:
