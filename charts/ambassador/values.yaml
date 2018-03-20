@@ -12,9 +12,9 @@ image:
 service:
   type: NodePort
   httpPort: 80
-  httpNodePort: 32080
+  httpNodePort: 32081
   httpsPort: 443
-  httpsNodePort: 32443
+  httpsNodePort: 32080
 
 adminService:
   create: true

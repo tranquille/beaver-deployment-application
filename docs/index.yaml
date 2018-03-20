@@ -3,9 +3,9 @@ entries:
   ambassador:
   - apiVersion: v1
     appVersion: 0.29.0
-    created: 2018-03-20T14:13:13.628657263+01:00
+    created: 2018-03-20T15:15:11.319384254+01:00
     description: A Helm chart for Datawire Ambassador
-    digest: f41dd4d8653b42a1d108cd3e6be9adbca418af1340d1281357b71f03114e8b88
+    digest: 75a9784611ec8193a23d66472cf9f3775d07141eb421201608c6d443ec3b5956
     engine: gotpl
     maintainers:
     - email: arekczarnik@users.noreply.github.com
@@ -18,7 +18,7 @@ entries:
     version: 0.1.2
   auto-deploy-app:
   - apiVersion: v1
-    created: 2018-03-20T14:13:13.629746926+01:00
+    created: 2018-03-20T15:15:11.320420977+01:00
     description: Wild Beavers Helm Chart
     digest: f0eb5b014f7bd38440dd1074e5dcad0fce07a03fc96bd58e760ec173c709df4d
     icon: https://gitlab.com/gitlab-com/gitlab-artwork/raw/master/logo/logo-square.png
@@ -26,4 +26,4 @@ entries:
     urls:
     - https://wildbeavers.github.io/beaver-deployment-application/auto-deploy-app-0.1.14.tgz
     version: 0.1.14
-generated: 2018-03-20T14:13:13.626997358+01:00
+generated: 2018-03-20T15:15:11.317723449+01:00
