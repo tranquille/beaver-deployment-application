@@ -11,7 +11,7 @@ image:
 
 service:
   type: NodePort
-  httpPort: 80
+  httpPort: 443
   httpNodePort: 32080
   httpsPort: 80
   httpsNodePort: 32443
