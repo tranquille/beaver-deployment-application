@@ -3,7 +3,7 @@ entries:
   ambassador:
   - apiVersion: v1
     appVersion: 0.29.0
-    created: 2018-03-20T15:39:58.122389722+01:00
+    created: 2018-03-22T09:17:43.485647703+01:00
     description: A Helm chart for Datawire Ambassador
     digest: f41dd4d8653b42a1d108cd3e6be9adbca418af1340d1281357b71f03114e8b88
     engine: gotpl
@@ -18,7 +18,7 @@ entries:
     version: 0.1.2
   auto-deploy-app:
   - apiVersion: v1
-    created: 2018-03-20T15:39:58.123500132+01:00
+    created: 2018-03-22T09:17:43.485901539+01:00
     description: Wild Beavers Helm Chart
     digest: f0eb5b014f7bd38440dd1074e5dcad0fce07a03fc96bd58e760ec173c709df4d
     icon: https://gitlab.com/gitlab-com/gitlab-artwork/raw/master/logo/logo-square.png
@@ -26,4 +26,20 @@ entries:
     urls:
     - https://wildbeavers.github.io/beaver-deployment-application/auto-deploy-app-0.1.14.tgz
     version: 0.1.14
-generated: 2018-03-20T15:39:58.120776183+01:00
+  portus:
+  - apiVersion: v1
+    created: 2018-03-22T09:17:43.488095492+01:00
+    description: A Portus Helm chart for Kubernetes. Portus is an authorization and
+      user interface for the next generation of the Docker registry.
+    digest: d4ed7c32d72fb182392d621d3c3697271774f2b6373471c7cda2298c1021cc19
+    home: http://port.us.org
+    maintainers:
+    - email: jbonham@suse.com
+      name: John Bonham
+    name: portus
+    sources:
+    - https://github.com/kubic-project/caasp-services/tree/master/contrib/helm-charts/Portus
+    urls:
+    - https://wildbeavers.github.io/beaver-deployment-application/portus-0.1.0.tgz
+    version: 0.1.0
+generated: 2018-03-22T09:17:43.48504687+01:00
