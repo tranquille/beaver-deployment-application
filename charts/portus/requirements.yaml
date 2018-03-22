@@ -1,5 +1,5 @@
 dependencies:
-  - name: mariadb 
-    version: 2.0.1 
-    repository: https://kubernetes-charts.storage.googleapis.com/
+  - name: mariadb
+    version: 2.1.14
+    repository: https://wildbeavers.github.io/beaver-deployment-application/
     condition: mariadb.enabled

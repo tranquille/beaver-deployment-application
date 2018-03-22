@@ -3,7 +3,7 @@ entries:
   ambassador:
   - apiVersion: v1
     appVersion: 0.29.0
-    created: 2018-03-22T09:49:13.282057611+01:00
+    created: 2018-03-22T12:58:49.453376749+01:00
     description: A Helm chart for Datawire Ambassador
     digest: f41dd4d8653b42a1d108cd3e6be9adbca418af1340d1281357b71f03114e8b88
     engine: gotpl
@@ -18,7 +18,7 @@ entries:
     version: 0.1.2
   auto-deploy-app:
   - apiVersion: v1
-    created: 2018-03-22T09:49:13.288435332+01:00
+    created: 2018-03-22T12:58:49.453626403+01:00
     description: Wild Beavers Helm Chart
     digest: f0eb5b014f7bd38440dd1074e5dcad0fce07a03fc96bd58e760ec173c709df4d
     icon: https://gitlab.com/gitlab-com/gitlab-artwork/raw/master/logo/logo-square.png
@@ -26,12 +26,38 @@ entries:
     urls:
     - https://wildbeavers.github.io/beaver-deployment-application/auto-deploy-app-0.1.14.tgz
     version: 0.1.14
+  mariadb:
+  - appVersion: 10.1.31
+    created: 2018-03-22T12:58:49.455010678+01:00
+    description: Fast, reliable, scalable, and easy to use open-source relational
+      database system. MariaDB Server is intended for mission-critical, heavy-load
+      production systems as well as for embedding into mass-deployed software.
+    digest: 50716402eb6926294fb3c0b461030a29aaf5c460856d23214f1d47dd00c42676
+    engine: gotpl
+    home: https://mariadb.org
+    icon: https://bitnami.com/assets/stacks/mariadb/img/mariadb-stack-220x234.png
+    keywords:
+    - mariadb
+    - mysql
+    - database
+    - sql
+    - prometheus
+    maintainers:
+    - email: containers@bitnami.com
+      name: bitnami-bot
+    name: mariadb
+    sources:
+    - https://github.com/bitnami/bitnami-docker-mariadb
+    - https://github.com/prometheus/mysqld_exporter
+    urls:
+    - https://wildbeavers.github.io/beaver-deployment-application/mariadb-2.1.14.tgz
+    version: 2.1.14
   portus:
   - apiVersion: v1
-    created: 2018-03-22T09:49:13.296123555+01:00
+    created: 2018-03-22T12:58:49.45710953+01:00
     description: A Portus Helm chart for Kubernetes. Portus is an authorization and
       user interface for the next generation of the Docker registry.
-    digest: fd3bd4c7ae696a29945081e8028e9c682adf2aac3cb4011904d1fd4b11659299
+    digest: 09062f73c3d4ef2f2d435bee20595c684b2eac081d4797bab039f6bcd12c10b4
     home: http://port.us.org
     maintainers:
     - email: jbonham@suse.com
@@ -42,4 +68,4 @@ entries:
     urls:
     - https://wildbeavers.github.io/beaver-deployment-application/portus-0.1.0.tgz
     version: 0.1.0
-generated: 2018-03-22T09:49:13.28046767+01:00
+generated: 2018-03-22T12:58:49.451677902+01:00
