@@ -58,7 +58,7 @@ persistence:
   ##   GKE, AWS & OpenStack)
   ##
   # storageClass: "-"
-  storageClassName: rook-block
+  storageClass: rook-block
   accessMode: ReadWriteOnce
   size: 8Gi
   subPath: "postgresql-db"

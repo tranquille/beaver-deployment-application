@@ -3,7 +3,7 @@ entries:
   ambassador:
   - apiVersion: v1
     appVersion: 0.29.0
-    created: 2018-03-22T13:54:20.547241976+01:00
+    created: 2018-03-22T14:03:16.449810395+01:00
     description: A Helm chart for Datawire Ambassador
     digest: f41dd4d8653b42a1d108cd3e6be9adbca418af1340d1281357b71f03114e8b88
     engine: gotpl
@@ -18,7 +18,7 @@ entries:
     version: 0.1.2
   auto-deploy-app:
   - apiVersion: v1
-    created: 2018-03-22T13:54:20.548186446+01:00
+    created: 2018-03-22T14:03:16.450905402+01:00
     description: Wild Beavers Helm Chart
     digest: f0eb5b014f7bd38440dd1074e5dcad0fce07a03fc96bd58e760ec173c709df4d
     icon: https://gitlab.com/gitlab-com/gitlab-artwork/raw/master/logo/logo-square.png
@@ -28,7 +28,7 @@ entries:
     version: 0.1.14
   mariadb:
   - appVersion: 10.1.31
-    created: 2018-03-22T13:54:20.549380306+01:00
+    created: 2018-03-22T14:03:16.452352603+01:00
     description: Fast, reliable, scalable, and easy to use open-source relational
       database system. MariaDB Server is intended for mission-critical, heavy-load
       production systems as well as for embedding into mass-deployed software.
@@ -54,7 +54,7 @@ entries:
     version: 2.1.14
   portus:
   - apiVersion: v1
-    created: 2018-03-22T13:54:20.551388806+01:00
+    created: 2018-03-22T14:03:16.454583033+01:00
     description: A Portus Helm chart for Kubernetes. Portus is an authorization and
       user interface for the next generation of the Docker registry.
     digest: 6ca842c5928a1882d875812dff31280ec85f93f14fac2805421479030b0529d5
@@ -69,10 +69,10 @@ entries:
     - https://wildbeavers.github.io/beaver-deployment-application/portus-0.1.0.tgz
     version: 0.1.0
   postgresql:
-  - created: 2018-03-22T13:54:20.552708865+01:00
+  - created: 2018-03-22T14:03:16.456449566+01:00
     description: Object-relational database management system (ORDBMS) with an emphasis
       on extensibility and on standards-compliance.
-    digest: 7dd8bccf2a9036a348ba9beeff94be155f633c37fb957e40401214499433a24e
+    digest: d08644b666f7dcdc4c1886a61d8de394a8e7b263a8e4de15af68860149057cea
     engine: gotpl
     home: https://www.postgresql.org/
     icon: https://www.postgresql.org/media/img/about/press/elephant.png
@@ -90,4 +90,4 @@ entries:
     urls:
     - https://wildbeavers.github.io/beaver-deployment-application/postgresql-0.9.3.tgz
     version: 0.9.3
-generated: 2018-03-22T13:54:20.545720817+01:00
+generated: 2018-03-22T14:03:16.448202251+01:00
