@@ -1,6 +1,6 @@
 dependencies:
 - name: mariadb
-  repository: https://kubernetes-charts.storage.googleapis.com/
-  version: 2.0.1
-digest: sha256:01fbbc8c613f51dc8663999c8b55071ade0aead2961ec217d4aadeb45c3b4ee8
-generated: 2017-11-28T16:36:20.248836758-08:00
+  repository: https://wildbeavers.github.io/beaver-deployment-application/
+  version: 2.1.14
+digest: sha256:1244d9442a67b71f43428b9cfffb47d99e4d8fa91dac105aae81820c9887a495
+generated: 2018-03-22T13:33:54.767110627+01:00

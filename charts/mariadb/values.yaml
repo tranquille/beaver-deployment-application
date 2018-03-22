@@ -51,6 +51,7 @@ service:
 ##
 persistence:
   enabled: true
+  storageClass: rook-block
 
   ## A manually managed Persistent Volume and Claim
   ## Requires persistence.enabled: true
