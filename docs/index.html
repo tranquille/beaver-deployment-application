@@ -16,9 +16,12 @@
             var markdown = fetch('index.yaml').then(function(response) {
                 return response.text();
             });
-            alert(markdown);
-            var html = converter.makeHtml(markdown);
-            document.write(html);
+            markdown.then(function (value) {
+                alert(value);
+                var html = converter.makeHtml(value);
+                document.write(html);
+            });
+
         }catch(e){alert(e.message)}
     </script></div>
 </body>
