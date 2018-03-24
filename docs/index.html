@@ -13,11 +13,10 @@
         try{
             var converter = new showdown.Converter();
             var json = JSON.stringify(YAML.load('index.yaml'), null, 1);
-            var markdown = fetch('index.yaml').then(function(response) {
+            var markdown = fetch('README.md').then(function(response) {
                 return response.text();
             });
             markdown.then(function (value) {
-                alert(value);
                 var html = converter.makeHtml(value);
                 document.write(html);
             });
