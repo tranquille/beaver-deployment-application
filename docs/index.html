@@ -4,10 +4,20 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <!-- standalone yaml.js library -->
     <script type="text/javascript" src="yaml.js"></script>
+    <script type="text/javascript" src="https://cdn.rawgit.com/showdownjs/showdown/1.8.6/dist/showdown.min.js"></script>
     <title>repo</title>
 </head>
 
-<body onload="document.getElementById('result').innerHTML='<pre>'+JSON.stringify(YAML.load('index.yaml'), null, 1)+'</pre>'">
-    <div id="result"></div>
+<body>
+    <div id="result"><script>
+        try{
+            var json = JSON.stringify(YAML.load('index.yaml'), null, 1);
+            var text="# Hello\n\n*****Hello world!*****\n\n*Compile using :showdown:*";
+            var converter = new showdown.Converter();
+            var html = converter.makeHtml(text);
+            document.write(html);
+        }catch(e){alert(e.message)}
+    </script></div>
 </body>
+
 </html>
