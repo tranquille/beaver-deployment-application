@@ -13,8 +13,8 @@
         try{
             var json = JSON.stringify(YAML.load('index.yaml'), null, 1);
             var xmlHttpRequest = new XMLHttpRequest();
-            var request = request.open("GET", "README.md", false);
-            request.send(null);
+            var request = request.open("GET", "README.md", true);
+            request.send();
             var converter = new showdown.Converter();
             var html = converter.makeHtml(request.responseText);
             document.write(html);
