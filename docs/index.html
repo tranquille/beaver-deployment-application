@@ -12,9 +12,11 @@
     <div id="result"><script>
         try{
             var json = JSON.stringify(YAML.load('index.yaml'), null, 1);
-            var text="# Hello\n\n*****Hello world!*****\n\n*Compile using :showdown:*";
+            var xmlHttpRequest = new XMLHttpRequest();
+            var request = request.open("GET", "README.md", false);
+            request.send(null);
             var converter = new showdown.Converter();
-            var html = converter.makeHtml(text);
+            var html = converter.makeHtml(request.responseText);
             document.write(html);
         }catch(e){alert(e.message)}
     </script></div>
