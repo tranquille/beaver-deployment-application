@@ -1,4 +1,4 @@
-# Ambassador
+## Ambassador
 
 Ambassador is an open source, Kubernetes-native [microservices API gateway](https://www.getambassador.io/about/microservices-api-gateways) built on the [Envoy Proxy](https://www.envoyproxy.io/). 
 

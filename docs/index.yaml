@@ -3,9 +3,9 @@ entries:
   ambassador:
   - apiVersion: v1
     appVersion: 0.29.0
-    created: 2018-03-22T14:18:48.373956152+01:00
+    created: 2018-03-24T22:46:49.60692235+01:00
     description: A Helm chart for Datawire Ambassador
-    digest: f41dd4d8653b42a1d108cd3e6be9adbca418af1340d1281357b71f03114e8b88
+    digest: a09c9b8901f368f890c78ce417c8e56c03007455de93cca16ba3b5f11d1a06ce
     engine: gotpl
     maintainers:
     - email: arekczarnik@users.noreply.github.com
@@ -18,7 +18,7 @@ entries:
     version: 0.1.2
   auto-deploy-app:
   - apiVersion: v1
-    created: 2018-03-22T14:18:48.374921596+01:00
+    created: 2018-03-24T22:46:49.607945174+01:00
     description: Wild Beavers Helm Chart
     digest: f0eb5b014f7bd38440dd1074e5dcad0fce07a03fc96bd58e760ec173c709df4d
     icon: https://gitlab.com/gitlab-com/gitlab-artwork/raw/master/logo/logo-square.png
@@ -28,11 +28,11 @@ entries:
     version: 0.1.14
   mariadb:
   - appVersion: 10.1.31
-    created: 2018-03-22T14:18:48.376221533+01:00
+    created: 2018-03-24T22:46:49.609222182+01:00
     description: Fast, reliable, scalable, and easy to use open-source relational
       database system. MariaDB Server is intended for mission-critical, heavy-load
       production systems as well as for embedding into mass-deployed software.
-    digest: e04abb7c870b5d90164c7ef1e09577ff0fc890fc7728ed0b972074529e620033
+    digest: f1f3715853036ded37c56a3e59269fd18aa6195cf10b0d84d168946d444e3bda
     engine: gotpl
     home: https://mariadb.org
     icon: https://bitnami.com/assets/stacks/mariadb/img/mariadb-stack-220x234.png
@@ -54,10 +54,10 @@ entries:
     version: 2.1.14
   portus:
   - apiVersion: v1
-    created: 2018-03-22T14:18:48.379510681+01:00
+    created: 2018-03-24T22:46:49.611399553+01:00
     description: A Portus Helm chart for Kubernetes. Portus is an authorization and
       user interface for the next generation of the Docker registry.
-    digest: 6ca842c5928a1882d875812dff31280ec85f93f14fac2805421479030b0529d5
+    digest: 176e068a0730de0b43ffbe3d7394616c1065d9bf85e6323ac267d9786190447b
     home: http://port.us.org
     maintainers:
     - email: jbonham@suse.com
@@ -69,10 +69,10 @@ entries:
     - https://wildbeavers.github.io/beaver-deployment-application/portus-0.1.0.tgz
     version: 0.1.0
   postgresql:
-  - created: 2018-03-22T14:18:48.380879948+01:00
+  - created: 2018-03-24T22:46:49.612876113+01:00
     description: Object-relational database management system (ORDBMS) with an emphasis
       on extensibility and on standards-compliance.
-    digest: d08644b666f7dcdc4c1886a61d8de394a8e7b263a8e4de15af68860149057cea
+    digest: 26e28bdbe490bfa879af8b8a08e29f504090c15871e9135b14c5312e771f3a39
     engine: gotpl
     home: https://www.postgresql.org/
     icon: https://www.postgresql.org/media/img/about/press/elephant.png
@@ -92,11 +92,11 @@ entries:
     version: 0.9.3
   redis:
   - appVersion: 4.0.8
-    created: 2018-03-22T14:18:48.382148658+01:00
+    created: 2018-03-24T22:46:49.614433841+01:00
     description: Open source, advanced key-value store. It is often referred to as
       a data structure server since keys can contain strings, hashes, lists, sets
       and sorted sets.
-    digest: bd9035594682fdb3ec34ebfbd442eaffa7663a4200986acf1b7295006fbe0cb5
+    digest: 394d2776b018e2a3c0b21058b28072d56957823a705becf218dcb14ed50d9e02
     engine: gotpl
     home: http://redis.io/
     icon: https://bitnami.com/assets/stacks/redis/img/redis-stack-220x234.png
@@ -113,4 +113,4 @@ entries:
     urls:
     - https://wildbeavers.github.io/beaver-deployment-application/redis-1.1.20.tgz
     version: 1.1.20
-generated: 2018-03-22T14:18:48.372434161+01:00
+generated: 2018-03-24T22:46:49.605354328+01:00

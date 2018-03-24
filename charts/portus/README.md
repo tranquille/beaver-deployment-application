@@ -1,4 +1,4 @@
-# Portus
+## Portus
 
 [Portus](http://port.us.org/) Portus is an open source authorization service and user interface for the next generation
 Docker Registry.
