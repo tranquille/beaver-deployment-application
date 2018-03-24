@@ -13,11 +13,11 @@
         try{
             var converter = new showdown.Converter();
             var json = JSON.stringify(YAML.load('index.yaml'), null, 1);
-            fetch('index.yaml').then(function(response) {
-                alert(response.text());
-                var html = converter.makeHtml(response.text());
-                document.write(html);
+            var markdown = fetch('index.yaml').then(function(response) {
+                return response.text();
             });
+            var html = converter.makeHtml(markdown);
+            document.write(html);
         }catch(e){alert(e.message)}
     </script></div>
 </body>
