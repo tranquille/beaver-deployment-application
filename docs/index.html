@@ -11,13 +11,12 @@
 <body>
     <div id="result"><script>
         try{
-            var json = JSON.stringify(YAML.load('index.yaml'), null, 1);
-            var xmlHttpRequest = new XMLHttpRequest();
-            var request = request.open("GET", "README.md", true);
-            request.send();
             var converter = new showdown.Converter();
-            var html = converter.makeHtml(request.responseText);
-            document.write(html);
+            var json = JSON.stringify(YAML.load('index.yaml'), null, 1);
+            fetch('index.yaml').then(function(response) {
+                var html = converter.makeHtml(response.text());
+                document.write(html);
+            });
         }catch(e){alert(e.message)}
     </script></div>
 </body>
