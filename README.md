@@ -11,3 +11,4 @@ place to start is by reviewing the [Helm Quick Start Guide](https://github.com/k
 ### Contributing to the Chart
 
 We welcome contributions and improvements. 
+
