@@ -1,0 +1,60 @@
+---
+apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: ClusterRole
+metadata:
+  name: kong-ingress-controller
+rules:
+- apiGroups: ["*"]
+  resources: ["*"]
+  verbs: ["*"]
+- nonResourceURLs: ["*"]
+  verbs: ["*"]
+
+---
+apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: ClusterRoleBinding
+metadata:
+  name: kong-ingress-controller
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: kong-ingress-controller
+subjects:
+- kind: ServiceAccount
+  name: default
+  namespace: ingress-system
+
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: {{ template "kong.fullname" . }}-ingress
+  labels:
+    app: "{{ template "kong.name" . }}-ingress"
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+    release: "{{ .Release.Name }}"
+    heritage: "{{ .Release.Service }}"
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: {{ template "kong.name" . }}-ingress
+        release: {{ .Release.Name }}
+    spec:
+      terminationGracePeriodSeconds: 60
+      containers:
+      - name: {{ template "kong.name" . }}-ingress
+        image: 'quay.io/koli/kong-ingress:v0.4.0-alpha'
+        args:
+        - --auto-claim
+        - --wipe-on-delete
+        - --kong-server=http://{{ template "kong.fullname" . }}-admin:8001
+        - --v=4
+        - --logtostderr
+        - --tls-insecure
+        env:
+        - name: POD_NAMESPACE
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.namespace
