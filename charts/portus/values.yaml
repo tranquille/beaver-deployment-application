@@ -27,14 +27,14 @@ portus:
       cpu: "300m"
 
   ## Portus database configuration.
-  dbAdapter: "mysql2"
+  dbAdapter: "postgresql"
 
   ## only set db values if using existing database deployment
   ##
-  # dbHost
-  # dbDatabase:
-  # dbUsername:
-  # dbPassword:
+  dbHost: postgres
+  dbDatabase: default
+  dbUsername: default
+  dbPassword: default
 
   ## Defaults to a random 10-character alphanumeric string if not set
   ##
@@ -107,9 +107,10 @@ registry:
   ## persistence configuration.
   ##
   persistence:
-    enabled: false
+    enabled: true
     accessMode: "ReadWriteOnce"
     size: "10Gi"
+    storageClass: rook-block
 
   ## image configuration.
   # #
@@ -146,7 +147,7 @@ nginx:
   ## Service configuration.
   ##
   service:
-    ## Set to ClusterIP if using ingress, or NodePort if using minikube 
+    ## Set to ClusterIP if using ingress, or NodePort if using minikube
     ##
     type: "ClusterIP"
 
@@ -195,7 +196,7 @@ mariadb:
   ## Use Mariadb chart dependency
   ## Set to false if using your own Mariadb
   ##
-  enabled: true
+  enabled: false
 
   ## persistence configuration.
   ##

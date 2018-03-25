@@ -14,4 +14,10 @@ spec:
   resources:
     requests:
       storage: {{ .Values.registry.persistence.size }}
+{{- if (eq "-" .Values.registry.persistence.storageClass) }}
+  storageClassName: ""
+{{- else }}
+  storageClassName: "{{ .Values.registry.persistence.storageClass }}"
+{{- end }}
+
 {{- end }}
