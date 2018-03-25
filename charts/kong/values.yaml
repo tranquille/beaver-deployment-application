@@ -12,11 +12,10 @@ admin:
   # line, add additional or adjust as needed, and remove the curly braces after 'annotations:'.
   annotations: {}
   #  service.beta.kubernetes.io/aws-load-balancer-proxy-protocol: "*"
-
   # HTTPS traffic on the admin port
-  useTLS: true
-  servicePort: 8444
-  containerPort: 8444
+  useTLS: false
+  servicePort: 8001
+  containerPort: 8001
   # Kong admin service type
   type: NodePort
   # Set a nodePort which is available
