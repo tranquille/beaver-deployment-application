@@ -24,7 +24,7 @@ spec:
           image: "{{ .Values.registry.image.repository }}:{{ .Values.registry.image.tag }}"
           imagePullPolicy: {{ .Values.registry.image.pullPolicy }}
           command: ["/bin/sh"]
-          args: ["-c", "update-ca-certificates;registry serve /etc/docker/registry/config.yml"]
+          args: ["-c", "registry serve /etc/docker/registry/config.yml"]
           ports:
             - containerPort: {{ .Values.registry.service.port }}
             - containerPort: {{ .Values.registry.service.debugPort }}
