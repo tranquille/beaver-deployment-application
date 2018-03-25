@@ -21,7 +21,7 @@ admin:
   type: NodePort
   # Set a nodePort which is available
   # nodePort: 32444
-proxy-http:
+proxyhttp:
   # If you want to specify annotations for the proxy service, uncomment the following
   # line, add additional or adjust as needed, and remove the curly braces after 'annotations:'.
   annotations: {}
@@ -34,7 +34,7 @@ proxy-http:
   # Set a nodePort which is available
   nodePort: 32080
 
-proxy-https:
+proxyhttps:
   # If you want to specify annotations for the proxy service, uncomment the following
   # line, add additional or adjust as needed, and remove the curly braces after 'annotations:'.
   annotations: {}
