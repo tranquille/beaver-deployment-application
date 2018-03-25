@@ -35,6 +35,7 @@ portus:
   dbDatabase: default
   dbUsername: default
   dbPassword: default
+  productionPassword: default
 
   ## Defaults to a random 10-character alphanumeric string if not set
   ##
@@ -103,6 +104,7 @@ portus:
 registry:
   replicas: 1
   mountPath: "/storage"
+  host: "portus.stage01.obi.dmz"
 
   ## persistence configuration.
   ##
