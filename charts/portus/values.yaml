@@ -138,7 +138,7 @@ registry:
 ##
 nginx:
   replicas: 1
-
+  host: "portus.stage01.obi.dmz"
   ## image configuration.
   ##
   image:
