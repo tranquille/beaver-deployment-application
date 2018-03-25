@@ -12,7 +12,7 @@ metadata:
     release: "{{ .Release.Name }}"
     heritage: "{{ .Release.Service }}"
 spec:
-  type: {{ .Values.proxy.type }}
+  type: {{ .Values.proxyhttps.type }}
   {{- if and (eq .Values.proxyhttps.type "LoadBalancer") .Values.proxyhttps.loadBalancerIP }}
   loadBalancerIP: {{ .Values.proxyhttps.loadBalancerIP }}
   {{- end }}
