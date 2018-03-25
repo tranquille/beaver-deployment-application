@@ -17,7 +17,7 @@ admin:
   servicePort: 8001
   containerPort: 8001
   # Kong admin service type
-  type: NodePort
+  type: ClusterIP
   # Set a nodePort which is available
   # nodePort: 32444
 proxyhttp:
@@ -68,7 +68,7 @@ resources: {}
 readinessProbe:
   httpGet:
     path: "/status"
-    port: admin
+    port: 8001
     scheme: HTTP
   initialDelaySeconds: 120
   timeoutSeconds: 1
@@ -80,7 +80,7 @@ readinessProbe:
 livenessProbe:
   httpGet:
     path: "/status"
-    port: admin
+    port: 8001
     scheme: HTTP
   initialDelaySeconds: 180
   timeoutSeconds: 5

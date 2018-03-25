@@ -8,7 +8,6 @@ keywords:
 - database
 - sql
 - prometheus
-home: https://mariadb.org
 icon: https://bitnami.com/assets/stacks/mariadb/img/mariadb-stack-220x234.png
 sources:
 - https://github.com/bitnami/bitnami-docker-mariadb
