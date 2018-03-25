@@ -127,4 +127,4 @@ postgresql:
   postgresUser: kong
   postgresDatabase: kong
   persistence:
-    enabled: false
+    enabled: true
