@@ -32,7 +32,6 @@ spec:
               value: {{ template "portus.fullname" . }}
             - name: PORTUS_DB_ADAPTER
               value: {{ .Values.portus.dbAdapter }}
-
             - name: PORTUS_DB_HOST
               value: {{ .Values.portus.dbHost }}
             - name: PORTUS_DB_DATABASE

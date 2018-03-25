@@ -1,0 +1,15 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: {{ template "registry.fullname" . }}-route
+  annotations:
+    kolihub.io/registry.stage01.obi.dmz: primary
+spec:
+  rules:
+  - host: registry.stage01.obi.dmz
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: {{ template "registry.fullname" . }}
+          servicePort: {{ .Values.registry.service.port }}
