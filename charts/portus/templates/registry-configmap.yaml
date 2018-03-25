@@ -16,10 +16,16 @@ data:
   REGISTRY_HTTP_TLS_CERTIFICATE: "/certificates/portus.crt"
   REGISTRY_AUTH_TOKEN_ROOTCERTBUNDLE: "/certificates/portus.crt"
   {{- else }}
-  REGISTRY_AUTH_SILLY_REALM: {{ printf "https://registry.example.com/v2/token" | quote }}
+  REGISTRY_AUTH_SILLY_REALM: {{ printf  .Values.registry.url | quote }}
   REGISTRY_AUTH_SILLY_SERVICE: {{ printf "%s:%s" (include "registry.fullname" .) .Values.registry.service.port | quote }}
   {{- end }}
 
+  REGISTRY_NOTIFICATIONS_ENDPOINTS: >
+    - name: nginx
+      url: {{ .Values.registry.url }}/v2/webhooks/events
+      timeout: 2000ms
+      threshold: 5
+      backoff: 1s
   config: |
     version: 0.1
     storage:

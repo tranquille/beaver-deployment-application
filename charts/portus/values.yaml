@@ -102,8 +102,10 @@ portus:
 ## Default values for Docker Registry.
 ##
 registry:
+  url: "https://registry.stage01.obi.dmz"
   replicas: 1
   mountPath: "/storage"
+
 
   ## persistence configuration.
   ##
