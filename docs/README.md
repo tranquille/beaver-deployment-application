@@ -14,6 +14,8 @@ kubectl create clusterrolebinding default-rule --clusterrole=cluster-admin --ser
 kubectl patch deploy --namespace tools tiller-deploy -p '{"spec":{"template":{"spec":{"serviceAccount":"tiller"}}}}'
 ```
 
+https://wildbeavers.github.io/beaver-deployment-application/
+
 ### Usage
 
 To use the charts, the Helm tool must be installed and initialized. The best
@@ -22,6 +24,7 @@ place to start is by reviewing the [Helm Quick Start Guide](https://github.com/k
 ### Contributing to the Chart
 
 We welcome contributions and improvements. 
+
       * [Portus](#portus)
       * [TL;DR;](#tldr)
       * [Introduction](#introduction)
