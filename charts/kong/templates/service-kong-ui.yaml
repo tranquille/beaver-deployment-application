@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ template "kong.fullname" . }}-ui
+spec:
+  type: ClusterIP
+  ports:
+  - name: {{ template "kong.name" . }}-ui
+    port: 8080
+    targetPort: 8080
+    protocol: TCP
+  selector:
+    app: {{ template "kong.name" . }}-ui
