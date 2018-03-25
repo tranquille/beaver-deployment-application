@@ -61,10 +61,6 @@ spec:
                   name: {{ template "portus.fullname" . }}
                   key: PORTUS_SECRET_KEY_BASE
           volumeMounts:
-            - name: secrets
-              mountPath: /secrets
-            - name: certificates
-              mountPath: /certificates
             - name: config
               mountPath: /srv/Portus/config/config-local.yml
               subPath: etc/config-local.yml
@@ -109,8 +105,6 @@ spec:
           resources:
 {{ toYaml .Values.portus.background.resources | indent 12 }}
           volumeMounts:
-            - name: secrets
-              mountPath: /secrets
             - mountPath: /etc/ssl/certs
               name: cacerts
               readOnly: true
