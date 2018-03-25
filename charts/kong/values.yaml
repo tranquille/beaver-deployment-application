@@ -69,7 +69,7 @@ readinessProbe:
   httpGet:
     path: "/status"
     port: admin
-    scheme: HTTPS
+    scheme: HTTP
   initialDelaySeconds: 120
   timeoutSeconds: 1
   periodSeconds: 10
@@ -81,7 +81,7 @@ livenessProbe:
   httpGet:
     path: "/status"
     port: admin
-    scheme: HTTPS
+    scheme: HTTP
   initialDelaySeconds: 180
   timeoutSeconds: 5
   periodSeconds: 30
