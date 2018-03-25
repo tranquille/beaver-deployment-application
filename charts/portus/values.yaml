@@ -133,64 +133,6 @@ registry:
       memory: "512Mi"
       cpu: "300m"
 
-## Default values for Nginx.
-##
-nginx:
-  replicas: 1
-
-  ## image configuration.
-  ##
-  image:
-    repository: "library/nginx"
-    tag: "alpine"
-    pullPolicy: "IfNotPresent"
-
-  ## Service configuration.
-  ##
-  service:
-    ## Set to ClusterIP if using ingress, or NodePort if using minikube
-    ##
-    type: "ClusterIP"
-
-    port: "80"
-    # nodePort:
-
-  ## in order to access the docker registry from outside of the cluster
-  ## if ingress is enabled set host to the domain you are using
-  ## if NodePort is being used set host to the ip address of a cluster node
-  ##
-  # host:
-
-  ## ingress configuration.
-  ##
-  ingress:
-    enabled: false
-
-    ## Anntations to be added to the web ingress
-    ##
-    # annotations:
-    #   kubernetes.io/ingress.class: "nginx"
-    #   nginx.ingress.kubernetes.io/proxy-body-size: "0"
-    #   kubernetes.io/ingress.allow-http: "false"
-    #   ingress.kubernetes.io/ssl-passthrough: "true"
-
-    ## TLS configuration
-    ## the ingress host must be covered by the key/cert in order for TLS to work properly
-    ##
-    # tls:
-    #   enabled: false
-
-      ## Secrets containing SSL key and cert must be manually created in the namespace
-      ##
-      # secretName: "portus-tls"
-
-  ## Resource configuration.
-  ##
-  resources:
-    requests:
-      memory: "512Mi"
-      cpu: "300m"
-
 ## Default values for Mariadb.
 ##
 mariadb:
