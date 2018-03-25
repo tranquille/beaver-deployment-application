@@ -1,0 +1,5 @@
+dependencies:
+- name: postgresql
+  version: ~0.9.3
+  repository: https://wildbeavers.github.io/beaver-deployment-application/
+  condition: postgresql.enabled

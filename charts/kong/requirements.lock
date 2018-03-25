@@ -1,0 +1,6 @@
+dependencies:
+- name: postgresql
+  repository: https://wildbeavers.github.io/beaver-deployment-application/
+  version: 0.9.3
+digest: sha256:bda3c68d574658f0c46df3891f28acec48d0defcbc1659c6dd9b8cb9d08274f2
+generated: 2018-03-25T07:34:07.572094119+02:00
