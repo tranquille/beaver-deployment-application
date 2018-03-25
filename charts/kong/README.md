@@ -6,7 +6,7 @@ Management Layer, delivering high performance and reliability.
 ## TL;DR;
 
 ```bash
-$ helm install stable/kong
+helm install --namespace ingress-system --name kong beavergithub/kong --wait --debug --tiller-namespace tools
 ```
 
 ## Introduction
@@ -25,7 +25,7 @@ cluster using the [Helm](https://helm.sh) package manager.
 To install the chart with the release name `my-release`:
 
 ```bash
-$ helm install --name my-release stable/kong
+$ helm install --name my-release beavers/kong
 ```
 
 > **Tip**: List all releases using `helm list`
@@ -60,12 +60,16 @@ and their default values.
 | admin.nodePort                    | Node port when service type is `NodePort`                              |                       |
 | admin.type                        | k8s service type, Options: NodePort, ClusterIP, LoadBalancer           | `NodePort`            |
 | admin.loadBalancerIP              | Will reuse an existing ingress static IP for the admin service         | `null`                |
-| proxy.useTLS                      | Secure Proxy traffic                                                   | `true`                |
-| proxy.servicePort                 | TCP port on which the Kong Proxy Service is exposed                    | `8443`                |
-| proxy.containerPort               | TCP port on which the Kong app listens for Proxy traffic               | `8443`                |
-| proxy.nodePort                    | Node port when service type is `NodePort`                              |                       |
-| proxy.type                        | k8s service type. Options: NodePort, ClusterIP, LoadBalancer           | `NodePort`            |
-| proxy.loadBalancerIP              | To reuse an existing ingress static IP for the admin service           |                       |
+| proxy-http.servicePort            | TCP port on which the Kong Proxy Service is exposed                    | `8000`                |
+| proxy-http.containerPort          | TCP port on which the Kong app listens for Proxy traffic               | `8000`                |
+| proxy-http.nodePort               | Node port when service type is `NodePort`                              | `32080`               |
+| proxy-http.type                   | k8s service type. Options: NodePort, ClusterIP, LoadBalancer           | `NodePort`            |
+| proxy-http.loadBalancerIP         | To reuse an existing ingress static IP for the admin service           |                       |
+| proxy-https.servicePort           | TCP port on which the Kong Proxy Service is exposed                    | `8443`                |
+| proxy-https.containerPort         | TCP port on which the Kong app listens for Proxy traffic               | `8443`                |
+| proxy-https.nodePort              | Node port when service type is `NodePort`                              | `32443`               |
+| proxy-https.type                  | k8s service type. Options: NodePort, ClusterIP, LoadBalancer           | `NodePort`            |
+| proxy-https.loadBalancerIP        | To reuse an existing ingress static IP for the admin service           |                       |
 | env                               | Additional [Kong configurations](https://getkong.org/docs/latest/configuration/)               |
 | runMigrations                     | Run Kong migrations job                                                | `true`                |
 | readinessProbe                    | Kong readiness probe                                                   |                       |
@@ -108,14 +112,14 @@ For complete list of Kong configurations please check https://getkong.org/docs/0
 Specify each parameter using the `--set key=value[,key=value]` argument to `helm install`. For example,
 
 ```console
-$ helm install stable/kong --name my-release \
+$ helm install beavers/kong --name my-release \
   --set=image.tag=0.11.2,env.database=cassandra,cassandra.enabled=true
 ```
 
 Alternatively, a YAML file that specifies the values for the above parameters can be provided while installing the chart. For example,
 
 ```console
-$ helm install stable/kong --name my-release -f values.yaml
+$ helm install beavers/kong --name my-release -f values.yaml
 ```
 
 > **Tip**: You can use the default [values.yaml](values.yaml)

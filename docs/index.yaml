@@ -3,7 +3,7 @@ entries:
   ambassador:
   - apiVersion: v1
     appVersion: 0.29.0
-    created: 2018-03-25T07:34:10.181948691+02:00
+    created: 2018-03-25T09:36:00.06008042+02:00
     description: A Helm chart for Datawire Ambassador
     digest: a09c9b8901f368f890c78ce417c8e56c03007455de93cca16ba3b5f11d1a06ce
     engine: gotpl
@@ -18,7 +18,7 @@ entries:
     version: 0.1.2
   auto-deploy-app:
   - apiVersion: v1
-    created: 2018-03-25T07:34:10.183012745+02:00
+    created: 2018-03-25T09:36:00.061197313+02:00
     description: Wild Beavers Helm Chart
     digest: f0eb5b014f7bd38440dd1074e5dcad0fce07a03fc96bd58e760ec173c709df4d
     icon: https://gitlab.com/gitlab-com/gitlab-artwork/raw/master/logo/logo-square.png
@@ -29,10 +29,28 @@ entries:
   kong:
   - apiVersion: v1
     appVersion: 0.12.3
-    created: 2018-03-25T07:34:10.1845084+02:00
+    created: 2018-03-25T09:36:00.063869828+02:00
     description: Kong is open-source API Gateway and Microservices Management Layer,
       delivering high performance and reliability.
-    digest: ab4ed8300cccb1ea46bedc731b969d5f4885127a4bce95bf8d5af282dd94ffc7
+    digest: 5b54b3c8fdc9f03c8180c4500207f49044688acfd00afe89586fcce71fa269c3
+    engine: gotpl
+    home: https://getkong.org/
+    icon: https://s3.amazonaws.com/downloads.kong/universe/assets/icon-kong-inc-large.png
+    maintainers:
+    - email: shashi@konghq.com
+      name: shashiranjan84
+    name: kong
+    sources:
+    - https://github.com/Kong/kong
+    urls:
+    - https://wildbeavers.github.io/beaver-deployment-application/kong-0.2.4.tgz
+    version: 0.2.4
+  - apiVersion: v1
+    appVersion: 0.12.3
+    created: 2018-03-25T09:36:00.062150199+02:00
+    description: Kong is open-source API Gateway and Microservices Management Layer,
+      delivering high performance and reliability.
+    digest: 4b5ee9dcd544ae1bee6d53ae08d4e23cb9eed119923f5f0b3d628c3c908c0146
     engine: gotpl
     home: https://getkong.org/
     icon: https://s3.amazonaws.com/downloads.kong/universe/assets/icon-kong-inc-large.png
@@ -47,7 +65,7 @@ entries:
     version: 0.2.3
   mariadb:
   - appVersion: 10.1.31
-    created: 2018-03-25T07:34:10.185655513+02:00
+    created: 2018-03-25T09:36:00.065174789+02:00
     description: Fast, reliable, scalable, and easy to use open-source relational
       database system. MariaDB Server is intended for mission-critical, heavy-load
       production systems as well as for embedding into mass-deployed software.
@@ -73,7 +91,7 @@ entries:
     version: 2.1.14
   portus:
   - apiVersion: v1
-    created: 2018-03-25T07:34:10.18810572+02:00
+    created: 2018-03-25T09:36:00.067809755+02:00
     description: A Portus Helm chart for Kubernetes. Portus is an authorization and
       user interface for the next generation of the Docker registry.
     digest: fb717bea2e7aa729a33b530c6b7840a2b9d347b1424d2c3aed4198fa0a8ee765
@@ -88,7 +106,7 @@ entries:
     - https://wildbeavers.github.io/beaver-deployment-application/portus-0.1.0.tgz
     version: 0.1.0
   postgresql:
-  - created: 2018-03-25T07:34:10.189477466+02:00
+  - created: 2018-03-25T09:36:00.06909467+02:00
     description: Object-relational database management system (ORDBMS) with an emphasis
       on extensibility and on standards-compliance.
     digest: 26e28bdbe490bfa879af8b8a08e29f504090c15871e9135b14c5312e771f3a39
@@ -111,7 +129,7 @@ entries:
     version: 0.9.3
   redis:
   - appVersion: 4.0.8
-    created: 2018-03-25T07:34:10.190581456+02:00
+    created: 2018-03-25T09:36:00.070260711+02:00
     description: Open source, advanced key-value store. It is often referred to as
       a data structure server since keys can contain strings, hashes, lists, sets
       and sorted sets.
@@ -132,4 +150,4 @@ entries:
     urls:
     - https://wildbeavers.github.io/beaver-deployment-application/redis-1.1.20.tgz
     version: 1.1.20
-generated: 2018-03-25T07:34:10.180429836+02:00
+generated: 2018-03-25T09:36:00.058533121+02:00

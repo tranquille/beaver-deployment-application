@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ template "kong.fullname" . }}-proxy-https
+  annotations:
+    {{- range $key, $value := .Values.proxy-https.annotations }}
+      {{ $key }}: {{ $value | quote }}
+    {{- end }}
+  labels:
+    app: {{ template "kong.name" . }}
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+    release: "{{ .Release.Name }}"
+    heritage: "{{ .Release.Service }}"
+spec:
+  type: {{ .Values.proxy.type }}
+  {{- if and (eq .Values.proxy-https.type "LoadBalancer") .Values.proxy-https.loadBalancerIP }}
+  loadBalancerIP: {{ .Values.proxy-https.loadBalancerIP }}
+  {{- end }}
+  ports:
+  - name: kong-proxy-https
+    port: {{ .Values.proxy-https.servicePort }}
+    targetPort: {{ .Values.proxy-https.containerPort }}
+  {{- if (and (eq .Values.proxy-https.type "NodePort") (not (empty .Values.proxy-https.nodePort))) }}
+    nodePort: {{ .Values.proxy-https.nodePort }}
+  {{- end }}
+    protocol: TCP
+  selector:
+    app: {{ template "kong.name" . }}
+    release: {{ .Release.Name }}

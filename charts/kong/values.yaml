@@ -21,19 +21,31 @@ admin:
   type: NodePort
   # Set a nodePort which is available
   # nodePort: 32444
-proxy:
+proxy-http:
   # If you want to specify annotations for the proxy service, uncomment the following
   # line, add additional or adjust as needed, and remove the curly braces after 'annotations:'.
   annotations: {}
   #  service.beta.kubernetes.io/aws-load-balancer-proxy-protocol: "*"
 
   # HTTPS traffic on the proxy port
-  useTLS: true
+  servicePort: 8000
+  containerPort: 8000
+  type: NodePort
+  # Set a nodePort which is available
+  nodePort: 32080
+
+proxy-https:
+  # If you want to specify annotations for the proxy service, uncomment the following
+  # line, add additional or adjust as needed, and remove the curly braces after 'annotations:'.
+  annotations: {}
+  #  service.beta.kubernetes.io/aws-load-balancer-proxy-protocol: "*"
+
+  # HTTPS traffic on the proxy port
   servicePort: 8443
   containerPort: 8443
   type: NodePort
   # Set a nodePort which is available
-  # nodePort: 32443
+  nodePort: 32443
 
 # Set runMigrations to run Kong migrations
 runMigrations: true
