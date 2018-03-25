@@ -1,0 +1,15 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: {{ template "portus.fullname" . }}-route
+  annotations:
+    kolihub.io/portus.stage01.obi.dmz: primary
+spec:
+  rules:
+  - host: portus.stage01.obi.dmz
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: {{ template "portus.fullname" . }}
+          servicePort: {{ .Values.portus.service.port }}
