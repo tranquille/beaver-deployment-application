@@ -758,16 +758,16 @@ and their default values.
 | admin.nodePort                    | Node port when service type is `NodePort`                              |                       |
 | admin.type                        | k8s service type, Options: NodePort, ClusterIP, LoadBalancer           | `NodePort`            |
 | admin.loadBalancerIP              | Will reuse an existing ingress static IP for the admin service         | `null`                |
-| proxy-http.servicePort            | TCP port on which the Kong Proxy Service is exposed                    | `8000`                |
-| proxy-http.containerPort          | TCP port on which the Kong app listens for Proxy traffic               | `8000`                |
-| proxy-http.nodePort               | Node port when service type is `NodePort`                              | `32080`               |
-| proxy-http.type                   | k8s service type. Options: NodePort, ClusterIP, LoadBalancer           | `NodePort`            |
-| proxy-http.loadBalancerIP         | To reuse an existing ingress static IP for the admin service           |                       |
-| proxy-https.servicePort           | TCP port on which the Kong Proxy Service is exposed                    | `8443`                |
-| proxy-https.containerPort         | TCP port on which the Kong app listens for Proxy traffic               | `8443`                |
-| proxy-https.nodePort              | Node port when service type is `NodePort`                              | `32443`               |
-| proxy-https.type                  | k8s service type. Options: NodePort, ClusterIP, LoadBalancer           | `NodePort`            |
-| proxy-https.loadBalancerIP        | To reuse an existing ingress static IP for the admin service           |                       |
+| proxyhttp.servicePort            | TCP port on which the Kong Proxy Service is exposed                    | `8000`                |
+| proxyhttp.containerPort          | TCP port on which the Kong app listens for Proxy traffic               | `8000`                |
+| proxyhttp.nodePort               | Node port when service type is `NodePort`                              | `32080`               |
+| proxyhttp.type                   | k8s service type. Options: NodePort, ClusterIP, LoadBalancer           | `NodePort`            |
+| proxyhttp.loadBalancerIP         | To reuse an existing ingress static IP for the admin service           |                       |
+| proxyhttps.servicePort           | TCP port on which the Kong Proxy Service is exposed                    | `8443`                |
+| proxyhttps.containerPort         | TCP port on which the Kong app listens for Proxy traffic               | `8443`                |
+| proxyhttps.nodePort              | Node port when service type is `NodePort`                              | `32443`               |
+| proxyhttps.type                  | k8s service type. Options: NodePort, ClusterIP, LoadBalancer           | `NodePort`            |
+| proxyhttps.loadBalancerIP        | To reuse an existing ingress static IP for the admin service           |                       |
 | env                               | Additional [Kong configurations](https://getkong.org/docs/latest/configuration/)               |
 | runMigrations                     | Run Kong migrations job                                                | `true`                |
 | readinessProbe                    | Kong readiness probe                                                   |                       |
