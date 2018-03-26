@@ -118,7 +118,7 @@ registry:
   # #
   image:
     repository: "library/registry"
-    tag: "2.5.2"
+    tag: "2.6.2"
     pullPolicy: "IfNotPresent"
 
   ## Service configuration.
