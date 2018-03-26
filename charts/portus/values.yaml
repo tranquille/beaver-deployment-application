@@ -32,7 +32,7 @@ portus:
   ## only set db values if using existing database deployment
   ##
   dbHost: postgres
-  dbDatabase: default
+  dbDatabase: portus
   dbUsername: default
   dbPassword: default
   productionPassword: default
@@ -124,7 +124,7 @@ registry:
   ## Service configuration.
   ##
   service:
-    port: "5000"
+    port: "80"
     debugPort: "5001"
 
   ## Resource configuration.
