@@ -23,9 +23,9 @@ data:
   REGISTRY_NOTIFICATIONS_ENDPOINTS: >
     - name: nginx
       {{- if .Values.portus.tls.enabled }}
-      url: https://{{ .Values.nginx.host .}}/v2/webhooks/events
+      url: https://{{ .Values.nginx.host }}/v2/webhooks/events
       {{- else }}
-      url: http://{{ .Values.nginx.host .}}/v2/webhooks/events
+      url: http://{{ .Values.nginx.host }}/v2/webhooks/events
       {{- end }}
       timeout: 2000ms
       threshold: 5
