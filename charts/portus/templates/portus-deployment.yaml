@@ -83,6 +83,8 @@ spec:
                 secretKeyRef:
                   name: {{ template "portus.fullname" . }}
                   key: PORTUS_SECRET_KEY_BASE
+          resources:
+{{ toYaml .Values.portus.resources | indent 12 }}
           volumeMounts:
             - name: secrets
               mountPath: /secrets
