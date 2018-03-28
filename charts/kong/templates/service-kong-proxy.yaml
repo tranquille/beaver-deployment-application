@@ -1,9 +1,9 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ template "kong.fullname" . }}-proxy-http
+  name: {{ template "kong.fullname" . }}-proxyhttp
   annotations:
-    {{- range $key, $value := .Values.proxy-http.annotations }}
+    {{- range $key, $value := .Values.proxyhttp.annotations }}
       {{ $key }}: {{ $value | quote }}
     {{- end }}
   labels:
@@ -12,16 +12,16 @@ metadata:
     release: "{{ .Release.Name }}"
     heritage: "{{ .Release.Service }}"
 spec:
-  type: {{ .Values.proxy-http.type }}
-  {{- if and (eq .Values.proxy-http.type "LoadBalancer") .Values.proxy-http.loadBalancerIP }}
+  type: {{ .Values.proxyhttp.type }}
+  {{- if and (eq .Values.proxyhttp.type "LoadBalancer") .Values.proxyhttp.loadBalancerIP }}
   loadBalancerIP: {{ .Values.proxy.loadBalancerIP }}
   {{- end }}
   ports:
-  - name: kong-proxy-http
-    port: {{ .Values.proxy-http.servicePort }}
-    targetPort: {{ .Values.proxy-http.containerPort }}
-  {{- if (and (eq .Values.proxy-http.type "NodePort") (not (empty .Values.proxy-http.nodePort))) }}
-    nodePort: {{ .Values.proxy-http.nodePort }}
+  - name: kong-proxyhttp
+    port: {{ .Values.proxyhttp.servicePort }}
+    targetPort: {{ .Values.proxyhttp.containerPort }}
+  {{- if (and (eq .Values.proxyhttp.type "NodePort") (not (empty .Values.proxyhttp.nodePort))) }}
+    nodePort: {{ .Values.proxyhttp.nodePort }}
   {{- end }}
     protocol: TCP
   selector:
