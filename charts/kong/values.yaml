@@ -106,6 +106,9 @@ podAnnotations: {}
 # Kong pod count
 replicaCount: 1
 
+# for fresh installation of kong-ui we need to set the domain
+domain: "paas-prod01.obi.dmz"
+
 # Kong has a choice of either Postgres or Cassandra as a backend datatstore.
 # This chart allows you to choose either of them with the `database.type`
 # parameter.  Postgres is chosen by default.
