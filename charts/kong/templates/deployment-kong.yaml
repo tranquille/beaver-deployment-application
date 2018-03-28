@@ -40,9 +40,9 @@ spec:
           value: "off"
         {{- end }}
         - name: KONG_PROXY_LISTEN
-          value: 0.0.0.0:{{ .Values.proxyhttp.containerPort }}
+          value: 0.0.0.0:{{ .Values.proxy-http.containerPort }}
         - name: KONG_PROXY_LISTEN_SSL
-          value: 0.0.0.0:{{ .Values.proxyhttps.containerPort }}
+          value: 0.0.0.0:{{ .Values.proxy-https.containerPort }}
         - name: KONG_SSL
           value: "on"
         - name: KONG_NGINX_DAEMON
@@ -77,10 +77,10 @@ spec:
           containerPort: {{ .Values.admin.containerPort }}
           protocol: TCP
         - name: proxy
-          containerPort: {{ .Values.proxyhttp.containerPort }}
+          containerPort: {{ .Values.proxy-http.containerPort }}
           protocol: TCP
-        - name: proxyhttps
-          containerPort: {{ .Values.proxyhttps.containerPort }}
+        - name: proxy-https
+          containerPort: {{ .Values.proxy-https.containerPort }}
           protocol: TCP
         readinessProbe:
 {{ toYaml .Values.readinessProbe | indent 10 }}

@@ -20,7 +20,7 @@ admin:
   type: ClusterIP
   # Set a nodePort which is available
   # nodePort: 32444
-proxyhttp:
+proxy-http:
   # If you want to specify annotations for the proxy service, uncomment the following
   # line, add additional or adjust as needed, and remove the curly braces after 'annotations:'.
   annotations: {}
@@ -33,7 +33,7 @@ proxyhttp:
   # Set a nodePort which is available
   nodePort: 32080
 
-proxyhttps:
+proxy-https:
   # If you want to specify annotations for the proxy service, uncomment the following
   # line, add additional or adjust as needed, and remove the curly braces after 'annotations:'.
   annotations: {}
