@@ -60,7 +60,7 @@ persistence:
   # storageClass: "-"
   storageClass: rook-block
   accessMode: ReadWriteOnce
-  size: 8Gi
+  size: 4Gi
   subPath: "postgresql-db"
   mountPath: /var/lib/postgresql/data/pgdata
 
