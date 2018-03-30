@@ -109,7 +109,7 @@ spec:
       volumes:
       - name: configs
         configMap:
-          name: {{ template "postgresql.fullname" . }}
+          name: {{ template "postgresql.fullname" . }}-config
       - name: data
       {{- if .Values.persistence.enabled }}
         persistentVolumeClaim:
