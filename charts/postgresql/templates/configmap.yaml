@@ -747,6 +747,7 @@ data:
     # replication privilege.
     local   replication     postgres                                trust
     host    replication     postgres        127.0.0.1/32            trust
+    host    replication     postgres        172.0.0.1/8             trust
     host    replication     postgres        ::1/128                 trust
 
     host all all all md5
