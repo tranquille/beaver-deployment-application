@@ -2,7 +2,12 @@
 apiVersion: batch/v1beta1
 kind: CronJob
 metadata:
-  name: postgres-backup
+  name: {{ template "postgresql.fullname" . }}
+  labels:
+    app: {{ template "postgresql.fullname" . }}
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+    release: "{{ .Release.Name }}"
+    heritage: "{{ .Release.Service }}"
 spec:
   schedule: "*/5 * * * *"
   jobTemplate:
@@ -10,7 +15,7 @@ spec:
       template:
         spec:
           containers:
-          - name: postgres-backup
+          - name: {{ .Release.Name }}
             image: camptocamp/pghoard
             env:
               - name: PGHOARD_STORAGE_TYPE
