@@ -650,4 +650,4 @@ data:
     #------------------------------------------------------------------------------
 
     # Add settings for extensions here
-    wal_level = logical
+    wal_level = replica
