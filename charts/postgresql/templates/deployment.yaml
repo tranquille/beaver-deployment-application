@@ -80,6 +80,9 @@ spec:
         resources:
 {{ toYaml .Values.resources | indent 10 }}
         volumeMounts:
+        - mountPath: /etc/postgresql
+          name: configs
+          readOnly: true
         - name: data
           mountPath: {{ .Values.persistence.mountPath }}
           subPath: {{ .Values.persistence.subPath }}
@@ -104,6 +107,9 @@ spec:
 {{ toYaml .Values.metrics.resources | indent 10 }}
 {{- end }}
       volumes:
+      - name: configs
+        configMap:
+          name: {{ template "postgresql.fullname" . }}
       - name: data
       {{- if .Values.persistence.enabled }}
         persistentVolumeClaim:
