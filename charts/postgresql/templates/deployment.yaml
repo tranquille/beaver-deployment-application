@@ -83,9 +83,6 @@ spec:
         - mountPath: /etc/postgresql
           name: configs
           readOnly: true
-        - mountPath: /docker-entrypoint-initdb.d
-          name: initdb
-          readOnly: true
         - name: data
           mountPath: {{ .Values.persistence.mountPath }}
           subPath: {{ .Values.persistence.subPath }}
@@ -113,9 +110,6 @@ spec:
       - name: configs
         configMap:
           name: {{ template "postgresql.fullname" . }}-config
-      - name: initdb
-        configMap:
-          name: {{ template "postgresql.fullname" . }}-initdb
       - name: data
       {{- if .Values.persistence.enabled }}
         persistentVolumeClaim:
