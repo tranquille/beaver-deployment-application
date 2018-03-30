@@ -51,7 +51,7 @@ data:
 
     #data_directory = 'ConfigDir'		# use data in another directory
     					# (change requires restart)
-    #hba_file = '/etc/postgresql/pg_hba.conf'
+    hba_file = '/etc/postgresql/pg_hba.conf'
     #hba_file = 'ConfigDir/pg_hba.conf'	# host-based authentication file
     					# (change requires restart)
     #ident_file = 'ConfigDir/pg_ident.conf'	# ident configuration file
@@ -740,7 +740,7 @@ data:
     local   all             all                                     trust
     # IPv4 local connections:
     host    all             all             127.0.0.1/32            trust
-    host    all             all             172.26.0.1/16           trust
+    host    all             all             all                     trust
     # IPv6 local connections:
     host    all             all             ::1/128                 trust
     # Allow replication connections from localhost, by a user with the
