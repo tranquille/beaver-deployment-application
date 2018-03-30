@@ -83,7 +83,6 @@ spec:
         volumeMounts:
         - mountPath: /etc/postgresql
           name: configs
-          readOnly: true
         - name: data
           mountPath: {{ .Values.persistence.mountPath }}
           subPath: {{ .Values.persistence.subPath }}
