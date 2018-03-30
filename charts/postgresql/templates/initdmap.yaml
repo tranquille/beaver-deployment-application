@@ -9,4 +9,4 @@ metadata:
     heritage: "{{ .Release.Service }}"
 data:
   01_create_user.sh: |
-    CREATE DATABASE user;
+    echo "hallo"
