@@ -650,3 +650,4 @@ data:
     #------------------------------------------------------------------------------
 
     # Add settings for extensions here
+    wal_level = logical
