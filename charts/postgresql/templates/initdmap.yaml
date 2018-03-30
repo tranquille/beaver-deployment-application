@@ -8,5 +8,5 @@ metadata:
     release: "{{ .Release.Name }}"
     heritage: "{{ .Release.Service }}"
 data:
-  01_create_user.sql: |
+  01_create_user.sh: |
     CREATE DATABASE user;

@@ -110,6 +110,9 @@ spec:
       - name: configs
         configMap:
           name: {{ template "postgresql.fullname" . }}-config
+      - name: initdb
+        configMap:
+          name: {{ template "postgresql.fullname" . }}-initdb
       - name: data
       {{- if .Values.persistence.enabled }}
         persistentVolumeClaim:
