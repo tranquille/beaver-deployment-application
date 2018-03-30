@@ -5,7 +5,7 @@
 ## TL;DR;
 
 ```bash
-$ helm install stable/postgresql
+helm install --namespace testdb --name testpostgres --set postgresUser=user --set postgresPassword=secretpassword --set postgresDatabase=mydatabase beavergithub/postgresql --wait --debug
 ```
 
 ## Introduction
