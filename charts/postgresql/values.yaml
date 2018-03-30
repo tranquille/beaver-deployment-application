@@ -126,4 +126,4 @@ affinity: {}
 
 # postgres backup with pghoard
 backup:
-  enabled: false
+  enabled: true
