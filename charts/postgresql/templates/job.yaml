@@ -1,3 +1,4 @@
+{{- if .Values.backup.enabled }}
 ---
 apiVersion: batch/v1beta1
 kind: CronJob
@@ -34,3 +35,4 @@ spec:
                   name: {{ template "postgresql.fullname" . }}
                   key: postgres-password
           restartPolicy: OnFailure
+{{end}}

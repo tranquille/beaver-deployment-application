@@ -122,3 +122,7 @@ networkPolicy:
 nodeSelector: {}
 tolerations: []
 affinity: {}
+
+# postgres backup with pghoard
+backup:
+  enabled: false
