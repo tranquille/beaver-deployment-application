@@ -32,6 +32,7 @@ spec:
       - name: {{ template "postgresql.fullname" . }}
         image: "{{ .Values.image }}:{{ .Values.imageTag }}"
         imagePullPolicy: {{ default "" .Values.imagePullPolicy | quote }}
+        command: ["/etc/postgresql/docker-entrypoint.sh"]
         args:
           {{- range $key, $value := default dict .Values.postgresConfig }}
           - -c
