@@ -3,7 +3,7 @@
 apiVersion: batch/v1beta1
 kind: CronJob
 metadata:
-  name: {{ template "postgresql.fullname" . }}
+  name: {{ template "postgresql.fullname" . }}-job
   labels:
     app: {{ template "postgresql.fullname" . }}
     chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
