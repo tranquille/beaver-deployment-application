@@ -28,9 +28,4 @@ spec:
               value: {{ .Values.service.port }}
             - name: PG_USER
               value: {{ default "postgres" .Values.postgresUser | quote }}
-            - name: PG_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: {{ template "postgresql.fullname" . }}
-                  key: postgres-password
           restartPolicy: OnFailure
