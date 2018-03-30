@@ -18,19 +18,19 @@ spec:
           - name: {{ .Release.Name }}
             image: camptocamp/pghoard
             env:
-              - name: PGHOARD_STORAGE_TYPE
-                value: local
-              - name: PGHOARD_DIRECTORY
-                value: /tmp/
-              - name: PG_HOST
-                value: {{ template "postgresql.fullname" . }}
-              - name: PG_PORT
-                value: {{ .Values.service.port }}
-              - name: PG_USER
-                value: {{ default "postgres" .Values.postgresUser | quote }}
-              - name: PG_PASSWORD
-                valueFrom:
-                  secretKeyRef:
-                    name: {{ template "postgresql.fullname" . }}
-                    key: postgres-password
+            - name: PGHOARD_STORAGE_TYPE
+              value: local
+            - name: PGHOARD_DIRECTORY
+              value: /tmp/
+            - name: PG_HOST
+              value: {{ template "postgresql.fullname" . }}
+            - name: PG_PORT
+              value: {{ .Values.service.port }}
+            - name: PG_USER
+              value: {{ default "postgres" .Values.postgresUser | quote }}
+            - name: PG_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ template "postgresql.fullname" . }}
+                  key: postgres-password
           restartPolicy: OnFailure
