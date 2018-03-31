@@ -8,10 +8,9 @@ metadata:
     release: "{{ .Release.Name }}"
     heritage: "{{ .Release.Service }}"
 data:
-  01_add_replication.sql: |
-    CREATE ROLE replication WITH REPLICATION PASSWORD 'replication' LOGIN
-  02_add_backup_host_hba.sh: |
+  01_add_backup_host_hba.sh: |
     #!/bin/bash
     set -e
+    createuser -U postgres repuser --no-password -c 5 --replication
     echo "Modify pg_hba.conf..."
     echo "host replication replication 172.0.0.1/8 trust" >> /var/lib/postgresql/data/pgdata/pg_hba.conf
