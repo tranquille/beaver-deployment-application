@@ -9,4 +9,7 @@ metadata:
     heritage: "{{ .Release.Service }}"
 data:
   01_add_host_hba.sh: |
-    echo "host    all             all             172.0.0.1/8            trust" >> /var/lib/postgresql/data/pgdata/pg_hba.conf
+    #!/bin/bash
+    set -e
+    echo "Modify pg_hba.conf..."
+    echo "host  all  all   172.0.0.1/8   trust" >> /var/lib/postgresql/data/pgdata/pg_hba.conf
