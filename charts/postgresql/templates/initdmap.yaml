@@ -14,6 +14,6 @@ data:
     echo "create backup user..."
     createuser -U postgres repuser --no-password -c 5 --replication
     echo "modify pg_hba.conf..."
-    echo "host replication replication 172.0.0.1/8 trust" >> /var/lib/postgresql/data/pgdata/pg_hba.conf
+    echo "host replication repuser 172.0.0.1/8 trust" >> /var/lib/postgresql/data/pgdata/pg_hba.conf
   02_change_backup_password.sql: |
     ALTER USER repuser WITH PASSWORD 'reppassword';
