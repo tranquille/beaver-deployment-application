@@ -127,3 +127,6 @@ affinity: {}
 # postgres backup with pghoard
 backup:
   enabled: true
+  schedule: "*/5 * * * *"
+  successfulJobsHistoryLimit: 3
+  failedJobsHistoryLimit: 1
