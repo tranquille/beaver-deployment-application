@@ -8,8 +8,8 @@ metadata:
     release: "{{ .Release.Name }}"
     heritage: "{{ .Release.Service }}"
 data:
-  01_add_host_hba.sh: |
+  01_add_backup_host_hba.sh: |
     #!/bin/bash
     set -e
     echo "Modify pg_hba.conf..."
-    echo "host  all  all   172.0.0.1/8   trust" >> /var/lib/postgresql/data/pgdata/pg_hba.conf
+    echo "host replication postgres 172.0.0.1/8 trust" >> /var/lib/postgresql/data/pgdata/pg_hba.conf
