@@ -30,8 +30,8 @@ spec:
             - name: PG_PORT
               value: {{ .Values.service.port | quote }}
             - name: PG_USER
-              value: "postgres"
+              value: "replication"
             - name: PG_PASSWORD
-              value: ""
+              value: "replication"
           restartPolicy: OnFailure
 {{end}}
