@@ -32,6 +32,6 @@ spec:
             - name: PG_USER
               value: "repuser"
             - name: PG_PASSWORD
-              value: ""
+              value: "reppassword"
           restartPolicy: OnFailure
 {{end}}
