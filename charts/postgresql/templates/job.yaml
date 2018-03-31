@@ -12,7 +12,7 @@ metadata:
 spec:
   schedule: {{ .Values.backup.schedule | quote }}
   successfulJobsHistoryLimit: {{ .Values.backup.successfulJobsHistoryLimit }}
-  failedJobsHistoryLimit: {{ $job.failedJobsHistoryLimit }}
+  failedJobsHistoryLimit: {{ .Values.backup.failedJobsHistoryLimit }}
   jobTemplate:
     spec:
       template:
