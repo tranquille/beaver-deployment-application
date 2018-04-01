@@ -13,6 +13,7 @@ spec:
   schedule: {{ .Values.backup.schedule | quote }}
   successfulJobsHistoryLimit: {{ .Values.backup.successfulJobsHistoryLimit }}
   failedJobsHistoryLimit: {{ .Values.backup.failedJobsHistoryLimit }}
+  concurrencyPolicy: Forbid
   jobTemplate:
     spec:
       template:
