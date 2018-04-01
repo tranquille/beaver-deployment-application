@@ -33,5 +33,5 @@ spec:
           value: {{ .Values.backup.user | quote }}
         - name: PG_PASSWORD
           value: {{ .Values.backup.password | quote }}
-      restartPolicy: OnFailure
+      restartPolicy: Always
 {{end}}
