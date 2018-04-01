@@ -17,23 +17,21 @@ spec:
         app: {{ template "postgresql.fullname" . }}-backup
         release: {{ .Release.Name }}
     spec:
-      template:
-        spec:
-          containers:
-          - name: {{ .Release.Name }}
-            image: camptocamp/pghoard
-            env:
-            - name: PGHOARD_STORAGE_TYPE
-              value: {{ .Values.backup.storage_type | quote }}
-            - name: PGHOARD_DIRECTORY
-              value: {{ .Values.backup.directory | quote }}
-            - name: PG_HOST
-              value: {{ template "postgresql.fullname" . }}
-            - name: PG_PORT
-              value: {{ .Values.service.port | quote }}
-            - name: PG_USER
-              value: {{ .Values.backup.user | quote }}
-            - name: PG_PASSWORD
-              value: {{ .Values.backup.password | quote }}
-          restartPolicy: OnFailure
+      containers:
+      - name: {{ .Release.Name }}
+        image: camptocamp/pghoard
+        env:
+        - name: PGHOARD_STORAGE_TYPE
+          value: {{ .Values.backup.storage_type | quote }}
+        - name: PGHOARD_DIRECTORY
+          value: {{ .Values.backup.directory | quote }}
+        - name: PG_HOST
+          value: {{ template "postgresql.fullname" . }}
+        - name: PG_PORT
+          value: {{ .Values.service.port | quote }}
+        - name: PG_USER
+          value: {{ .Values.backup.user | quote }}
+        - name: PG_PASSWORD
+          value: {{ .Values.backup.password | quote }}
+      restartPolicy: OnFailure
 {{end}}
