@@ -1,20 +1,21 @@
 {{- if .Values.backup.enabled }}
 ---
-apiVersion: batch/v1beta1
-kind: CronJob
+apiVersion: extensions/v1beta1
+kind: Deployment
 metadata:
-  name: {{ template "postgresql.fullname" . }}-job
+  name: {{ template "postgresql.fullname" . }}-backup
   labels:
-    app: {{ template "postgresql.fullname" . }}
+    app: {{ template "postgresql.fullname" . }}-backup
     chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
     release: "{{ .Release.Name }}"
     heritage: "{{ .Release.Service }}"
 spec:
-  schedule: {{ .Values.backup.schedule | quote }}
-  successfulJobsHistoryLimit: {{ .Values.backup.successfulJobsHistoryLimit }}
-  failedJobsHistoryLimit: {{ .Values.backup.failedJobsHistoryLimit }}
-  concurrencyPolicy: Forbid
-  jobTemplate:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: {{ template "postgresql.fullname" . }}-backup
+        release: {{ .Release.Name }}
     spec:
       template:
         spec:
@@ -23,16 +24,16 @@ spec:
             image: camptocamp/pghoard
             env:
             - name: PGHOARD_STORAGE_TYPE
-              value: "local"
+              value: {{ .Values.backup.storage_type | quote }}
             - name: PGHOARD_DIRECTORY
-              value: "/tmp/"
+              value: {{ .Values.backup.directory | quote }}
             - name: PG_HOST
               value: {{ template "postgresql.fullname" . }}
             - name: PG_PORT
               value: {{ .Values.service.port | quote }}
             - name: PG_USER
-              value: "repuser"
+              value: {{ .Values.backup.user | quote }}
             - name: PG_PASSWORD
-              value: "reppassword"
+              value: {{ .Values.backup.password | quote }}
           restartPolicy: OnFailure
 {{end}}

@@ -8,12 +8,15 @@ metadata:
     release: "{{ .Release.Name }}"
     heritage: "{{ .Release.Service }}"
 data:
-  01_add_backup_host_hba.sh: |
+  00_init.sh: |
+    echo "run init script"
+{{- if .Values.backup.enabled }}
+  01_add_backup_user_hba_conf.sh: |
     #!/bin/bash
+    echo "run pghoard script"
     set -e
     echo "create backup user..."
-    createuser -U postgres repuser --no-password -c 5 --replication
+    psql -d postgres -c "CREATE USER {{ .Values.backup.user }} PASSWORD '{{ .Values.backup.password }}' REPLICATION;"
     echo "modify pg_hba.conf..."
     echo "host replication repuser 172.0.0.1/8 trust" >> /var/lib/postgresql/data/pgdata/pg_hba.conf
-  02_change_backup_password.sql: |
-    ALTER USER repuser WITH PASSWORD 'reppassword';
+{{end}}

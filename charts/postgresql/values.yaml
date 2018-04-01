@@ -127,6 +127,7 @@ affinity: {}
 # postgres backup with pghoard
 backup:
   enabled: true
-  schedule: "*/10 * * * *"
-  successfulJobsHistoryLimit: 3
-  failedJobsHistoryLimit: 1
+  user: "repuser"
+  password: "reppassword"
+  storage_type: "local"
+  directory: "/tmp/"

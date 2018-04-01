@@ -186,7 +186,7 @@ data:
 
     # - Settings -
 
-    wal_level = replica			# minimal, replica, or logical
+    wal_level = archive			# minimal, replica, or logical
     					# (change requires restart)
     #fsync = on				# flush data to disk for crash safety
     						# (turning this off can cause
@@ -241,7 +241,7 @@ data:
 
     # Set these on the master and on any standby that will send replication data.
 
-    max_wal_senders = 3		# max number of walsender processes
+    max_wal_senders = 4		# max number of walsender processes
     				# (change requires restart)
     #wal_keep_segments = 0		# in logfile segments, 16MB each; 0 disables
     #wal_sender_timeout = 60s	# in milliseconds; 0 disables
