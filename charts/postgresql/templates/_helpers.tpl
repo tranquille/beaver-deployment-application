@@ -25,6 +25,22 @@ If release name contains chart name it will be used as a full name.
 {{- end -}}
 
 {{/*
+create full directory for storing pghoard data
+*/}}
+{{- define "backup.fulldir" -}}
+{{- if .Values.fullnameOverride -}}
+{{- .Values.fullnameOverride | trunc 63 | trimSuffix "-" -}}
+{{- else -}}
+{{- $name := default .Chart.Name .Values.nameOverride -}}
+{{- if contains $name .Release.Name -}}
+{{- .Release.Name | trunc 63 | trimSuffix "-" -}}
+{{- else -}}
+{{- printf "%s%s-%s" .Values.backup.directory .Release.Name $name | trunc 63 | trimSuffix "-" | quote -}}
+{{- end -}}
+{{- end -}}
+{{- end -}}
+
+{{/*
 Return the appropriate apiVersion for networkpolicy.
 */}}
 {{- define "postgresql.networkPolicy.apiVersion" -}}
