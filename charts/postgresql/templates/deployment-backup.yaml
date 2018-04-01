@@ -24,7 +24,7 @@ spec:
         - name: PGHOARD_STORAGE_TYPE
           value: {{ .Values.backup.storage_type | quote }}
         - name: PGHOARD_DIRECTORY
-          value: {{ printf "%s%s-%s" .Values.backup.directory .Chart.Name .Values.nameOverride }}
+          value: {{ template "postgresql.fullname" | printf "%s%s-%s" .Values.backup.directory }}
         - name: PG_HOST
           value: {{ template "postgresql.fullname" . }}
         - name: PG_PORT
