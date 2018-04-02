@@ -33,16 +33,19 @@ spec:
           value: {{ .Values.backup.user | quote }}
         - name: PG_PASSWORD
           value: {{ .Values.backup.password | quote }}
-{{- if .Values.backup.persistent }}
         volumeMounts:
         - name: {{ template "postgresql.fullname" . }}-storage
           mountPath: {{ .Values.backup.directory }}
       volumes:
       - name: {{ template "postgresql.fullname" . }}-storage
         persistentVolumeClaim:
+        {{- if .Values.backup.persistent }}
           claimName: {{ template "postgresql.fullname" . }}-claim
-{{end}}
+        {{- else }}
+          emptyDir: {}
+        {{- end -}}
       restartPolicy: Always
+
 {{- if .Values.backup.persistent }}
 ---
 kind: PersistentVolumeClaim
