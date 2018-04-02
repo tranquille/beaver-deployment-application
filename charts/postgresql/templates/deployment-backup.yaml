@@ -43,26 +43,6 @@ spec:
           claimName: {{ template "postgresql.fullname" . }}-claim
       {{- else }}
         emptyDir: {}
-      {{- end -}}
+      {{- end}}
       restartPolicy: Always
-
-{{- if .Values.backup.persistent }}
----
-kind: PersistentVolumeClaim
-apiVersion: v1
-metadata:
-  name: {{ template "postgresql.fullname" . }}-claim
-  labels:
-    app: {{ template "postgresql.fullname" . }}-claim
-    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
-    release: "{{ .Release.Name }}"
-    heritage: "{{ .Release.Service }}"
-spec:
-  storageClassName: {{ .Values.backup.storageClassName }}
-  accessModes:
-    - ReadWriteMany
-  resources:
-    requests:
-      storage: {{ .Values.backup.storageSize }}
-{{end}}
 {{end}}
