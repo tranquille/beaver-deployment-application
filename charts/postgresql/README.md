@@ -5,7 +5,7 @@
 ## TL;DR;
 
 ```bash
-helm install --namespace testdb --name testpostgres --set postgresUser=user --set postgresPassword=secretpassword --set postgresDatabase=mydatabase beavergithub/postgresql --wait --debug
+helm install --namespace testdb --name testpostgres --set postgresUser=user --set postgresPassword=secretpassword --set postgresDatabase=mydatabase beavergithub/postgresql --wait
 ```
 
 ## Introduction
@@ -60,7 +60,7 @@ The following table lists the configurable parameters of the PostgreSQL chart an
 | `persistence.storageClass` | Storage class of backing PVC                    | `nil` (uses alpha storage class annotation)                |
 | `persistence.accessMode`   | Use volume as ReadOnly or ReadWrite             | `ReadWriteOnce`                                            |
 | `persistence.annotations`  | Persistent Volume annotations                   | `{}`                                                       |
-| `persistence.size`         | Size of data volume                             | `8Gi`                                                      |
+| `persistence.size`         | Size of data volume                             | `4Gi`                                                      |
 | `persistence.subPath`      | Subdirectory of the volume to mount at          | `postgresql-db`                                            |
 | `persistence.mountPath`    | Mount path of data volume                       | `/var/lib/postgresql/data/pgdata`                          |
 | `resources`                | CPU/Memory resource requests/limits             | Memory: `256Mi`, CPU: `100m`                               |
@@ -79,6 +79,14 @@ The following table lists the configurable parameters of the PostgreSQL chart an
 | `nodeSelector`             | Node labels for pod assignment                  | {}                                                         |
 | `affinity`                 | Affinity settings for pod assignment            | {}                                                         |
 | `tolerations`              | Toleration labels for pod assignment            | []                                                         |
+| `backup.enabled`           | pghoard Backup enabled                          | `true`                                                     |
+| `backup.user`              | Backup default user                             | `repuser`                                                  |
+| `backup.password`          | Backup default password                         | `reppassword`                                              |
+| `backup.storage_type`      | Backup default storage_type                     | `local`                                                    |
+| `backup.directory`         | Backup directory                                | `/backup/`                                                 |
+| `backup.persistent`        | Enable persistent                               | `false`                                                    |
+| `backup.storageClassName`  | Storage class of backing                        | `manual`                                                   |
+| `backup.storageSize`       | Size of data volume                             | `4Gi`                                                      |
 
 The above parameters map to the env variables defined in [postgres](http://github.com/docker-library/postgres). For more information please refer to the [postgres](http://github.com/docker-library/postgres) image documentation.
 
