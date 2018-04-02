@@ -131,6 +131,6 @@ backup:
   password: "reppassword"
   storage_type: "local"
   directory: "/backup/"
-  persistent: true
+  persistent: false
   storageClassName: "manual"
   storageSize: "10Gi"
