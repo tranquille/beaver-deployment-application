@@ -43,6 +43,6 @@ spec:
           claimName: {{ template "postgresql.fullname" . }}-claim
       {{- else }}
         emptyDir: {}
-      {{- end }}
+      {{- end -}}
       restartPolicy: Always
 {{- end }}
