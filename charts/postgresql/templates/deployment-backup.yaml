@@ -56,7 +56,6 @@ metadata:
     heritage: "{{ .Release.Service }}"
 spec:
   storageClassName: {{ .Values.backup.storageClassName }}
-  volumeName: {{ .Values.backup.storageClassName }}
   accessModes:
     - ReadWriteMany
   resources:

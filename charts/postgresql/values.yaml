@@ -133,5 +133,4 @@ backup:
   directory: "/backup/"
   persistent: true
   storageClassName: "manual"
-  volumeName: "pv-nfs-005"
   storageSize: "10Gi"
