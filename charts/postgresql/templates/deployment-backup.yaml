@@ -24,7 +24,7 @@ spec:
         - name: PGHOARD_STORAGE_TYPE
           value: {{ .Values.backup.storage_type | quote }}
         - name: PGHOARD_DIRECTORY
-          value: {{ printf "%s%s/%s" .Values.backup.directory .Release.Namespace .Release.Name | quote }}
+          value: {{ printf "%s%s" .Values.backup.directory .Release.Namespace | quote }}
         - name: PG_HOST
           value: {{ template "postgresql.fullname" . }}
         - name: PG_PORT
@@ -33,5 +33,33 @@ spec:
           value: {{ .Values.backup.user | quote }}
         - name: PG_PASSWORD
           value: {{ .Values.backup.password | quote }}
+{{- if .Values.backup.persistent }}
+        volumeMounts:
+        - name: {{ template "postgresql.fullname" . }}-storage
+          mountPath: {{ .Values.backup.directory }}
+      volumes:
+      - name: {{ template "postgresql.fullname" . }}-storage
+        persistentVolumeClaim:
+          claimName: {{ template "postgresql.fullname" . }}-claim
+{{end}}
       restartPolicy: Always
+{{- if .Values.backup.persistent }}
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: {{ template "postgresql.fullname" . }}-claim
+  labels:
+    app: {{ template "postgresql.fullname" . }}-claim
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+    release: "{{ .Release.Name }}"
+    heritage: "{{ .Release.Service }}"
+spec:
+  storageClassName: {{ .Values.backup.storageClassName }}
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: {{ .Values.backup.storageSize }}
+{{end}}
 {{end}}

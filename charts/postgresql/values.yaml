@@ -130,4 +130,7 @@ backup:
   user: "repuser"
   password: "reppassword"
   storage_type: "local"
-  directory: "/tmp/"
+  directory: "/backup/"
+  persistent: true
+  storageClassName: "manual"
+  storageSize: "10Gi"
