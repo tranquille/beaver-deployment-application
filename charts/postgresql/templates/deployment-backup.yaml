@@ -38,11 +38,11 @@ spec:
           mountPath: {{ .Values.backup.directory }}
       volumes:
       - name: {{ template "postgresql.fullname" . }}-storage
-      {{ if .Values.persistence.enabled }}
+      {{- if .Values.persistence.enabled }}
         persistentVolumeClaim:
           claimName: {{ template "postgresql.fullname" . }}-claim
-      {{ else }}
+      {{- else }}
         emptyDir: {}
-      {{ end }}
+      {{- end -}}
       restartPolicy: Always
-{{end}}
+{{- end }}
