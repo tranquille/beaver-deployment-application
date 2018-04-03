@@ -22,9 +22,9 @@ spec:
         image: deitch/mysql-backup
         env:
         - name: DB_DUMP_FREQ
-          value: {{ .Values.backup.freq }}
+          value: {{ .Values.backup.freq | quote}}
         - name: DB_DUMP_BEGIN
-          value: {{ .Values.backup.begin }}
+          value: {{ .Values.backup.begin | quote}}
         - name: DB_DUMP_TARGET
           value: {{ printf "%s%s" .Values.backup.directory .Release.Namespace | quote }}
         - name: DB_DUMP_SERVER
