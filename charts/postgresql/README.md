@@ -22,7 +22,7 @@ This chart bootstraps a [PostgreSQL](https://github.com/docker-library/postgres)
 To install the chart with the release name `my-release`:
 
 ```bash
-$ helm install --name my-release stable/postgresql
+$ helm install --name my-release beavergithub/postgresql
 ```
 
 The command deploys PostgreSQL on the Kubernetes cluster in the default configuration. The [configuration](#configuration) section lists the parameters that can be configured during installation.
@@ -95,7 +95,7 @@ Specify each parameter using the `--set key=value[,key=value]` argument to `helm
 ```bash
 $ helm install --name my-release \
   --set postgresUser=my-user,postgresPassword=secretpassword,postgresDatabase=my-database \
-    stable/postgresql
+    beavergithub/postgresql
 ```
 
 The above command creates a PostgreSQL user named `my-user` with password `secretpassword`. Additionally it creates a database named `my-database`.
@@ -103,7 +103,7 @@ The above command creates a PostgreSQL user named `my-user` with password `secre
 Alternatively, a YAML file that specifies the values for the parameters can be provided while installing the chart. For example,
 
 ```bash
-$ helm install --name my-release -f values.yaml stable/postgresql
+$ helm install --name my-release -f values.yaml beavergithub/postgresql
 ```
 
 > **Tip**: You can use the default [values.yaml](values.yaml)

@@ -14,7 +14,7 @@ $ helm install incubator/portus
 This chart bootstraps a [Portus](http://port.us.org/) deployment on a [Kubernetes](http://kubernetes.io) cluster using
 the [Helm](https://helm.sh) package manager.
 
-It also packages the [Bitnami MariaDB chart](https://github.com/kubernetes/charts/tree/master/stable/mariadb) which is
+It also packages the [Bitnami MariaDB chart](https://github.com/kubernetes/charts/tree/master/beavergithub/mariadb) which is
 required for bootstrapping a MariaDB deployment for the database requirements of the Portus application.
 
 ## Prerequisites
@@ -161,7 +161,7 @@ minikube. See the [Configuration](#configuration) section to configure the PVC o
 ## Ingress
 
 This chart provides support for ingress resources. If you have an ingress controller installed on your cluster,
-such as [nginx-ingress](https://kubeapps.com/charts/stable/nginx-ingress) or [traefik](https://kubeapps.com/charts/stable/traefik)
+such as [nginx-ingress](https://kubeapps.com/charts/beavergithub/nginx-ingress) or [traefik](https://kubeapps.com/charts/beavergithub/traefik)
 you can utilize the ingress controller to service your Portus application.
 
 To enable ingress set `nginx.ingress.enabled` to `true`.

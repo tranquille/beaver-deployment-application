@@ -5,7 +5,7 @@
 ## TL;DR;
 
 ```bash
-$ helm install stable/redis
+$ helm install beavergithub/redis
 ```
 
 ## Introduction
@@ -22,7 +22,7 @@ This chart bootstraps a [Redis](https://github.com/bitnami/bitnami-docker-redis)
 To install the chart with the release name `my-release`:
 
 ```bash
-$ helm install --name my-release stable/redis
+$ helm install --name my-release beavergithub/redis
 ```
 
 The command deploys Redis on the Kubernetes cluster in the default configuration. The [configuration](#configuration) section lists the parameters that can be configured during installation.
@@ -81,7 +81,7 @@ Specify each parameter using the `--set key=value[,key=value]` argument to `helm
 ```bash
 $ helm install --name my-release \
   --set redisPassword=secretpassword \
-    stable/redis
+    beavergithub/redis
 ```
 
 The above command sets the Redis server password to `secretpassword`.
@@ -89,7 +89,7 @@ The above command sets the Redis server password to `secretpassword`.
 Alternatively, a YAML file that specifies the values for the parameters can be provided while installing the chart. For example,
 
 ```bash
-$ helm install --name my-release -f values.yaml stable/redis
+$ helm install --name my-release -f values.yaml beavergithub/redis
 ```
 
 > **Tip**: You can use the default [values.yaml](values.yaml)

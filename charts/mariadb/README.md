@@ -57,7 +57,7 @@ Specify each parameter using the `--set key=value[,key=value]` argument to `helm
 ```bash
 $ helm install --name my-release \
   --set mariadbRootPassword=secretpassword,mariadbUser=my-user,mariadbPassword=my-password,mariadbDatabase=my-database \
-    stable/mariadb
+    beavergithub/mariadb
 ```
 
 The above command sets the MariaDB `root` account password to `secretpassword`. Additionally, it creates a standard database user named `my-user`, with the password `my-password`, who has access to a database named `my-database`.
@@ -65,7 +65,7 @@ The above command sets the MariaDB `root` account password to `secretpassword`. 
 Alternatively, a YAML file that specifies the values for the parameters can be provided while installing the chart. For example,
 
 ```bash
-$ helm install --name my-release -f values.yaml stable/mariadb
+$ helm install --name my-release -f values.yaml beavergithub/mariadb
 ```
 
 > **Tip**: You can use the default [values.yaml](values.yaml)
@@ -89,7 +89,7 @@ config: |-
   innodb_buffer_pool_size=2G
 EOF
 
-helm install --name my-release -f mariadb-values.yaml stable/mariadb
+helm install --name my-release -f mariadb-values.yaml beavergithub/mariadb
 ```
 
 ## Consuming credentials

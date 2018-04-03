@@ -13,6 +13,12 @@ kubectl create clusterrolebinding default-rule --clusterrole=cluster-admin --ser
 kubectl patch deploy --namespace tools tiller-deploy -p '{"spec":{"template":{"spec":{"serviceAccount":"tiller"}}}}'
 ```
 
+### Add Helm Repo for wildbeavers
+
+```
+helm repo add beavergithub https://wildbeavers.github.io/beaver-deployment-application/
+```
+
 https://wildbeavers.github.io/beaver-deployment-application/
 
 ### Usage

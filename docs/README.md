@@ -14,6 +14,12 @@ kubectl create clusterrolebinding default-rule --clusterrole=cluster-admin --ser
 kubectl patch deploy --namespace tools tiller-deploy -p '{"spec":{"template":{"spec":{"serviceAccount":"tiller"}}}}'
 ```
 
+### Add Helm Repo for wildbeavers
+
+```
+helm repo add beavergithub https://wildbeavers.github.io/beaver-deployment-application/
+```
+
 https://wildbeavers.github.io/beaver-deployment-application/
 
 ### Usage
@@ -100,7 +106,7 @@ $ helm install incubator/portus
 This chart bootstraps a [Portus](http://port.us.org/) deployment on a [Kubernetes](http://kubernetes.io) cluster using
 the [Helm](https://helm.sh) package manager.
 
-It also packages the [Bitnami MariaDB chart](https://github.com/kubernetes/charts/tree/master/stable/mariadb) which is
+It also packages the [Bitnami MariaDB chart](https://github.com/kubernetes/charts/tree/master/beavergithub/mariadb) which is
 required for bootstrapping a MariaDB deployment for the database requirements of the Portus application.
 
 ## Prerequisites
@@ -247,7 +253,7 @@ minikube. See the [Configuration](#configuration) section to configure the PVC o
 ## Ingress
 
 This chart provides support for ingress resources. If you have an ingress controller installed on your cluster,
-such as [nginx-ingress](https://kubeapps.com/charts/stable/nginx-ingress) or [traefik](https://kubeapps.com/charts/stable/traefik)
+such as [nginx-ingress](https://kubeapps.com/charts/beavergithub/nginx-ingress) or [traefik](https://kubeapps.com/charts/beavergithub/traefik)
 you can utilize the ingress controller to service your Portus application.
 
 To enable ingress set `nginx.ingress.enabled` to `true`.
@@ -307,7 +313,7 @@ This chart bootstraps a [PostgreSQL](https://github.com/docker-library/postgres)
 To install the chart with the release name `my-release`:
 
 ```bash
-$ helm install --name my-release stable/postgresql
+$ helm install --name my-release beavergithub/postgresql
 ```
 
 The command deploys PostgreSQL on the Kubernetes cluster in the default configuration. The [configuration](#configuration) section lists the parameters that can be configured during installation.
@@ -380,7 +386,7 @@ Specify each parameter using the `--set key=value[,key=value]` argument to `helm
 ```bash
 $ helm install --name my-release \
   --set postgresUser=my-user,postgresPassword=secretpassword,postgresDatabase=my-database \
-    stable/postgresql
+    beavergithub/postgresql
 ```
 
 The above command creates a PostgreSQL user named `my-user` with password `secretpassword`. Additionally it creates a database named `my-database`.
@@ -388,7 +394,7 @@ The above command creates a PostgreSQL user named `my-user` with password `secre
 Alternatively, a YAML file that specifies the values for the parameters can be provided while installing the chart. For example,
 
 ```bash
-$ helm install --name my-release -f values.yaml stable/postgresql
+$ helm install --name my-release -f values.yaml beavergithub/postgresql
 ```
 
 > **Tip**: You can use the default [values.yaml](values.yaml)
@@ -491,7 +497,7 @@ Specify each parameter using the `--set key=value[,key=value]` argument to `helm
 ```bash
 $ helm install --name my-release \
   --set mariadbRootPassword=secretpassword,mariadbUser=my-user,mariadbPassword=my-password,mariadbDatabase=my-database \
-    stable/mariadb
+    beavergithub/mariadb
 ```
 
 The above command sets the MariaDB `root` account password to `secretpassword`. Additionally, it creates a standard database user named `my-user`, with the password `my-password`, who has access to a database named `my-database`.
@@ -499,7 +505,7 @@ The above command sets the MariaDB `root` account password to `secretpassword`. 
 Alternatively, a YAML file that specifies the values for the parameters can be provided while installing the chart. For example,
 
 ```bash
-$ helm install --name my-release -f values.yaml stable/mariadb
+$ helm install --name my-release -f values.yaml beavergithub/mariadb
 ```
 
 > **Tip**: You can use the default [values.yaml](values.yaml)
@@ -523,7 +529,7 @@ config: |-
   innodb_buffer_pool_size=2G
 EOF
 
-helm install --name my-release -f mariadb-values.yaml stable/mariadb
+helm install --name my-release -f mariadb-values.yaml beavergithub/mariadb
 ```
 
 ## Consuming credentials
@@ -578,7 +584,7 @@ The chart can optionally start a metrics exporter endpoint on port `9104` for [p
 ## TL;DR;
 
 ```bash
-$ helm install stable/redis
+$ helm install beavergithub/redis
 ```
 
 ## Introduction
@@ -595,7 +601,7 @@ This chart bootstraps a [Redis](https://github.com/bitnami/bitnami-docker-redis)
 To install the chart with the release name `my-release`:
 
 ```bash
-$ helm install --name my-release stable/redis
+$ helm install --name my-release beavergithub/redis
 ```
 
 The command deploys Redis on the Kubernetes cluster in the default configuration. The [configuration](#configuration) section lists the parameters that can be configured during installation.
@@ -654,7 +660,7 @@ Specify each parameter using the `--set key=value[,key=value]` argument to `helm
 ```bash
 $ helm install --name my-release \
   --set redisPassword=secretpassword \
-    stable/redis
+    beavergithub/redis
 ```
 
 The above command sets the Redis server password to `secretpassword`.
@@ -662,7 +668,7 @@ The above command sets the Redis server password to `secretpassword`.
 Alternatively, a YAML file that specifies the values for the parameters can be provided while installing the chart. For example,
 
 ```bash
-$ helm install --name my-release -f values.yaml stable/redis
+$ helm install --name my-release -f values.yaml beavergithub/redis
 ```
 
 > **Tip**: You can use the default [values.yaml](values.yaml)
@@ -847,7 +853,7 @@ This chart will do the following:
 To install the chart, use the following:
 
 ```console
-$ helm install stable/docker-registry
+$ helm install beavergithub/docker-registry
 ```
 
 ## Configuration
@@ -882,6 +888,7 @@ their default values.
 | `s3.bucket`                 | S3 bucket name                                                                           | `nil`           |
 | `s3.encrypt`                | Store images in encrypted format                                                         | `nil`           |
 | `s3.secure`                 | Use HTTPS                                                                                | `nil`           |
+| `ingress.annotations`       | Add kolihub                                                                              | `registry.paas-prod01.obi.dmz`           |
 
 Specify each parameter using the `--set key=value[,key=value]` argument to
 `helm install`.
