@@ -107,6 +107,6 @@ backup:
   freq: "60"
   begin: "1220"
   persistent: false
-  debug: false
+  debug: "false"
   storageClassName: "manual"
   storageSize: "10Gi"

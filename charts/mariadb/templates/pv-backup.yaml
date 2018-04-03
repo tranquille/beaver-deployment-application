@@ -1,0 +1,19 @@
+{{- if .Values.backup.persistent }}
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: {{ template "mariadb.fullname" . }}-claim
+  labels:
+    app: {{ template "mariadb.fullname" . }}-claim
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+    release: "{{ .Release.Name }}"
+    heritage: "{{ .Release.Service }}"
+spec:
+  storageClassName: {{ .Values.backup.storageClassName }}
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: {{ .Values.backup.storageSize }}
+{{end}}
