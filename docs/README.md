@@ -25,70 +25,7 @@ place to start is by reviewing the [Helm Quick Start Guide](https://github.com/k
 
 We welcome contributions and improvements. 
 
-      * [Portus](#portus)
-      * [TL;DR;](#tldr)
-      * [Introduction](#introduction)
-      * [Prerequisites](#prerequisites)
-      * [Installing the Chart](#installing-the-chart)
-      * [Uninstalling the Chart](#uninstalling-the-chart)
-      * [Portus TLS](#portus-tls)
-      * [Configuration](#configuration)
-      * [Persistence](#persistence)
-      * [Ingress](#ingress)
-         * [Host](#host)
-         * [Annotations](#annotations)
-         * [TLS Secrets](#tls-secrets)
-      * [MariaDB](#mariadb)
-      * [PostgreSQL](#postgresql)
-      * [TL;DR;](#tldr-1)
-      * [Introduction](#introduction-1)
-      * [Prerequisites](#prerequisites-1)
-      * [Installing the Chart](#installing-the-chart-1)
-      * [Uninstalling the Chart](#uninstalling-the-chart-1)
-      * [Configuration](#configuration-1)
-      * [Persistence](#persistence-1)
-         * [Existing PersistentVolumeClaims](#existing-persistentvolumeclaims)
-      * [Metrics](#metrics)
-      * [NetworkPolicy](#networkpolicy)
-      * [MariaDB](#mariadb-1)
-      * [TL;DR;](#tldr-2)
-      * [Introduction](#introduction-2)
-      * [Prerequisites](#prerequisites-2)
-      * [Installing the Chart](#installing-the-chart-2)
-      * [Uninstalling the Chart](#uninstalling-the-chart-2)
-      * [Configuration](#configuration-2)
-         * [Custom my.cnf configuration](#custom-mycnf-configuration)
-      * [Consuming credentials](#consuming-credentials)
-      * [Persistence](#persistence-2)
-         * [Existing PersistentVolumeClaims](#existing-persistentvolumeclaims-1)
-      * [Metrics](#metrics-1)
-      * [Redis](#redis)
-      * [TL;DR;](#tldr-3)
-      * [Introduction](#introduction-3)
-      * [Prerequisites](#prerequisites-3)
-      * [Installing the Chart](#installing-the-chart-3)
-      * [Uninstalling the Chart](#uninstalling-the-chart-3)
-      * [Configuration](#configuration-3)
-      * [NetworkPolicy](#networkpolicy-1)
-      * [Persistence](#persistence-3)
-         * [Existing PersistentVolumeClaim](#existing-persistentvolumeclaim)
-      * [Metrics](#metrics-2)
-      * [Ambassador](#ambassador)
-      * [TL;DR;](#tldr-4)
-      * [Introduction](#introduction-4)
-      * [Prerequisites](#prerequisites-4)
-      * [Installing the Chart](#installing-the-chart-4)
-      * [Uninstalling the Chart](#uninstalling-the-chart-4)
-      * [Configuration](#configuration-4)
-      * [Kong](#kong)
-      * [TL;DR;](#tldr-5)
-      * [Introduction](#introduction-5)
-      * [Prerequisites](#prerequisites-5)
-      * [Installing the Chart](#installing-the-chart-5)
-      * [Uninstalling the Chart](#uninstalling-the-chart-5)
-      * [Configuration](#configuration-5)
-         * [General Configuration Parameters](#general-configuration-parameters)
-         * [Kong-specific parameters](#kong-specific-parameters)
+
 
 ## Portus
 
@@ -444,32 +381,10 @@ This label will be displayed in the output of a successful install.
 
 MariaDB is developed as open source software and as a relational database, it provides an SQL interface for accessing data. The latest versions of MariaDB also include GIS and JSON features.
 
-## TL;DR;
 
 ```bash
-$ helm install stable/mariadb
+helm install --namespace testdb --name testmysql --set mariadbRootPassword=secretpassword,mariadbUser=myuser,mariadbPassword=my-password,mariadbDatabase=mydatabase beavergithub/mariadb --wait --debug
 ```
-
-## Introduction
-
-This chart bootstraps a [MariaDB](https://github.com/bitnami/bitnami-docker-mariadb) deployment on a [Kubernetes](http://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
-
-## Prerequisites
-
-- Kubernetes 1.6+ with Beta APIs enabled
-- PV provisioner support in the underlying infrastructure
-
-## Installing the Chart
-
-To install the chart with the release name `my-release`:
-
-```bash
-$ helm install --name my-release stable/mariadb
-```
-
-The command deploys MariaDB on the Kubernetes cluster in the default configuration. The [configuration](#configuration) section lists the parameters that can be configured during installation.
-
-> **Tip**: List all releases using `helm list`
 
 ## Uninstalling the Chart
 

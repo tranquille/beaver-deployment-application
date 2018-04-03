@@ -4,32 +4,10 @@
 
 MariaDB is developed as open source software and as a relational database, it provides an SQL interface for accessing data. The latest versions of MariaDB also include GIS and JSON features.
 
-## TL;DR;
 
 ```bash
-$ helm install stable/mariadb
+helm install --namespace testdb --name testmysql --set mariadbRootPassword=secretpassword,mariadbUser=myuser,mariadbPassword=my-password,mariadbDatabase=mydatabase beavergithub/mariadb --wait --debug
 ```
-
-## Introduction
-
-This chart bootstraps a [MariaDB](https://github.com/bitnami/bitnami-docker-mariadb) deployment on a [Kubernetes](http://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
-
-## Prerequisites
-
-- Kubernetes 1.6+ with Beta APIs enabled
-- PV provisioner support in the underlying infrastructure
-
-## Installing the Chart
-
-To install the chart with the release name `my-release`:
-
-```bash
-$ helm install --name my-release stable/mariadb
-```
-
-The command deploys MariaDB on the Kubernetes cluster in the default configuration. The [configuration](#configuration) section lists the parameters that can be configured during installation.
-
-> **Tip**: List all releases using `helm list`
 
 ## Uninstalling the Chart
 

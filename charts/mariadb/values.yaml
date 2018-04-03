@@ -100,3 +100,10 @@ resources:
 securitySettings:
   runAsUser: 1001
   fsGroup: 1001
+
+backup:
+  enabled: true
+  directory: "/backup/"
+  persistent: false
+  storageClassName: "manual"
+  storageSize: "10Gi"

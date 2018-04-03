@@ -1,0 +1,53 @@
+{{- if .Values.backup.enabled }}
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: {{ template "mariadb.fullname" . }}-backup
+  labels:
+    app: {{ template "mariadb.name" . }}-backup
+    chart: {{ template "mariadb.chart" . }}
+    release: "{{ .Release.Name }}"
+    heritage: "{{ .Release.Service }}"
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: {{ template "mariadb.fullname" . }}-backup
+        release: {{ .Release.Name }}
+    spec:
+      containers:
+      - name: {{ .Release.Name }}
+        image: deitch/mysql-backup
+        env:
+        - name: DB_DUMP_FREQ
+          value: {{ .Values.backup.dump_freq }}
+        - name: DB_DUMP_BEGIN
+          value: {{ .Values.backup.dump_begin }}
+        - name: DB_DUMP_TARGET
+          value: {{ printf "%s%s" .Values.backup.directory .Release.Namespace | quote }}
+        - name: DB_DUMP_SERVER
+          value: {{ template "mariadb.fullname" . }}
+        - name: DB_PORT
+          value: 3306
+        - name: DB_USER
+          value: {{ default "" .Values.mariadbUser | quote }}
+        - name: DB_PASS
+          valueFrom:
+            secretKeyRef:
+              name: {{ template "mariadb.fullname" . }}
+              key: mariadb-root-password
+        volumeMounts:
+        - name: {{ template "postgresql.fullname" . }}-storage
+          mountPath: {{ .Values.backup.directory }}
+      restartPolicy: Always
+      volumes:
+      - name: {{ template "postgresql.fullname" . }}-storage
+      {{- if .Values.backup.persistent }}
+        persistentVolumeClaim:
+          claimName: {{ template "postgresql.fullname" . }}-claim
+      {{- else }}
+        emptyDir: {}
+      {{- end -}}
+{{- end }}
