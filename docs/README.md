@@ -69,22 +69,20 @@ We welcome contributions and improvements.
       * [Persistence](#persistence-3)
          * [Existing PersistentVolumeClaim](#existing-persistentvolumeclaim)
       * [Metrics](#metrics-2)
-      * [Ambassador](#ambassador)
+      * [Kong](#kong)
       * [TL;DR;](#tldr-3)
       * [Introduction](#introduction-3)
       * [Prerequisites](#prerequisites-3)
       * [Installing the Chart](#installing-the-chart-3)
       * [Uninstalling the Chart](#uninstalling-the-chart-4)
       * [Configuration](#configuration-4)
-      * [Kong](#kong)
-      * [TL;DR;](#tldr-4)
-      * [Introduction](#introduction-4)
-      * [Prerequisites](#prerequisites-4)
-      * [Installing the Chart](#installing-the-chart-4)
-      * [Uninstalling the Chart](#uninstalling-the-chart-5)
-      * [Configuration](#configuration-5)
          * [General Configuration Parameters](#general-configuration-parameters)
          * [Kong-specific parameters](#kong-specific-parameters)
+   * [Docker Registry Helm Chart](#docker-registry-helm-chart)
+      * [Prerequisites Details](#prerequisites-details)
+      * [Chart Details](#chart-details)
+      * [Installing the Chart](#installing-the-chart-4)
+      * [Configuration](#configuration-5)
 
 ## Portus
 
@@ -704,71 +702,6 @@ $ helm install --set persistence.existingClaim=PVC_NAME redis
 ## Metrics
 
 The chart optionally can start a metrics exporter for [prometheus](https://prometheus.io). The metrics endpoint (port 9121) is exposed in the service. Metrics can be scraped from within the cluster using something similar as the described in the [example Prometheus scrape configuration](https://github.com/prometheus/prometheus/blob/master/documentation/examples/prometheus-kubernetes.yml). If metrics are to be scraped from outside the cluster, the Kubernetes API proxy can be utilized to access the endpoint.
-## Ambassador
-
-Ambassador is an open source, Kubernetes-native [microservices API gateway](https://www.getambassador.io/about/microservices-api-gateways) built on the [Envoy Proxy](https://www.envoyproxy.io/). 
-
-## TL;DR;
-
-```console
-$ helm install stable/ambassador
-```
-
-## Introduction
-
-This chart bootstraps an [Ambassador](https://www.getambassador.io) deployment on 
-a [Kubernetes](http://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
-
-## Prerequisites
-
-- Kubernetes 1.7+
-
-## Installing the Chart
-
-To install the chart with the release name `my-release`:
-
-```console
-$ helm install --name my-release stable/ambassador
-```
-
-The command deploys Ambassador API gateway on the Kubernetes cluster in the default configuration. 
-The [configuration](#configuration) section lists the parameters that can be configured during installation.
-
-## Uninstalling the Chart
-
-To uninstall/delete the `my-release` deployment:
-
-```console
-$ helm delete --purge my-release
-```
-
-The command removes all the Kubernetes components associated with the chart and deletes the release.
-
-## Configuration
-
-The following tables lists the configurable parameters of the Ambassador chart and their default values.
-
-| Parameter                       | Description                                | Default                                                    |
-| ------------------------------- | ------------------------------------------ | ---------------------------------------------------------- |
-| `image` | Image | `quay.io/datawire/ambassador` 
-| `imageTag` | Image tag | `0.29.0` 
-| `imagePullPolicy` | Image pull policy | `IfNotPresent` 
-| `replicaCount`  | Number of Ambassador replicas  | `1` 
-| `resources` | CPU/memory resource requests/limits | None 
-| `rbac.create` | If `true`, create and use RBAC resources | `true`
-| `serviceAccount.create` | If `true`, create a new service account | `true`
-| `serviceAccount.name` | Service account to be used | `ambassador`
-| `service.type` | Service type to be used | `NodePort`
-| `service.httpNodePort` | If Service type is NodePort you can defined the http port to be used | `32080`
-| `service.httpsNodePort` | If Service type is NodePort you can defined the https port to be used | `32443`
-| `adminService.create` | If `true`, create a service for Ambassador's admin UI | `true`
-| `adminService.type` | Ambassador's admin service type to be used | `ClusterIP`
-| `exporter.image` | Prometheus exporter image | `datawire/prom-statsd-exporter:0.6.0`
-| `timing.restart` | The minimum number of seconds between Envoy restarts | `15`
-| `timing.drain` | The number of seconds that the Envoy will wait for open connections to drain on a restart | `5`
-| `timing.shutdown` | The number of seconds that Ambassador will wait for the old Envoy to clean up and exit on a restart | `10`
-
-
 ## Kong
 
 [Kong](https://getkong.org/) is an open-source API Gateway and Microservices
@@ -895,3 +828,63 @@ $ helm install beavers/kong --name my-release -f values.yaml
 ```
 
 > **Tip**: You can use the default [values.yaml](values.yaml)
+# Docker Registry Helm Chart
+
+This directory contains a Kubernetes chart to deploy a private Docker Registry.
+
+## Prerequisites Details
+
+* PV support on underlying infrastructure (if persistence is required)
+
+## Chart Details
+
+This chart will do the following:
+
+* Implement a Docker registry deployment
+
+## Installing the Chart
+
+To install the chart, use the following:
+
+```console
+$ helm install stable/docker-registry
+```
+
+## Configuration
+
+The following table lists the configurable parameters of the docker-registry chart and
+their default values.
+
+| Parameter                   | Description                                                                              | Default         |
+|:----------------------------|:-----------------------------------------------------------------------------------------|:----------------|
+| `image.pullPolicy`          | Container pull policy                                                                    | `IfNotPresent`  |
+| `image.repository`          | Container image to use                                                                   | `registry`      |
+| `image.tag`                 | Container image tag to deploy                                                            | `2.6.2`         |
+| `persistence.accessMode`    | Access mode to use for PVC                                                               | `ReadWriteOnce` |
+| `persistence.enabled`       | Whether to use a PVC for the Docker storage                                              | `false`         |
+| `persistence.size`          | Amount of space to claim for PVC                                                         | `10Gi`          |
+| `persistence.storageClass`  | Storage Class to use for PVC                                                             | `-`             |
+| `persistence.existingClaim` | Name of an existing PVC to use for config                                                | `nil`           |
+| `service.port`              | TCP port on which the service is exposed                                                 | `5000`          |
+| `service.type`              | service type                                                                             | `ClusterIP`     |
+| `service.nodePort`          | if `service.type` is `NodePort` and this is non-empty, sets the node port of the service | `nil`           |
+| `replicaCount`              | k8s replicas                                                                             | `1`             |
+| `resources.limits.cpu`      | Container requested CPU                                                                  | `nil`           |
+| `resources.limits.memory`   | Container requested memory                                                               | `nil`           |
+| `storage`                   | Storage system to use                                                                    | `fileststem`    |
+| `tlsSecretName`             | Name of secret for TLS certs                                                             | `nil`           |
+| `secrets.htpasswd`          | Htpasswd authentication                                                                  | `nil`           |
+| `secrets.s3.accessKey`      | Access Key for S3 configuration                                                          | `nil`           |
+| `secrets.s3.secretKey`      | Secret Key for S3 configuration                                                          | `nil`           |
+| `haSharedSecret`            | Shared secret for Registry                                                               | `nil`           |
+| `configData`                | Configuration hash for docker                                                            | `nil`           |
+| `s3.region`                 | S3 region                                                                                | `nil`           |
+| `s3.bucket`                 | S3 bucket name                                                                           | `nil`           |
+| `s3.encrypt`                | Store images in encrypted format                                                         | `nil`           |
+| `s3.secure`                 | Use HTTPS                                                                                | `nil`           |
+
+Specify each parameter using the `--set key=value[,key=value]` argument to
+`helm install`.
+
+To generate htpasswd file, run this docker command:
+`docker run --entrypoint htpasswd registry:2 -Bbn user password > ./htpasswd`.
