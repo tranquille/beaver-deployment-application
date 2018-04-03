@@ -105,7 +105,7 @@ backup:
   enabled: true
   directory: "/tmp/"
   freq: "60"
-  begin: "2330"
+  begin: "1230"
   persistent: false
   storageClassName: "manual"
   storageSize: "10Gi"
