@@ -31,9 +31,5 @@ spec:
           value: {{ template "mariadb.fullname" . }}
         - name: DB_PORT
           value: 3306
-        - name: DB_USER
-          value: {{ default "" .Values.mariadbUser | quote }}
-        - name: DB_PASS
-          value: {{ default "" .Values.mariadbPassword | quote }}
       restartPolicy: Always
 {{- end }}
