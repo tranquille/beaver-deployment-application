@@ -1,5 +1,0 @@
-dependencies:
-  - name: mariadb
-    version: 2.1.14
-    repository: https://wildbeavers.github.io/beaver-deployment-application/
-    condition: mariadb.enabled

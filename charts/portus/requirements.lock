@@ -1,6 +1,0 @@
-dependencies:
-- name: mariadb
-  repository: https://wildbeavers.github.io/beaver-deployment-application/
-  version: 2.1.14
-digest: sha256:1244d9442a67b71f43428b9cfffb47d99e4d8fa91dac105aae81820c9887a495
-generated: 2018-03-25T11:47:44.258475923+02:00
