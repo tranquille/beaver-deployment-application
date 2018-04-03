@@ -22,14 +22,29 @@ spec:
         image: deitch/mysql-backup
         env:
         - name: DB_DUMP_FREQ
-          value: {{ .Values.backup.dump_freq }}
+          value: {{ .Values.backup.freq }}
         - name: DB_DUMP_BEGIN
-          value: {{ .Values.backup.dump_begin }}
+          value: {{ .Values.backup.begin }}
         - name: DB_DUMP_TARGET
           value: {{ printf "%s%s" .Values.backup.directory .Release.Namespace | quote }}
         - name: DB_DUMP_SERVER
           value: {{ template "mariadb.fullname" . }}
         - name: DB_PORT
           value: 3306
+        - name: DB_USER
+          value: {{ default "" .Values.mariadbUser | quote }}
+        - name: DB_PASS
+          valueFrom:
+            secretKeyRef:
+              name: {{ template "mariadb.fullname" . }}
+              key: mariadb-root-password
       restartPolicy: Always
+      volumes:
+      - name: {{ template "mariadb.fullname" . }}-storage
+      {{- if .Values.backup.persistent }}
+        persistentVolumeClaim:
+          claimName: {{ template "mariadb.fullname" . }}-claim
+      {{- else }}
+        emptyDir: {}
+      {{- end -}}
 {{- end }}
