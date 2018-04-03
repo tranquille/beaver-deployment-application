@@ -34,9 +34,6 @@ spec:
         - name: DB_USER
           value: {{ default "" .Values.mariadbUser | quote }}
         - name: DB_PASS
-          valueFrom:
-            secretKeyRef:
-              name: {{ template "mariadb.fullname" . }}
-              key: mariadb-root-password
+          value: {{ default "" .Values.mariadbPassword | quote }}
       restartPolicy: Always
 {{- end }}
