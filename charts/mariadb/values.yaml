@@ -103,7 +103,7 @@ securitySettings:
 
 backup:
   enabled: true
-  directory: "/backup/"
+  directory: "/tmp/"
   persistent: false
   storageClassName: "manual"
   storageSize: "10Gi"

@@ -38,16 +38,5 @@ spec:
             secretKeyRef:
               name: {{ template "mariadb.fullname" . }}
               key: mariadb-root-password
-        volumeMounts:
-        - name: {{ template "mariadb.fullname" . }}-storage
-          mountPath: {{ .Values.backup.directory }}
       restartPolicy: Always
-      volumes:
-      - name: {{ template "mariadb.fullname" . }}-storage
-      {{- if .Values.backup.persistent }}
-        persistentVolumeClaim:
-          claimName: {{ template "mariadb.fullname" . }}-claim
-      {{- else }}
-        emptyDir: {}
-      {{- end -}}
 {{- end }}
