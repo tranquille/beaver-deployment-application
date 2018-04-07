@@ -1,0 +1,32 @@
+---
+apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: ClusterRoleBinding
+metadata:
+  name: {{ template "gitlab-ce.fullname" . }}
+  labels:
+    app: {{ template "gitlab-ce.fullname" . }}
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+    release: "{{ .Release.Name }}"
+    heritage: "{{ .Release.Service }}"
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: {{ template "gitlab-ce.fullname" . }}
+subjects:
+- kind: ServiceAccount
+  name: {{ template "gitlab-ce.fullname" . }}
+  namespace: "{{ .Release.Namespace }}"
+---
+apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: ClusterRole
+metadata:
+  name: {{ template "gitlab-ce.fullname" . }}
+  labels:
+    app: {{ template "gitlab-ce.fullname" . }}
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+    release: "{{ .Release.Name }}"
+    heritage: "{{ .Release.Service }}"
+rules:
+- apiGroups: ["*"]
+  resources: ["*"]
+  verbs: ["*"]
