@@ -6,6 +6,7 @@ metadata:
   annotations:
 {{ toYaml .Values.ingress.annotations | indent 4 }}
 {{- end }}
+    kolihub.io/{{ .Values.ingress.url }}: primary
   name: {{ template "gitlab-ce.fullname" . }}
   labels:
     app: {{ template "gitlab-ce.fullname" . }}
