@@ -54,12 +54,12 @@ resources:
   ## GitLab requires a good deal of resources. We have split out Postgres and
   ## redis, which helps some. Refer to the guidelines for larger installs.
   ## ref: https://docs.gitlab.com/ce/install/requirements.html#hardware-requirements
-#  requests:
-#    memory: 1Gi
-#    cpu: 500m
-#  limits:
-#    memory: 2Gi
-#    cpu: 1
+  #  requests:
+  #    memory: 1Gi
+  #    cpu: 500m
+  #  limits:
+  #    memory: 2Gi
+  #    cpu: 1
 
 ## Enable persistence using Persistent Volume Claims
 ## ref: http://kubernetes.io/docs/user-guide/persistent-volumes/
