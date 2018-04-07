@@ -104,7 +104,7 @@ postgresql:
   postgresDatabase: gitlab
 
   persistence:
-    size: 10Gi
+    size: 4Gi
 
 ## Configuration values for the redis dependency.
 ## ref: https://github.com/kubernetes/charts/blob/master/stable/redis/README.md
@@ -116,5 +116,5 @@ redis:
     requests:
       memory: 1Gi
 
-  persistence:
-    size: 10Gi
+#  persistence:
+#    size: 4Gi
