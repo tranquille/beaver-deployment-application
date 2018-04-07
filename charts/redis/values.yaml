@@ -62,7 +62,7 @@ persistence:
   path: /bitnami
 
   ## The subdirectory of the volume to mount to, useful in dev environments and one PV for multiple services.
-  # subPath: ""
+  subPath: ""
 
   ## A manually managed Persistent Volume and Claim
   ## Requires persistence.enabled: true
