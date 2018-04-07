@@ -35,7 +35,7 @@ ingress:
       # - secretName: gitlab.cluster.local
       #   hosts:
       #     - gitlab.cluster.local
-  url: registry.paas-prod01.obi.dmz
+  url: gitlabce.paas-prod01.obi.dmz
 
 ## Configure external service ports
 ## ref: http://kubernetes.io/docs/user-guide/services/
