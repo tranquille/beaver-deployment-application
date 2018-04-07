@@ -33,4 +33,4 @@ data:
     gitlab_monitor['enable'] = true
     prometheus_monitoring['enable'] = true
     prometheus['listen_address'] = '0.0.0.0:9090'
-    gitlab_monitor['listen_address'] = ':9168'
+    gitlab_monitor['listen_address'] = '0.0.0.0:9168'
