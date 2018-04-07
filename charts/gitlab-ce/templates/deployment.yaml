@@ -60,11 +60,6 @@ spec:
         ##
         - name: REDIS_HOST
           value: {{ template "gitlab-ce.redis.fullname" . }}
-        - name: REDIS_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: {{ template "gitlab-ce.fullname" . }}
-              key: redis-password
         ports:
         - name: ssh
           containerPort: 22

@@ -110,11 +110,8 @@ postgresql:
 ## ref: https://github.com/kubernetes/charts/blob/master/stable/redis/README.md
 ##
 redis:
-  redisPassword: "gitlab"
-
   resources:
     requests:
       memory: 1Gi
-
 #  persistence:
 #    size: 4Gi
