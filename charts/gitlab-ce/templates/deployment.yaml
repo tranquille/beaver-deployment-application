@@ -78,7 +78,7 @@ spec:
             port: {{ .Values.livenessPort }}
           # This pod takes a very long time to start up. Be cautious when
           # lowering this value to avoid Pod death during startup.
-          initialDelaySeconds: 300
+          initialDelaySeconds: 400
           timeoutSeconds: 1
           periodSeconds: 10
           successThreshold: 1
@@ -87,7 +87,7 @@ spec:
           httpGet:
             path: /help
             port: {{ .Values.readinessPort }}
-          initialDelaySeconds: 100
+          initialDelaySeconds: 200
           timeoutSeconds: 1
           periodSeconds: 10
           successThreshold: 1
