@@ -1,9 +1,9 @@
 dependencies:
 - name: redis
-  repository: https://kubernetes-charts.storage.googleapis.com/
-  version: 0.9.0
+  repository: https://wildbeavers.github.io/beaver-deployment-application/
+  version: 1.1.20
 - name: postgresql
-  repository: https://kubernetes-charts.storage.googleapis.com/
-  version: 0.8.1
-digest: sha256:94bbb4af5c8b8e6114938d06650c9e82b0a80613e0b60a6cdbb5031fb7771ae2
-generated: 2018-04-07T07:21:57.955054+02:00
+  repository: https://wildbeavers.github.io/beaver-deployment-application/
+  version: 0.9.3
+digest: sha256:1e71509c553ee149304fa0d6bd1cd6d0a6a19664e9e3e5afe81f971f0e98b6a1
+generated: 2018-04-07T08:19:59.177051998+02:00
