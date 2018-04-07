@@ -30,3 +30,7 @@ data:
     registry['registry_http_addr'] = "registry.stage01.obi.dmz"
     gitlab_rails['initial_root_password'] = 'password'
     gitlab_rails['usage_ping_enabled'] = false
+    gitlab_monitor['enable'] = true
+    prometheus_monitoring['enable'] = true
+    prometheus['listen_address'] = '0.0.0.0:9090'
+    gitlab_monitor['listen_address'] = ':9168'
