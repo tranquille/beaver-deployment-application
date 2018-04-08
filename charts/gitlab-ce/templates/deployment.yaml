@@ -60,6 +60,8 @@ spec:
         ##
         - name: REDIS_HOST
           value: {{ template "gitlab-ce.redis.fullname" . }}
+        - name: PROMETHEUS_MULTIPROC_DIR
+          value: "/tmp/"
         ports:
         - name: ssh
           containerPort: 22
