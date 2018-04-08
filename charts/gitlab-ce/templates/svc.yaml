@@ -7,6 +7,10 @@ metadata:
     chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
     release: "{{ .Release.Name }}"
     heritage: "{{ .Release.Service }}"
+  annotations:
+    prometheus.io/scrape: 'true'
+    prometheus.io/path: '/metrics'
+    prometheus.io/port: '9090'
 spec:
   type: {{ .Values.serviceType }}
   ports:
@@ -19,5 +23,7 @@ spec:
   - name: https
     port: {{ .Values.httpsPort | int }}
     targetPort: https
+  - name: prometheus
+    port: "9090"
   selector:
     app: {{ template "gitlab-ce.fullname" . }}
