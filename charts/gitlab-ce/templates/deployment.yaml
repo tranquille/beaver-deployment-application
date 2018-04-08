@@ -61,7 +61,7 @@ spec:
         - name: REDIS_HOST
           value: {{ template "gitlab-ce.redis.fullname" . }}
         - name: PROMETHEUS_MULTIPROC_DIR
-          value: "/tmp/"
+          value: "/gitlab-metrics/"
         ports:
         - name: ssh
           containerPort: 22
@@ -94,6 +94,8 @@ spec:
           mountPath: /etc/gitlab
         - name: gitlab-data
           mountPath: /gitlab-data
+        - name: gitlab-metrics
+          mountPath: /gitlab-metrics
         resources:
 {{ toYaml .Values.resources | indent 10 }}
       volumes:
@@ -111,5 +113,7 @@ spec:
       {{- else }}
         emptyDir: {}
       {{- end }}
+      - name: gitlab-metrics
+        emptyDir: {}
 {{ else }}
 {{ end }}
