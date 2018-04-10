@@ -104,8 +104,8 @@ securitySettings:
 backup:
   enabled: true
   directory: "/tmp/"
-  freq: "60"
-  begin: "1220"
+  freq: "1440"
+  begin: "2330"
   persistent: false
   debug: "false"
   storageClassName: "manual"
