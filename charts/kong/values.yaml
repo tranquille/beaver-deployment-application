@@ -130,3 +130,9 @@ postgresql:
   postgresDatabase: kong
   persistence:
     enabled: true
+
+kongui:
+  enabled: true
+
+ingress:
+  enabled: true

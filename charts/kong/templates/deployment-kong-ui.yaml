@@ -1,3 +1,5 @@
+{{- if .Values.
+.enabled -}}
 ---
 apiVersion: extensions/v1beta1
 kind: Deployment
@@ -40,3 +42,4 @@ spec:
         ports:
         - name: kong-ui
           containerPort: 8080
+{{- end -}}
