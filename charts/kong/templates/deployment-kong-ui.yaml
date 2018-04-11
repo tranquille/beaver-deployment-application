@@ -1,5 +1,4 @@
-{{- if .Values.
-.enabled -}}
+{{- if .Values.kongui.enabled -}}
 ---
 apiVersion: extensions/v1beta1
 kind: Deployment
