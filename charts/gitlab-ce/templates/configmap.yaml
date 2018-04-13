@@ -25,9 +25,9 @@ data:
     gitlab_rails['redis_port'] = '6379'
     gitlab_rails['initial_shared_runners_registration_token'] = "token"
     gitlab_rails['registry_enabled'] = true
-    gitlab_rails['registry_host'] = "registry.paas-prod01.obi.dmz"
-    gitlab_rails['registry_api_url'] = "http://registry.paas-prod01.obi.dmz"
-    registry['registry_http_addr'] = "registry.paas-prod01.obi.dmz"
+    gitlab_rails['registry_host'] = "registry.host.local.dmz"
+    gitlab_rails['registry_api_url'] = "http://registry.host.local.dmz"
+    registry['registry_http_addr'] = "registry.host.local.dmz"
     gitlab_rails['initial_root_password'] = 'password'
     gitlab_rails['usage_ping_enabled'] = false
     gitlab_monitor['enable'] = true
