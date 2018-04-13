@@ -598,7 +598,7 @@ their default values.
 | `s3.bucket`                 | S3 bucket name                                                                           | `nil`           |
 | `s3.encrypt`                | Store images in encrypted format                                                         | `nil`           |
 | `s3.secure`                 | Use HTTPS                                                                                | `nil`           |
-| `ingress.annotations`       | Add kolihub                                                                              | `registry.paas-prod01.obi.dmz`           |
+| `ingress.annotations`       | Add kolihub                                                                              | `registry.host.local.dmz`           |
 
 Specify each parameter using the `--set key=value[,key=value]` argument to
 `helm install`.
