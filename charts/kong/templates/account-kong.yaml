@@ -1,24 +1,13 @@
 apiVersion: v1
 kind: ServiceAccount
 metadata:
-  name: "{{ template "kong.fullname" . }}"
-  labels:
-    app: "{{ template "kong.name" . }}"
-    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
-    release: "{{ .Release.Name }}"
-    heritage: "{{ .Release.Service }}"
-
+  name: kong-serviceaccount
+  namespace: {{ .Release.Namespace }}
 ---
-
 apiVersion: rbac.authorization.k8s.io/v1beta1
 kind: ClusterRole
 metadata:
-  name: "{{ template "kong.fullname" . }}"
-  labels:
-    app: "{{ template "kong.name" . }}"
-    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
-    release: "{{ .Release.Name }}"
-    heritage: "{{ .Release.Service }}"
+  name: kong-ingress-clusterrole
 rules:
   - apiGroups:
       - ""
@@ -76,17 +65,14 @@ rules:
       - get
       - list
       - watch
+
 ---
 
 apiVersion: rbac.authorization.k8s.io/v1beta1
 kind: Role
 metadata:
-  name: "{{ template "kong.fullname" . }}"
-  labels:
-    app: "{{ template "kong.name" . }}"
-    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
-    release: "{{ .Release.Name }}"
-    heritage: "{{ .Release.Service }}"
+  name: kong-ingress-role
+  namespace: {{ .Release.Namespace }}
 rules:
   - apiGroups:
       - ""
@@ -128,12 +114,8 @@ rules:
 apiVersion: rbac.authorization.k8s.io/v1beta1
 kind: RoleBinding
 metadata:
-  name: "{{ template "kong.fullname" . }}"
-  labels:
-    app: "{{ template "kong.name" . }}"
-    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
-    release: "{{ .Release.Name }}"
-    heritage: "{{ .Release.Service }}"
+  name: kong-ingress-role-nisa-binding
+  namespace: {{ .Release.Namespace }}
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: Role
@@ -141,24 +123,19 @@ roleRef:
 subjects:
   - kind: ServiceAccount
     name: kong-serviceaccount
-    namespace: "{{ .Release.Namespace }}"
+    namespace: {{ .Release.Namespace }}
 
 ---
 
 apiVersion: rbac.authorization.k8s.io/v1beta1
 kind: ClusterRoleBinding
 metadata:
-  name: "{{ template "kong.fullname" . }}"
-  labels:
-    app: "{{ template "kong.name" . }}"
-    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
-    release: "{{ .Release.Name }}"
-    heritage: "{{ .Release.Service }}"
+  name: kong-ingress-clusterrole-nisa-binding
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
   name: kong-ingress-clusterrole
 subjects:
   - kind: ServiceAccount
-    name: "{{ template "kong.fullname" . }}"
-    namespace: "{{ .Release.Namespace }}"
+    name: kong-serviceaccount
+    namespace: {{ .Release.Namespace }}
