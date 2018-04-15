@@ -34,7 +34,7 @@ spec:
         # the kong URL points to the kong admin api server
         - --kong-url=http://localhost:8001
         # the default service is the kong proxy service
-        - --default-backend-service={{ .Release.Namespace }}/kong-proxy
+        - --default-backend-service={{ .Release.Namespace }}/{{ template "kong.fullname" . }}-proxyhttp
         env:
         - name: POD_NAME
           valueFrom:
