@@ -25,6 +25,7 @@ spec:
         app: {{ template "kong.name" . }}
         release: {{ .Release.Name }}
     spec:
+      serviceAccountName: "{{ template "kong.fullname" . }}-service-account"
       containers:
       {{ if .Values.ingress.enabled }}
       - name: ingress-controller
