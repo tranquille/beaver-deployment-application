@@ -3,8 +3,6 @@ apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   name: {{ template "kong.fullname" . }}-ui-route
-  annotations:
-    kolihub.io/{{ template "kong.name" . }}-ui.{{ .Values.domain }}: primary
 spec:
   rules:
   - host: {{ template "kong.name" . }}-ui.{{ .Values.domain }}

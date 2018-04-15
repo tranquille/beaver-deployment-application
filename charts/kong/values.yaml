@@ -2,8 +2,7 @@
 # Declare variables to be passed into your templates.
 
 image:
-  repository: kong
-  tag: 0.12.3
+  name: kong:0.13.0-centos
   pullPolicy: IfNotPresent
 
 # Specify Kong admin and proxy services configurations
