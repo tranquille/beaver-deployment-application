@@ -16,7 +16,6 @@ spec:
   template:
     metadata:
       annotations:
-        # the returned metrics are related to the kong ingress controller not kong itself
         prometheus.io/port: "10254"
         prometheus.io/scrape: "true"
     {{- if .Values.podAnnotations }}
