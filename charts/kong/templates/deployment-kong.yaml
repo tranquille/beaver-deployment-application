@@ -26,7 +26,7 @@ spec:
         release: {{ .Release.Name }}
     spec:
       containers:
-      {{- if .Values.ingress.enabled -}}
+      {{ if .Values.ingress.enabled }}
       - name: ingress-controller
         args:
         - /kong-ingress-controller
@@ -66,7 +66,7 @@ spec:
           periodSeconds: 10
           successThreshold: 1
           timeoutSeconds: 1
-      {{- end -}}
+      {{ end }}
       - name: {{ template "kong.name" . }}
         image: "{{ .Values.image.name }}"
         imagePullPolicy: {{ .Values.image.pullPolicy }}
