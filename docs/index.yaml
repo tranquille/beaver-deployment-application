@@ -102,24 +102,6 @@ entries:
     version: 0.2.1
   kong:
   - apiVersion: v1
-    appVersion: 0.12.3
-    created: 2018-04-16T14:47:33.032947479+02:00
-    description: Kong is open-source API Gateway and Microservices Management Layer,
-      delivering high performance and reliability.
-    digest: bd2654d230bbb422ed543949917667afb732e8c7740c156126adc30af4782507
-    engine: gotpl
-    home: https://getkong.org/
-    icon: https://s3.amazonaws.com/downloads.kong/universe/assets/icon-kong-inc-large.png
-    maintainers:
-    - email: shashi@konghq.com
-      name: shashiranjan84
-    name: kong
-    sources:
-    - https://github.com/Kong/kong
-    urls:
-    - https://wildbeavers.github.io/beaver-deployment-application/kong-0.2.5.tgz
-    version: 0.2.5
-  - apiVersion: v1
       appVersion: 0.12.3
       created: 2018-04-13T09:58:51.547822557+02:00
       description: Kong is open-source API Gateway and Microservices Management Layer,
