@@ -87,6 +87,8 @@ spec:
           value: 0.0.0.0:{{ .Values.proxyhttp.containerPort }}
         - name: KONG_PROXY_LISTEN_SSL
           value: 0.0.0.0:{{ .Values.proxyhttps.containerPort }}
+        - name: KONG_PROXY_SSL_ENABLED
+          value: "true"
         - name: KONG_SSL
           value: "on"
         - name: KONG_NGINX_DAEMON
