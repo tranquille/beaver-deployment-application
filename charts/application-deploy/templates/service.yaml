@@ -3,17 +3,8 @@ apiVersion: v1
 kind: Service
 metadata:
   name: "{{ template "fullname" . }}"
-  labels:
-    app: "{{ template "name" . }}"
-    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
-    release: "{{ .Release.Name }}"
-    heritage: "{{ .Release.Service }}"
 spec:
   type: {{ .Values.service.type }}
-  selector:
-    matchLabels:
-      app: {{ template "name" . }}
-      release: {{ .Release.Name }}
   ports:
   - name: {{ .Values.service.name }}
     port: {{ .Values.service.externalPort }}

@@ -9,8 +9,6 @@ metadata:
     chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
     release: "{{ .Release.Name }}"
     heritage: "{{ .Release.Service }}"
-  annotations:
-    kolihub.io/parent: {{ .Release.Namespace }}
 spec:
   rules:
   - host: {{ .Values.ingress.hostname }}
