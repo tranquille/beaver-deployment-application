@@ -7,8 +7,8 @@ It includes a working Docker build and a deployment for kubernetes.
 ### Install
 
 ```
-kubectl create namespace tools
-kubectl -n tools apply -f helm-service-account.yaml
+helm repo add beavergithub https://wildbeavers.github.io/beaver-deployment-application/
+helkubectl -n tools apply -f helm-service-account.yaml
 helm init --service-account tiller --tiller-namespace tools --upgrade
 kubectl create clusterrolebinding default-rule --clusterrole=cluster-admin --serviceaccount=tools:tiller
 kubectl patch deploy --namespace tools tiller-deploy -p '{"spec":{"template":{"spec":{"serviceAccount":"tiller"}}}}'
