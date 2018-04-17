@@ -8,6 +8,7 @@ It includes a working Docker build and a deployment for kubernetes.
 ### Install
 
 ```
+kubectl create namespace tools
 kubectl -n tools apply -f helm-service-account.yaml
 helm init --service-account tiller --tiller-namespace tools --upgrade
 kubectl create clusterrolebinding default-rule --clusterrole=cluster-admin --serviceaccount=tools:tiller
