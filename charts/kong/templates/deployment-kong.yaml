@@ -123,7 +123,7 @@ spec:
           containerPort: {{ .Values.proxyhttps.containerPort }}
           protocol: TCP
         volumeMounts:
-        - name: {{ template "kong.fullname" . }}-config-volume
+        - name: kong-config-volume
           mountPath: /etc/kong/kong.conf
           subPath: kong.conf
         readinessProbe:
@@ -143,6 +143,6 @@ spec:
       tolerations:
 {{ toYaml .Values.tolerations | indent 8 }}
       volumes:
-      - name: {{ template "kong.fullname" . }}-config-volume
+      - name: kong-config-volume
         configMap:
           name: "{{ template "kong.fullname" . }}"
