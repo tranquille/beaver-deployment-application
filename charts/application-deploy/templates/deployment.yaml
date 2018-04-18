@@ -1,3 +1,4 @@
+{{- if .Values.deployment.enabled -}}
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
@@ -9,20 +10,16 @@ metadata:
     heritage: "{{ .Release.Service }}"
 spec:
   replicas: {{ .Values.replicaCount }}
-  selector:
-    matchLabels:
-      app: {{ template "name" . }}
-      release: {{ .Release.Name }}
   template:
     metadata:
       labels:
-        app: {{ template "name" . }}
-        release: {{ .Release.Name }}
+        app: "{{ template "fullname" . }}"
     spec:
       containers:
-      - name: {{ template "name" . }}
+      - name: "{{ template "fullname" . }}"
         image: "{{ .Values.image.repository }}/{{ .Values.image.name }}:{{ .Values.image.tag }}"
         imagePullPolicy: {{ .Values.image.pullPolicy }}
         ports:
-        - containerPort: {{ .Values.service.internalPort }}
-
+        - containerPort: {{ .Values.service.port }}
+          name: http
+{{- end -}}

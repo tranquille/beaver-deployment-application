@@ -4,10 +4,11 @@ kind: Service
 metadata:
   name: "{{ template "fullname" . }}"
 spec:
-  type: {{ .Values.service.type }}
   ports:
-  - name: {{ .Values.service.name }}
+  - name: http
     port: {{ .Values.service.externalPort }}
     targetPort: {{ .Values.service.internalPort }}
-    protocol: {{ .Values.service.protocol }}
+    protocol: TCP
+  selector:
+    app: "{{ template "fullname" . }}"
 {{- end -}}

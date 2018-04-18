@@ -1,16 +1,8 @@
-{{- if .Values.service.enabled -}}
-
+{{- if .Values.ingress.enabled -}}
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   name: "{{ template "fullname" . }}"
-  labels:
-    app: "{{ template "name" . }}"
-    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
-    release: "{{ .Release.Name }}"
-    heritage: "{{ .Release.Service }}"
-  annotations:
-    kolihub.io/{{ .Values.ingress.hostname }}: primary
 spec:
   rules:
   - host: {{ .Values.ingress.hostname }}
@@ -18,7 +10,6 @@ spec:
       paths:
       - path: {{ .Values.ingress.path }}
         backend:
-          serviceName: {{ template "fullname" . }}
+          serviceName: "{{ template "fullname" . }}"
           servicePort: {{ .Values.service.externalPort }}
-
 {{- end -}}
