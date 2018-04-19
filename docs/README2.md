@@ -605,9 +605,6 @@ Specify each parameter using the `--set key=value[,key=value]` argument to
 
 To generate htpasswd file, run this docker command:
 `docker run --entrypoint htpasswd registry:2 -Bbn user password > ./htpasswd`.
-## Account
-
-Template to simple create Accounts
 > This chart is deprecated in favor of the [official GitLab chart](http://docs.gitlab.com/ce/install/kubernetes/gitlab_omnibus.html).
 
 # GitLab Community Edition
@@ -677,3 +674,6 @@ $ helm install --name my-release -f values.yaml stable/gitlab-ce
 By default, persistence of GitLab data and configuration happens using PVCs. If you know that you'll need a larger amount of space, make _sure_ to look at the `persistence` section in [values.yaml](values.yaml).
 
 > *"If you disable persistence, the contents of your volume(s) will only last as long as the Pod does. Upgrading or changing certain settings may lead to data loss without persistence."*
+## Account
+
+Template to simple create Accounts
