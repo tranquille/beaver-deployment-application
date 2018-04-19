@@ -47,9 +47,9 @@ spec:
         - --kong-url={{ .Values.ingress.kongurl }}
         # the default service is the kong proxy service
         - --default-backend-service={{ .Release.Namespace }}/{{ template "kong.fullname" . }}-proxyhttp
-        {{- if not (empty .Values.ingress.class) }}
+        {{ if not (empty .Values.ingress.class) }}
         - '--ingress-class={{ .Values.ingress.class }}'
-        {{- end -}}
+        {{ end }}
 
         env:
         - name: POD_NAME
