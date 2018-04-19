@@ -76,6 +76,7 @@ We welcome contributions and improvements.
       * [Chart Details](#chart-details)
       * [Installing the Chart](#installing-the-chart-3)
       * [Configuration](#configuration-4)
+      * [Account](#account)
    * [GitLab Community Edition](#gitlab-community-edition)
       * [Introduction](#introduction-3)
       * [Prerequisites](#prerequisites-3)
@@ -690,6 +691,9 @@ Specify each parameter using the `--set key=value[,key=value]` argument to
 
 To generate htpasswd file, run this docker command:
 `docker run --entrypoint htpasswd registry:2 -Bbn user password > ./htpasswd`.
+## Account
+
+Template to simple create Accounts
 > This chart is deprecated in favor of the [official GitLab chart](http://docs.gitlab.com/ce/install/kubernetes/gitlab_omnibus.html).
 
 # GitLab Community Edition

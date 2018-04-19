@@ -1,0 +1,9 @@
+name: account
+version: 1.0
+appVersion: 4.0.8
+description: account create simple
+icon: https://bitnami.com/assets/stacks/redis/img/redis-stack-220x234.png
+maintainers:
+- name: arkadiusz czarnik
+  email: arkadiusz.czarnik@obi.de
+engine: gotpl
