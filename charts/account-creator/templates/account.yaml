@@ -1,11 +1,11 @@
 apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
-  name: "{{ .Values.project.name . }}-admin"
+  name: "{{ .Values.project.name }}-admin"
   labels:
     chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
     release: "{{ .Release.Name }}"
-  namespace: "{{ .Values.project.name . }}-{{ .Values.project.stage . }}"
+  namespace: "{{ .Values.project.name }}-{{ .Values.project.stage }}"
 rules:
 - apiGroups: ["*"]
   resources: ["*"]
@@ -14,20 +14,20 @@ rules:
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
-  name: "{{ .Values.project.name . }}-binding"
-  namespace: "{{ .Values.project.name . }}-{{ .Values.project.stage . }}"
+  name: "{{ .Values.project.name }}-binding"
+  namespace: "{{ .Values.project.name }}-{{ .Values.project.stage }}"
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: Role
-  name: "{{ .Values.project.name . }}-admin"
+  name: "{{ .Values.project.name }}-admin"
 subjects:
 - kind: ServiceAccount
-  name: "{{ .Values.project.name . }}-admin-sa"
-  namespace: "{{ .Values.project.name . }}-{{ .Values.project.stage . }}"
+  name: "{{ .Values.project.name }}-admin-sa"
+  namespace: "{{ .Values.project.name }}-{{ .Values.project.stage }}"
 ---
 apiVersion: v1
 kind: ServiceAccount
 metadata:
-  name: "{{ .Values.project.name . }}-admin-sa"
-  namespace: "{{ .Values.project.name . }}-{{ .Values.project.stage . }}"
+  name: "{{ .Values.project.name }}-admin-sa"
+  namespace: "{{ .Values.project.name }}-{{ .Values.project.stage }}"
 automountServiceAccountToken: true
