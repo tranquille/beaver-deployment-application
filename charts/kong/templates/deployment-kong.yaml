@@ -50,6 +50,7 @@ spec:
         {{- if not (empty .Values.ingress.class) }}
         - '--ingress-class={{ .Values.ingress.class }}'
         {{- end -}}
+
         env:
         - name: POD_NAME
           valueFrom:
