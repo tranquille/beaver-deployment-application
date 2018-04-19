@@ -135,3 +135,5 @@ kongui:
 
 ingress:
   enabled: true
+  class: ""
+  kongurl: "http://localhost:8001"

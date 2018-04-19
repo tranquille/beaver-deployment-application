@@ -44,9 +44,12 @@ spec:
         args:
         - /kong-ingress-controller
         # the kong URL points to the kong admin api server
-        - --kong-url=http://localhost:8001
+        - --kong-url={{ .Values.ingress.kongurl }}
         # the default service is the kong proxy service
         - --default-backend-service={{ .Release.Namespace }}/{{ template "kong.fullname" . }}-proxyhttp
+        {{- if (not (empty .Values.ingress.class))) }}
+        - '--ingress-class={{ .Values.ingress.class }}'
+        {{- end -}}
         env:
         - name: POD_NAME
           valueFrom:
