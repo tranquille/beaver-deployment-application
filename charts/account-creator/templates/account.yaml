@@ -8,6 +8,7 @@ kind: Role
 metadata:
   name: "{{ .Values.project.name }}-{{ .Values.project.stage }}-role"
   labels:
+    app: "{{ .Values.project.name }}"
     chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
     release: "{{ .Release.Name }}"
   namespace: "{{ .Values.project.name }}-{{ .Values.project.stage }}"
@@ -21,6 +22,10 @@ kind: RoleBinding
 metadata:
   name: "{{ .Values.project.name }}-binding"
   namespace: "{{ .Values.project.name }}-{{ .Values.project.stage }}"
+  labels:
+    app: "{{ .Values.project.name }}"
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+    release: "{{ .Release.Name }}"
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: Role
@@ -35,4 +40,9 @@ kind: ServiceAccount
 metadata:
   name: "{{ .Values.project.name }}-{{ .Values.project.stage }}-account"
   namespace: "{{ .Values.project.name }}-{{ .Values.project.stage }}"
+  labels:
+    app: "{{ .Values.project.name }}"
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+    release: "{{ .Release.Name }}"
+    heritage: "{{ .Release.Service }}"
 automountServiceAccountToken: true
