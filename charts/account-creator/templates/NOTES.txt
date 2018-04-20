@@ -1,7 +1,9 @@
-For .kube config:
+
 TOKEN=$(kubectl get secret --namespace {{ .Values.project.name }}-{{ .Values.project.stage }} {{ template "fullname" . }} -o jsonpath="{.data.token}" | base64 --decode)
 CERT=$(kubectl get secret --namespace {{ .Values.project.name }}-{{ .Values.project.stage }} {{ template "fullname" . }} -o jsonpath="{.data.ca\.crt}")
----
+
+cat >> {{ .Values.project.name }}-{{ .Values.project.stage }}-kube.conf << EOF
+
 apiVersion: v1
 clusters:
 - cluster:
@@ -20,3 +22,5 @@ users:
 - name: {{ .Values.project.name }}-{{ .Values.project.stage }}-account
   user:
     token: $TOKEN
+
+EOF
