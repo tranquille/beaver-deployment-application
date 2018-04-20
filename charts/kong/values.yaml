@@ -137,3 +137,6 @@ ingress:
   enabled: true
   class: ""
   kongurl: "http://localhost:8001"
+
+customresourcedefinition:
+  enabled: true
