@@ -1,5 +1,5 @@
 For .kube config:
-TOKEN=$(kubectl get secret --namespace {{ .Values.project.name }}-{{ .Values.project.stage }} {{ template "fullname" . }} -o jsonpath="{.data.token}")
+TOKEN=$(kubectl get secret --namespace {{ .Values.project.name }}-{{ .Values.project.stage }} {{ template "fullname" . }} -o jsonpath="{.data.token}" | base64 --decode)
 CERT=$(kubectl get secret --namespace {{ .Values.project.name }}-{{ .Values.project.stage }} {{ template "fullname" . }} -o jsonpath="{.data.ca\.crt}")
 ---
 apiVersion: v1
