@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ template "postgresql.fullname" . }}-backupconfig
+  labels:
+    app: {{ template "postgresql.fullname" . }}-backupconfig
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+    release: "{{ .Release.Name }}"
+    heritage: "{{ .Release.Service }}"
+data:
+  clenup-old-files.sh: |
+    #!/bin/bash
+
+    find {{ .Values.backup.directory }} -type f -mindepth 1 -mtime +{{ .Values.backup.deleteOldFilesAfter }} -delete
+

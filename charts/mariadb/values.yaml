@@ -106,6 +106,7 @@ backup:
   directory: "/tmp/"
   freq: "1440"
   begin: "2330"
+  deleteOldFilesAfter: "5"
   persistent: false
   debug: "false"
   storageClassName: "manual"
