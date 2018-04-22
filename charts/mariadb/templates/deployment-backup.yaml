@@ -49,6 +49,7 @@ spec:
       - name: "{{ template "mariadb.fullname" . }}-backupconfig-volume"
         configMap:
           name: "{{ template "mariadb.fullname" . }}-backupconfig"
+          defaultMode: 0777
       - name: {{ template "mariadb.fullname" . }}-storage
       {{- if .Values.backup.persistent }}
         persistentVolumeClaim:
