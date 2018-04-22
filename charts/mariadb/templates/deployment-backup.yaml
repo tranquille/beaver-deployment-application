@@ -46,9 +46,9 @@ spec:
           subPath: clenup-old-files.sh
       restartPolicy: Always
       volumes:
-      - name: "{{ template "postgresql.fullname" . }}-backupconfig-volume"
+      - name: "{{ template "mariadb.fullname" . }}-backupconfig-volume"
         configMap:
-          name: "{{ template "postgresql.fullname" . }}-backupconfig"
+          name: "{{ template "mariadb.fullname" . }}-backupconfig"
       - name: {{ template "mariadb.fullname" . }}-storage
       {{- if .Values.backup.persistent }}
         persistentVolumeClaim:
