@@ -38,11 +38,19 @@ spec:
           mountPath: {{ .Values.backup.directory }}
       restartPolicy: Always
       volumes:
+      {{- if .Values.backup.rawNfsPersistent }}
+      - name: {{ template "mariadb.fullname" . }}-storage
+        nfs:
+          path: {{ .Values.backup.rawNfsPath }}
+          server: {{ .Values.backup.rawNfsServer }}
+          readOnly: {{ .Values.backup.rawNfsReadOnly }}
+      {{- else }}
       - name: {{ template "postgresql.fullname" . }}-storage
       {{- if .Values.backup.persistent }}
         persistentVolumeClaim:
           claimName: {{ template "postgresql.fullname" . }}-claim
       {{- else }}
         emptyDir: {}
+      {{- end -}}
       {{- end -}}
 {{- end }}

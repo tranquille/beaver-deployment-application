@@ -131,6 +131,12 @@ backup:
   password: "reppassword"
   storage_type: "local"
   directory: "/backup/"
+  # use nfs mount directly without pv / pvc
+  rawNfsPersistent: false
+  rawNfsPath: "/PRD_LNX_K8S01_003"
+  rawNfsServer: "nfs.local.dmz"
+  rawNfsReadOnly: false
+  # use claim for backups rawNfsPersistent should be false
   persistent: false
   storageClassName: "manual"
   storageSize: "10Gi"
