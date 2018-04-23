@@ -50,11 +50,19 @@ spec:
         configMap:
           name: "{{ template "mariadb.fullname" . }}-backupconfig"
           defaultMode: 0777
+      {{- if .Values.backup.rawNfsPersistent }}
       - name: {{ template "mariadb.fullname" . }}-storage
-      {{- if .Values.backup.persistent }}
+        nfs:
+          path: {{ .Values.backup.rawNfsPath }}
+          server: {{ .Values.backup.rawNfsServer }}
+          readOnly: {{ .Values.backup.rawNfsReadOnly }}
+      {{- else }}
+      - name: {{ template "mariadb.fullname" . }}-storage
+      {{- if .Values.backup.volumeClaim }}
         persistentVolumeClaim:
           claimName: {{ template "mariadb.fullname" . }}-claim
       {{- else }}
         emptyDir: {}
+      {{- end -}}
       {{- end -}}
 {{- end }}
