@@ -131,7 +131,7 @@ backup:
   password: "reppassword"
   storage_type: "local"
   directory: "/backup/"
-  deleteOldFilesAfter: "5"
+  cleanupAfterDays: "5"
   # use nfs mount directly without pv / pvc
   rawNfsPersistent: false
   rawNfsPath: "/PRD_LNX_K8S01_003"

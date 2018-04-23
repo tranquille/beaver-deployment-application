@@ -26,7 +26,7 @@ spec:
         - name: PGHOARD_DIRECTORY
           value: {{ printf "%s%s" .Values.backup.directory .Release.Namespace | quote }}
         - name: PGHOARD_BASEBACKUP_COUNT
-          value: {{ .Values.backup.deleteOldFilesAfter | quote }}
+          value: {{ .Values.backup.cleanupAfterDays | quote }}
         - name: PG_HOST
           value: {{ template "postgresql.fullname" . }}
         - name: PG_PORT
