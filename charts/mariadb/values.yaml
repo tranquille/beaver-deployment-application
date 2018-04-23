@@ -103,7 +103,7 @@ securitySettings:
 
 backup:
   enabled: true
-  directory: "/tmp/"
+  directory: "/backup/"
   freq: "1440"
   begin: "2330"
   deleteOldFilesAfter: "5"
