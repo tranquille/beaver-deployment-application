@@ -116,6 +116,8 @@ rules:
       - configmaps
     verbs:
       - create
+      - get
+      - update
   - apiGroups:
       - ""
     resources:
