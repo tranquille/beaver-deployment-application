@@ -24,6 +24,9 @@ ingress:
   hostname: coyote.acme.org
   path: /
 
+env:
+  log_level: info
+
 resources:
 #  limits:
 #    cpu: 100m

@@ -8,4 +8,6 @@ metadata:
     release: "{{ .Release.Name }}"
     heritage: "{{ .Release.Service }}"
 data:
-  log_level: INFO
+  {{- range $key, $val := .Values.env }}
+  {{ $key }}:{{ $val }}
+  {{- end}}
