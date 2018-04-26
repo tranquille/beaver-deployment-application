@@ -10,4 +10,5 @@ metadata:
 data:
   {{- range $key, $val := .Values.env }}
   {{ $key }}:{{ $val }}
+
   {{- end}}
