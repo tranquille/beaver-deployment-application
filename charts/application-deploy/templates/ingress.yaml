@@ -8,6 +8,8 @@ metadata:
     chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
     release: "{{ .Release.Name }}"
     heritage: "{{ .Release.Service }}"
+annotations:
+    kubernetes.io/ingress.class: "kong-{{ .Values.ingress.class }}"
 spec:
   rules:
   - host: {{ .Values.ingress.hostname }}
