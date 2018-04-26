@@ -27,9 +27,6 @@ spec:
         env:
         {{- range $key, $val := .Values.env }}
         - name: {{ $key | upper}}
-          valueFrom:
-            configMapKeyRef:
-              name: env-config
-              key: {{ $key }}
+          value: {{ $val | quote }}
         {{- end}}
 {{- end -}}
