@@ -14,9 +14,6 @@ metadata:
     {{- range $key, $value := .Values.ingress.annotations }}
       {{ $key }}: {{ $value | quote }}
     {{- end }}
-    {{- range $host := .Values.ingress.hosts }}
-    kolihub.io/{{ $host }}: primary
-    {{- end }}
 
 spec:
   rules:
