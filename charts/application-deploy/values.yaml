@@ -24,6 +24,10 @@ ingress:
   hostname: coyote.acme.org
   path: /
 
+plugin:
+  correlation:
+    enabled: true
+
 env:
   log_level: info
 

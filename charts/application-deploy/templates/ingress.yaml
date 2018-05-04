@@ -10,6 +10,9 @@ metadata:
     heritage: "{{ .Release.Service }}"
   annotations:
     kubernetes.io/ingress.class: "kong-{{ .Values.ingress.class }}"
+{{- if .Values.plugin.correlation.enabled -}}
+    correlation-id.plugin.konghq.com: "{{ template "fullname" . }}-correlation-id"
+{{- end -}}
 spec:
   rules:
   - host: {{ .Values.ingress.hostname }}
