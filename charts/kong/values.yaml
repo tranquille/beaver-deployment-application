@@ -2,7 +2,7 @@
 # Declare variables to be passed into your templates.
 
 image:
-  name: kong:0.13.0-centos
+  name: kong:0.13.1-centos
   pullPolicy: IfNotPresent
 
 # Specify Kong admin and proxy services configurations
@@ -140,3 +140,6 @@ ingress:
 
 customresourcedefinition:
   enabled: true
+
+kong-ingress:
+  image: "kong-docker-kubernetes-ingress-controller.bintray.io/kong-ingress-controller:0.0.3"
