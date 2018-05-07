@@ -62,7 +62,7 @@ spec:
             fieldRef:
               apiVersion: v1
               fieldPath: metadata.namespace
-        image: {{ .Values.kong-ingress.image }}
+        image: {{ .Values.ingress.image }}
         imagePullPolicy: IfNotPresent
         livenessProbe:
           failureThreshold: 3
