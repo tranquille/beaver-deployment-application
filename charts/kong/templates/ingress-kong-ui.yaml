@@ -3,6 +3,10 @@ apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   name: {{ template "kong.fullname" . }}-ui-route
+  {{- if not (empty .Values.ingress.class) }}
+  annotations:
+    kubernetes.io/ingress.class: "kong-{{ .Values.ingress.class }}"
+  {{- end }}
 spec:
   rules:
   - host: {{ template "kong.name" . }}-ui.{{ .Values.domain }}
