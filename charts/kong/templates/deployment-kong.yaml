@@ -39,52 +39,6 @@ spec:
                 key: postgres-password
         command: [ "/bin/sh", "-c", "kong migrations up" ]
       containers:
-      {{ if .Values.ingress.enabled }}
-      - name: ingress-controller
-        args:
-        - /kong-ingress-controller
-        # the kong URL points to the kong admin api server
-        - --kong-url={{ .Values.ingress.kongurl }}
-        # the default service is the kong proxy service
-        - --default-backend-service={{ .Release.Namespace }}/{{ template "kong.fullname" . }}-proxyhttp
-        - --publish-service={{ .Release.Namespace }}/{{ template "kong.fullname" . }}-proxyhttp
-        {{ if not (empty .Values.ingress.class) }}
-        - '--ingress-class={{ .Values.ingress.class }}'
-        {{ end }}
-
-        env:
-        - name: POD_NAME
-          valueFrom:
-            fieldRef:
-              apiVersion: v1
-              fieldPath: metadata.name
-        - name: POD_NAMESPACE
-          valueFrom:
-            fieldRef:
-              apiVersion: v1
-              fieldPath: metadata.namespace
-        image: {{ .Values.ingress.image }}
-        imagePullPolicy: IfNotPresent
-        livenessProbe:
-          failureThreshold: 3
-          httpGet:
-            path: /healthz
-            port: 10254
-            scheme: HTTP
-          initialDelaySeconds: 30
-          periodSeconds: 10
-          successThreshold: 1
-          timeoutSeconds: 1
-        readinessProbe:
-          failureThreshold: 3
-          httpGet:
-            path: /healthz
-            port: 10254
-            scheme: HTTP
-          periodSeconds: 10
-          successThreshold: 1
-          timeoutSeconds: 1
-      {{ end }}
       - name: {{ template "kong.name" . }}
         image: "{{ .Values.image.name }}"
         imagePullPolicy: {{ .Values.image.pullPolicy }}

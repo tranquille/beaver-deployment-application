@@ -1,0 +1,71 @@
+{{- if .Values.ingress.enabled }}
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  name: "{{ template "kong.fullname" . }}-ingress"
+  labels:
+    app: "{{ template "kong.name" . }}-ingress"
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+    release: "{{ .Release.Name }}"
+    heritage: "{{ .Release.Service }}"
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: "{{ template "kong.name" . }}-ingress"
+      release: {{ .Release.Name }}
+  template:
+    metadata:
+      labels:
+        app: "{{ template "kong.name" . }}-ingress"
+        release: {{ .Release.Name }}
+      annotations:
+        prometheus.io/port: "10254"
+        prometheus.io/scrape: "true"
+    spec:
+      serviceAccountName: "{{ template "kong.fullname" . }}-service-account"
+      containers:
+      - name: ingress-controller
+        args:
+        - /kong-ingress-controller
+        # the kong URL points to the kong admin api server
+        - --kong-url={{ .Values.ingress.kongurl }}
+        # the default service is the kong proxy service
+        - --default-backend-service={{ .Release.Namespace }}/{{ template "kong.fullname" . }}-proxyhttp
+        - --publish-service={{ .Release.Namespace }}/{{ template "kong.fullname" . }}-proxyhttp
+        {{ if not (empty .Values.ingress.class) }}
+        - '--ingress-class={{ .Values.ingress.class }}'
+        {{- end }}
+        env:
+        - name: POD_NAME
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.name
+        - name: POD_NAMESPACE
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.namespace
+        image: {{ .Values.ingress.image }}
+        imagePullPolicy: IfNotPresent
+        livenessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /healthz
+            port: 10254
+            scheme: HTTP
+          initialDelaySeconds: 30
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 1
+        readinessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /healthz
+            port: 10254
+            scheme: HTTP
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 1
+{{- end }}
