@@ -137,7 +137,7 @@ ingress:
   image: "kong-docker-kubernetes-ingress-controller.bintray.io/kong-ingress-controller:0.0.3"
   enabled: true
   class: ""
-  kongurl: "http://localhost:8001"
+  kong-admin: "http://localhost:8001"
 
 customresourcedefinition:
   enabled: true

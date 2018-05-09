@@ -5,7 +5,7 @@ metadata:
   name: {{ template "kong.fullname" . }}-ui-route
   {{- if not (empty .Values.ingress.class) }}
   annotations:
-    kubernetes.io/ingress.class: "kong-{{ .Values.ingress.class }}"
+    kubernetes.io/ingress.class: "{{ .Values.ingress.class }}"
   {{- end }}
 spec:
   rules:
