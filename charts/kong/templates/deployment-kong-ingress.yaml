@@ -55,8 +55,8 @@ spec:
             path: /healthz
             port: 10254
             scheme: HTTP
-          initialDelaySeconds: 30
-          periodSeconds: 10
+          initialDelaySeconds: 60
+          periodSeconds: 20
           successThreshold: 1
           timeoutSeconds: 1
         readinessProbe:
@@ -65,6 +65,7 @@ spec:
             path: /healthz
             port: 10254
             scheme: HTTP
+          initialDelaySeconds: 60
           periodSeconds: 10
           successThreshold: 1
           timeoutSeconds: 1
