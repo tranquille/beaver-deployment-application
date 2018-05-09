@@ -23,10 +23,12 @@ ingress:
   class: extern
   hostname: coyote.acme.org
   path: /
+  config:
+    enabled: false
 
 plugin:
   correlation:
-    enabled: true
+    enabled: false
 
 env:
   log_level: info

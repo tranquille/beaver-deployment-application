@@ -1,0 +1,20 @@
+{{- if .Values.ingress.config.enabled -}}
+apiVersion: configuration.konghq.com/v1
+kind: KongIngress
+metadata:
+  name: "ingress-configuration-{{ .Release.Namespace }}"
+route:
+  methods:
+  - HEAD
+  - POST
+  - GET
+  - PUT
+  - DELETE
+  - CONNECT
+  - PATCH
+  - TRACE
+  - OPTIONS
+  regex_priority: 0
+  strip_path: true
+  preserve_host: false
+{{- end -}}
