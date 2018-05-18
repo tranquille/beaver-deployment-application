@@ -8,6 +8,10 @@ metadata:
     chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
     release: "{{ .Release.Name }}"
     heritage: "{{ .Release.Service }}"
+  annotations:
+    prometheus.io/port: "{{ .Values.service.internalPort }}"
+    prometheus.io/scrape: "{{- .Values.metrics.enabled -}}"
+    prometheus.io/path: "/metrics"
 spec:
   replicas: {{ .Values.replicaCount }}
   template:

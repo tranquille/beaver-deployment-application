@@ -33,6 +33,9 @@ plugin:
 env:
   log_level: info
 
+metrics:
+  enabled: true
+
 resources:
 #  limits:
 #    cpu: 100m
