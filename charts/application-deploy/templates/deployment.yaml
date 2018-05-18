@@ -11,7 +11,7 @@ metadata:
   annotations:
     prometheus.io/port: "{{ .Values.service.internalPort }}"
     prometheus.io/scrape: "{{ .Values.metrics.enabled }}"
-    prometheus.io/path: "/metrics"
+    prometheus.io/path: "{{ .Values.metrics.path }}"
 spec:
   replicas: {{ .Values.replicaCount }}
   template:

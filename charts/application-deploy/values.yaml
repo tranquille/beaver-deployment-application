@@ -35,6 +35,7 @@ env:
 
 metrics:
   enabled: true
+  path: "/metrics"
 
 resources:
 #  limits:
