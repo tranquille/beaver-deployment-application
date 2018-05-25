@@ -93,7 +93,7 @@ spec:
         - name: gitlab-etc
           mountPath: /etc/gitlab
         - name: gitlab-data
-          mountPath: /gitlab-data
+          mountPath: /var/opt/gitlab/git-data
         - name: gitlab-metrics
           mountPath: /gitlab-metrics
         resources:
