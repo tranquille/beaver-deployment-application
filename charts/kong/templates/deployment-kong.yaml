@@ -85,6 +85,9 @@ spec:
         - name: "{{ template "kong.fullname" . }}-config-volume"
           mountPath: /etc/kong/kong.conf
           subPath: kong.conf
+        - name: "{{ template "kong.fullname" . }}-config-volume"
+          mountPath: /etc/kong/custom_nginx.template
+          subPath: custom_nginx.template
         readinessProbe:
 {{ toYaml .Values.readinessProbe | indent 10 }}
         livenessProbe:
