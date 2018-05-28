@@ -22,6 +22,9 @@ data:
 
     http {
 
+        # include default Kong Nginx config
+        include 'nginx-kong.conf';
+
         # upgrade all requests to https
         server {
             listen 8000 default_server;
@@ -30,8 +33,7 @@ data:
             return 301 https://$host$request_uri;
         }
 
-        # include default Kong Nginx config
-        include 'nginx-kong.conf';
+
 
     }
   kong.conf: |+
