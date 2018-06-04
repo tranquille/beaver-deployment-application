@@ -92,6 +92,16 @@ persistence:
     accessMode: ReadWriteOnce
     storageClass: rook-block
 
+  gitlabBuilds:
+    enabled: true
+    size: 2Gi
+    ## If defined, volume.beta.kubernetes.io/storage-class: <storageClass>
+    ## Default: volume.alpha.kubernetes.io/storage-class: default
+    ##
+    # storageClass:
+    accessMode: ReadWriteOnce
+    storageClass: rook-block
+
 ## Configuration values for the postgresql dependency.
 ## ref: https://github.com/kubernetes/charts/blob/master/stable/postgresql/README.md
 ##
