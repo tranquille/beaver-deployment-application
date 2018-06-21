@@ -29,7 +29,14 @@ spec:
           name: http
         env:
         {{- range $key, $val := .Values.env }}
-        - name: {{ $key | upper}}
+        - name: {{ $key | upper }}
           value: {{ $val | quote }}
+        {{- end}}
+        {{- range $key, $val := .Values.secrets }}
+        - name: {{ $key | upper }}
+          valueFrom:
+            secretKeyRef:
+              name: {{ template "fullname" . }}
+              key: {{ $key | upper }}
         {{- end}}
 {{- end -}}
