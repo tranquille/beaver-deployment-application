@@ -8,14 +8,15 @@ metadata:
     chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
     release: "{{ .Release.Name }}"
     heritage: "{{ .Release.Service }}"
-  annotations:
-    prometheus.io/port: "{{ .Values.service.internalPort }}"
-    prometheus.io/scrape: "{{ .Values.metrics.enabled }}"
-    prometheus.io/path: "{{ .Values.metrics.path }}"
 spec:
   replicas: {{ .Values.replicaCount }}
+  revisionHistoryLimit: {{ .Values.revisionHistoryLimit }}
   template:
     metadata:
+      annotations:
+        prometheus.io/port: "{{ .Values.service.internalPort }}"
+        prometheus.io/scrape: "{{ .Values.metrics.enabled }}"
+        prometheus.io/path: "{{ .Values.metrics.path }}"
       labels:
         app: "{{ template "fullname" . }}"
     spec:
@@ -28,7 +29,14 @@ spec:
           name: http
         env:
         {{- range $key, $val := .Values.env }}
-        - name: {{ $key | upper}}
+        - name: {{ $key | upper }}
           value: {{ $val | quote }}
+        {{- end}}
+        {{- range $key, $val := .Values.secrets }}
+        - name: {{ $key | upper }}
+          valueFrom:
+            secretKeyRef:
+              name: {{ template "fullname" . }}
+              key: {{ $key | upper }}
         {{- end}}
 {{- end -}}

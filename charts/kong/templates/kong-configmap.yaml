@@ -8,32 +8,6 @@ metadata:
     release: "{{ .Release.Name }}"
     heritage: "{{ .Release.Service }}"
 data:
-  custom_nginx.template: |+
-    worker_processes \\${{NGINX_WORKER_PROCESSES}}; # can be set by kong.conf
-    daemon \\${{NGINX_DAEMON}};                     # can be set by kong.conf
-
-    pid pids/nginx.pid;                      # this setting is mandatory
-    error_log logs/error.log \\${{LOG_LEVEL}}; # can be set by kong.conf
-
-    events {
-        use epoll;
-        multi_accept on;
-    }
-
-    http {
-
-        # upgrade all requests to https
-        server {
-            listen 8000 default_server;
-            listen [::]:8000 default_server;
-            server_name _;
-            return 301 https://$host$request_uri;
-        }
-
-        # include default Kong Nginx config
-        include 'nginx-kong.conf';
-
-    }
   kong.conf: |+
     # -----------------------
     # Kong configuration file
@@ -110,7 +84,7 @@ data:
     # NGINX
     #------------------------------------------------------------------------------
 
-    proxy_listen = 0.0.0.0:8000, 0.0.0.0:8443 http2 ssl
+    proxy_listen = 0.0.0.0:80, 0.0.0.0:443 http2 ssl
                              # Comma-separated list of addresses and ports on
                              # which the proxy server should listen.
                              # The proxy server is the public entrypoint of Kong,

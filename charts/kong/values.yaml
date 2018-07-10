@@ -26,8 +26,8 @@ proxyhttp:
   #  service.beta.kubernetes.io/aws-load-balancer-proxy-protocol: "*"
 
   # HTTPS traffic on the proxy port
-  servicePort: 8000
-  containerPort: 8000
+  servicePort: 80
+  containerPort: 80
   type: NodePort
   # Set a nodePort which is available
   nodePort: 32080
@@ -39,8 +39,8 @@ proxyhttps:
   #  service.beta.kubernetes.io/aws-load-balancer-proxy-protocol: "*"
 
   # HTTPS traffic on the proxy port
-  servicePort: 8443
-  containerPort: 8443
+  servicePort: 443
+  containerPort: 443
   type: NodePort
   # Set a nodePort which is available
   nodePort: 32443
