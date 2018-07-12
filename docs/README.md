@@ -17,6 +17,7 @@ kubectl patch deploy --namespace tools tiller-deploy -p '{"spec":{"template":{"s
 
 ### Add Helm Repo for wildbeavers
 
+
 ```
 helm repo add beavergithub https://wildbeavers.github.io/beaver-deployment-application/
 ```
