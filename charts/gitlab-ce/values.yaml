@@ -1,7 +1,7 @@
 ## GitLab CE image
 ## ref: https://hub.docker.com/r/gitlab/gitlab-ce/tags/
 ##
-image: gitlab/gitlab-ce:10.6.4-ce.0
+image: gitlab/gitlab-ce:11.0.3-ce.0
 
 ## Specify a imagePullPolicy
 ## 'Always' if imageTag is 'latest', else set to 'IfNotPresent'
@@ -93,6 +93,16 @@ persistence:
     storageClass: rook-block
 
   gitlabBuilds:
+    enabled: true
+    size: 2Gi
+    ## If defined, volume.beta.kubernetes.io/storage-class: <storageClass>
+    ## Default: volume.alpha.kubernetes.io/storage-class: default
+    ##
+    # storageClass:
+    accessMode: ReadWriteOnce
+    storageClass: rook-block
+
+  gitlabUploads:
     enabled: true
     size: 2Gi
     ## If defined, volume.beta.kubernetes.io/storage-class: <storageClass>

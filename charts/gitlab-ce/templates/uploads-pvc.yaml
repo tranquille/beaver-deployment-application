@@ -1,0 +1,18 @@
+{{- if .Values.persistence.gitlabEtc.enabled }}
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: {{ template "gitlab-ce.fullname" . }}-uploads
+  annotations:
+  {{- if .Values.persistence.gitlabUploads.storageClass }}
+    volume.beta.kubernetes.io/storage-class: {{ .Values.persistence.gitlabUploads.storageClass | quote }}
+  {{- else }}
+    volume.alpha.kubernetes.io/storage-class: default
+  {{- end }}
+spec:
+  accessModes:
+    - {{ .Values.persistence.gitlabUploads.accessMode | quote }}
+  resources:
+    requests:
+      storage: {{ .Values.persistence.gitlabUploads.size | quote }}
+{{- end }}
