@@ -2,7 +2,7 @@
 # Declare variables to be passed into your templates.
 
 image:
-  name: kong:0.13.1-centos
+  name: kong:0.14.0
   pullPolicy: IfNotPresent
 
 # Specify Kong admin and proxy services configurations
@@ -69,7 +69,7 @@ readinessProbe:
     path: "/status"
     port: 8001
     scheme: HTTP
-  initialDelaySeconds: 120
+  initialDelaySeconds: 10
   timeoutSeconds: 1
   periodSeconds: 10
   successThreshold: 1
@@ -81,7 +81,7 @@ livenessProbe:
     path: "/status"
     port: 8001
     scheme: HTTP
-  initialDelaySeconds: 180
+  initialDelaySeconds: 30
   timeoutSeconds: 5
   periodSeconds: 30
   successThreshold: 1
@@ -134,7 +134,7 @@ kongui:
   enabled: true
 
 ingress:
-  image: "kong-docker-kubernetes-ingress-controller.bintray.io/kong-ingress-controller:0.0.3"
+  image: "kong-docker-kubernetes-ingress-controller.bintray.io/kong-ingress-controller:0.0.5"
   enabled: true
   class: ""
   kong-admin: "http://localhost:8001"
