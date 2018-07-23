@@ -34,3 +34,5 @@ data:
     prometheus_monitoring['enable'] = true
     prometheus['listen_address'] = '0.0.0.0:9090'
     node_exporter['enable'] = false
+    nginx['listen_https'] = false
+    nginx['listen_port'] = 80
