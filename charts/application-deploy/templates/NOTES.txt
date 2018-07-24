@@ -1,5 +1,7 @@
-{{- if .Values.service.enabled -}}
-Application should be accessible at: {{ .Values.service.url }}
-{{- else -}}
-Application will be accessible at: {{ .Values.service.url }} when you deploy stable track.
-{{- end -}}
+Deployed application:
+Image-Tag: {{ .Values.image.tag }}
+Namespace: {{ .Release.Namespace }}
+Ingress:
+Stage:     {{ template "ingress.stage" . }}
+Class:     {{ template "ingress.class" . }}
+Domain:    {{ template "ingress.fqdn" . }}

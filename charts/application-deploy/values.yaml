@@ -4,9 +4,13 @@
 replicaCount: 1
 revisionHistoryLimit: 3
 
+# Empty dummy values, must be provided via CI
+ci:
+  projectName: ""
+
 image:
-  repository: dockerregistry.com/bad/service
-  tag: stable
+  repository: hello-world
+  tag: latest
   pullPolicy: Always
 
 deployment:
@@ -22,8 +26,10 @@ service:
 
 ingress:
   enabled: true
-  class: extern
-  hostname: coyote.acme.org
+  class: intern
+  stage: preproduction
+  subdomain: ""
+  externalDomain: example.com
   path: /
   config:
     enabled: false
