@@ -28,10 +28,6 @@ ingress:
   config:
     enabled: false
 
-plugin:
-  correlation:
-    enabled: false
-
 env:
   log_level: info
 
