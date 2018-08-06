@@ -20,6 +20,7 @@ data:
     gitlab_rails['db_database'] = '{{ .Values.postgresql.postgresDatabase }}';
     gitlab_rails['db_adapter'] = 'postgresql'
     gitlab_rails['db_encoding'] = 'utf8'
+    gitlab_ci['backup_path'] = '/var/opt/gitlab/backups'
     redis['enable'] = false;
     gitlab_rails['redis_host'] = ENV['REDIS_HOST'];
     gitlab_rails['redis_port'] = '6379'
@@ -36,3 +37,4 @@ data:
     node_exporter['enable'] = false
     nginx['listen_https'] = false
     nginx['listen_port'] = 80
+
