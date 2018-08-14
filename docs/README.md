@@ -44,6 +44,8 @@ We welcome contributions and improvements.
          * [Existing PersistentVolumeClaims](#existing-persistentvolumeclaims)
       * [Metrics](#metrics)
       * [NetworkPolicy](#networkpolicy)
+   * [Wekan](#wekan)
+      * [ToDo](#todo)
       * [MariaDB](#mariadb)
       * [Uninstalling the Chart](#uninstalling-the-chart-1)
       * [Configuration](#configuration-1)
@@ -243,6 +245,16 @@ With NetworkPolicy enabled, traffic will be limited to just port 5432.
 For more precise policy, set `networkPolicy.allowExternal=false`. This will
 only allow pods with the generated client label to connect to PostgreSQL.
 This label will be displayed in the output of a successful install.
+# Wekan
+
+Helm chart for [Wekan](https://wekan.io).
+
+-  Use [official Docker image](https://quay.io/wekan/wekan).
+
+## ToDo
+
+-  Documentation
+-  Liveness Probe
 ## MariaDB
 
 [MariaDB](https://mariadb.org) is one of the most popular database servers in the world. It’s made by the original developers of MySQL and guaranteed to stay open source. Notable users include Wikipedia, Facebook and Google.

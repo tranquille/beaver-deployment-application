@@ -148,6 +148,16 @@ With NetworkPolicy enabled, traffic will be limited to just port 5432.
 For more precise policy, set `networkPolicy.allowExternal=false`. This will
 only allow pods with the generated client label to connect to PostgreSQL.
 This label will be displayed in the output of a successful install.
+# Wekan
+
+Helm chart for [Wekan](https://wekan.io).
+
+-  Use [official Docker image](https://quay.io/wekan/wekan).
+
+## ToDo
+
+-  Documentation
+-  Liveness Probe
 ## MariaDB
 
 [MariaDB](https://mariadb.org) is one of the most popular database servers in the world. It’s made by the original developers of MySQL and guaranteed to stay open source. Notable users include Wikipedia, Facebook and Google.
