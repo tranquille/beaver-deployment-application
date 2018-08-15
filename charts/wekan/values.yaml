@@ -1,0 +1,64 @@
+mongoUrl: # mongodb://wekandb/wekan
+
+mongoOplogUrl: # mongodb://<username>:<password>@<mongoDbURL>/local?authSource=admin&replicaSet=rsWekan
+
+rootUrl: # https://chart-example.local:80
+
+mailUrl: # smtp://wekan:wekan@mailserver:25
+
+replicaCount: 1
+
+image:
+  repository: quay.io/wekan/wekan
+  tag: "v1.29"
+  pullPolicy: IfNotPresent
+
+args: []
+
+# extraEnv:
+# - name:
+#   value:
+
+# extraVolumes:
+# - name: data
+#   persistentVolumeClaim:
+#     claimName:
+
+# extraVolumeMounts:
+# - name: data
+#   mountPath: /var/www/app/data
+
+service:
+  type: ClusterIP
+  port: 80
+
+ingress:
+  enabled: false
+  annotations: {}
+    # kubernetes.io/ingress.class: nginx
+    # kubernetes.io/tls-acme: "true"
+  path: /
+  hosts:
+    - chart-example.local
+  tls: []
+  #  - secretName: chart-example-tls
+  #    hosts:
+  #      - chart-example.local
+
+resources: {}
+  # We usually recommend not to specify default resources and to leave this as a conscious
+  # choice for the user. This also increases chances charts run on environments with little
+  # resources, such as Minikube. If you do want to specify resources, uncomment the following
+  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+  # limits:
+  #  cpu: 100m
+  #  memory: 128Mi
+  # requests:
+  #  cpu: 100m
+  #  memory: 128Mi
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
