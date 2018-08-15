@@ -48,4 +48,7 @@ spec:
           limits:
             cpu: "1"
             memory: 3512Mi
+          requests:
+            memory: 50Mi
+            cpu: "0.01"
 {{- end -}}
