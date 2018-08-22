@@ -100,8 +100,8 @@ spec:
           mountPath: /var/opt/gitlab/gitlab-rails/uploads
         - name: gitlab-metrics
           mountPath: /gitlab-metrics
-        - name: myrelease-gitlab-ce-backup
-          mountPath: /var/opt/gitlab/backups
+        - name: {{ template "gitlab-ce.fullname" . }}-backup
+          mountPath: {{ .Values.backup.directory }}
         resources:
 {{ toYaml .Values.resources | indent 10 }}
       volumes:
