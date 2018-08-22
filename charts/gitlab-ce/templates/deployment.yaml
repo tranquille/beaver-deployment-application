@@ -100,6 +100,8 @@ spec:
           mountPath: /var/opt/gitlab/gitlab-rails/uploads
         - name: gitlab-metrics
           mountPath: /gitlab-metrics
+        - name: {{ template "gitlab-ce.fullname" . }}-backup
+          mountPath: {{ .Values.backup.directory }}
         resources:
 {{ toYaml .Values.resources | indent 10 }}
       volumes:
@@ -128,6 +130,20 @@ spec:
       {{- if .Values.persistence.gitlabUploads.enabled }}
         persistentVolumeClaim:
           claimName: {{ template "gitlab-ce.fullname" . }}-uploads
+      {{- else }}
+        emptyDir: {}
+      {{- end }}
+      {{- if .Values.backup.rawNfsPersistent }}
+      - name: {{ template "gitlab-ce.fullname" . }}-backup
+        nfs:
+          path: {{ .Values.backup.rawNfsPath }}
+          server: {{ .Values.backup.rawNfsServer }}
+          readOnly: {{ .Values.backup.rawNfsReadOnly }}
+      {{- else }}
+      - name: {{ template "gitlab-ce.fullname" . }}-backup
+      {{- if .Values.backup.persistent }}
+        persistentVolumeClaim:
+          claimName: {{ template "gitlab-ce.fullname" . }}-claim
       {{- else }}
         emptyDir: {}
       {{- end }}
