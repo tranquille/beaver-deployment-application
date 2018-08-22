@@ -103,7 +103,7 @@ nodeSelector: {}
 podAnnotations: {}
 
 # Kong pod count
-replicaCount: 1
+replicaCount: 3
 
 # for fresh installation of kong-ui we need to set the domain
 domain: "paas-prod01.local.dmz"
@@ -134,7 +134,7 @@ kongui:
   enabled: true
 
 ingress:
-  image: "kong-docker-kubernetes-ingress-controller.bintray.io/kong-ingress-controller:0.0.5"
+  image: "kong-docker-kubernetes-ingress-controller.bintray.io/kong-ingress-controller:0.1.0"
   enabled: true
   class: ""
   kong-admin: "http://localhost:8001"
