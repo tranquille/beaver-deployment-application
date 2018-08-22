@@ -41,7 +41,7 @@ spec:
       restartPolicy: Always
       volumes:
       {{- if .Values.backup.rawNfsPersistent }}
-      - name: {{ template "mariadb.fullname" . }}-storage
+      - name: {{ template "postgresql.fullname" . }}-storage
         nfs:
           path: {{ .Values.backup.rawNfsPath }}
           server: {{ .Values.backup.rawNfsServer }}
