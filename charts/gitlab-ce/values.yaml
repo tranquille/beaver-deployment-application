@@ -137,3 +137,8 @@ redis:
       memory: 1Gi
 #  persistence:
 #    size: 4Gi
+
+smtp:
+  address: mail.xxx.com
+  domain: mail.xxx.com
+  port: 25

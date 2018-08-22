@@ -21,6 +21,11 @@ data:
     gitlab_rails['db_adapter'] = 'postgresql'
     gitlab_rails['db_encoding'] = 'utf8'
     gitlab_rails['backup_path'] = '/var/opt/gitlab/backups'
+    gitlab_rails['smtp_address'] = '{{ default "" .Values.smtp.address }}'
+    gitlab_rails['smtp_domain'] = '{{ default "" .Values.smtp.domain }}'
+    gitlab_rails['smtp_port'] = '{{ default "25" .Values.smtp.port }}'
+    gitlab_rails['smtp_authentication'] = false
+    gitlab_rails['smtp_enable_starttls_auto'] = true
     redis['enable'] = false;
     gitlab_rails['redis_host'] = ENV['REDIS_HOST'];
     gitlab_rails['redis_port'] = '6379'
