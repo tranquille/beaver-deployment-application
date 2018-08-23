@@ -147,7 +147,7 @@ backup:
   enabled: true
   directory: "/var/opt/gitlab/backups"
   deleteOldFilesAfter: "3"
-  rawNfsPersistent: false
+  rawNfsPersistent: true
   rawNfsServer: "DE-RZ12-Isilon01-DMZ-PaaS-Prod-nfs.obi.dmz"
   rawNfsPath: "/PRD_LNX_K8S01_003"
   rawNfsReadOnly: false
