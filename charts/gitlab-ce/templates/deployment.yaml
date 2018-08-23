@@ -147,6 +147,7 @@ spec:
       {{- else }}
         emptyDir: {}
       {{- end }}
+      {{- end }}
       - name: gitlab-metrics
         emptyDir: {}
 {{ else }}
