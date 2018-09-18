@@ -131,6 +131,7 @@ postgresql:
     enabled: true
 
 kongui:
+  image: "pantsel/konga:0.12.2"
   enabled: true
 
 ingress:
