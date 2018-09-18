@@ -34,7 +34,7 @@ spec:
               key: postgres-password
         - name: DB_USER
           value: "kong"
-        - name: KONGA_BACKEND_PORT
+        - name: PORT
           value: "8080"
         - name: NODE_ENV
           value: "development"
