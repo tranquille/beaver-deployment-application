@@ -15,11 +15,11 @@ spec:
     metadata:
       labels:
         app: {{ template "kong.name" . }}-ui
-        release: {{ .Values.kongui.image }}
+        release: {{ .Release.Name }}
     spec:
       containers:
       - name: {{ template "kong.name" . }}-ui
-        image: {{ .Release.Name }}
+        image: {{ .Values.kongui.image }}
         env:
         - name: DB_ADAPTER
           value: "postgres"
