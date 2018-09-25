@@ -76,7 +76,7 @@ spec:
           # This pod takes a very long time to start up. Be cautious when
           # lowering this value to avoid Pod death during startup.
           initialDelaySeconds: 400
-          timeoutSeconds: 1
+          timeoutSeconds: 8
           periodSeconds: 10
           successThreshold: 1
           failureThreshold: 10
@@ -85,7 +85,7 @@ spec:
             path: /help
             port: {{ .Values.readinessPort }}
           initialDelaySeconds: 200
-          timeoutSeconds: 1
+          timeoutSeconds: 8
           periodSeconds: 10
           successThreshold: 1
           failureThreshold: 3
