@@ -37,6 +37,7 @@ data:
     gitlab_rails['initial_root_password'] = 'password'
     gitlab_rails['usage_ping_enabled'] = false
     gitlab_monitor['enable'] = false
+    prometheus['enable'] = true
     prometheus_monitoring['enable'] = false
     prometheus['listen_address'] = '0.0.0.0:9090'
     node_exporter['enable'] = false
