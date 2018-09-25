@@ -39,6 +39,7 @@ data:
     gitlab_monitor['enable'] = true
     prometheus['enable'] = true
     prometheus_monitoring['enable'] = true
+    prometheus['monitor_kubernetes'] = false
     prometheus['listen_address'] = '0.0.0.0:9090'
     node_exporter['enable'] = false
     nginx['listen_https'] = false
