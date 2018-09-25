@@ -36,10 +36,16 @@ data:
     registry['registry_http_addr'] = "{{ default "registry.paas-prod01.obi.dmz" .Values.registryHost }}"
     gitlab_rails['initial_root_password'] = 'password'
     gitlab_rails['usage_ping_enabled'] = false
-    gitlab_monitor['enable'] = true
-    prometheus_monitoring['enable'] = true
+    gitlab_monitor['enable'] = false
+    prometheus_monitoring['enable'] = false
     prometheus['listen_address'] = '0.0.0.0:9090'
     node_exporter['enable'] = false
     nginx['listen_https'] = false
     nginx['listen_port'] = 80
-
+    gitlab_rails['rack_attack_git_basic_auth'] = { 'enabled' => false }
+    gitlab_rails['smtp_enable'] = true
+    gitlab_rails['smtp_address'] = "mail.obi.com"
+    gitlab_rails['smtp_port'] = 25
+    gitlab_rails['smtp_domain'] = "mail.obi.com"
+    gitlab_rails['smtp_authentication'] = false
+    gitlab_rails['smtp_enable_starttls_auto'] = true
