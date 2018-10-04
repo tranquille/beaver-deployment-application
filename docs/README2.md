@@ -129,6 +129,88 @@ $ helm install --name my-release -f values.yaml stable/gitlab-ce
 By default, persistence of GitLab data and configuration happens using PVCs. If you know that you'll need a larger amount of space, make _sure_ to look at the `persistence` section in [values.yaml](values.yaml).
 
 > *"If you disable persistence, the contents of your volume(s) will only last as long as the Pod does. Upgrading or changing certain settings may lead to data loss without persistence."*
+# InfluxDB
+
+##  An Open-Source Time Series Database
+
+[InfluxDB](https://github.com/influxdata/influxdb) is an open source time series database built by the folks over at [InfluxData](https://influxdata.com) with no external dependencies. It's useful for recording metrics, events, and performing analytics.
+
+## QuickStart
+
+```bash
+$ helm install stable/influxdb --name foo --namespace bar
+```
+
+## Introduction
+
+This chart bootstraps an InfluxDB deployment and service on a Kubernetes cluster using the Helm Package manager.
+
+## Prerequisites
+
+- Kubernetes 1.4+
+- PV provisioner support in the underlying infrastructure (optional)
+
+## Installing the Chart
+
+To install the chart with the release name `my-release`:
+
+```bash
+$ helm install --name my-release stable/influxdb
+```
+
+The command deploys InfluxDB on the Kubernetes cluster in the default configuration. The [configuration](#configuration) section lists the parameters that can be configured during installation.
+
+> **Tip**: List all releases using `helm list`
+
+## Uninstalling the Chart
+
+To uninstall/delete the `my-release` deployment:
+
+```bash
+$ helm delete my-release --purge
+```
+
+The command removes all the Kubernetes components associated with the chart and deletes the release.
+
+## Configuration
+
+The default configuration values for this chart are listed in `values.yaml`. 
+
+The [full image documentation](https://hub.docker.com/_/influxdb/) contains more information about running InfluxDB in docker.
+
+Specify each parameter using the `--set key=value[,key=value]` argument to `helm install`. For example,
+
+```bash
+$ helm install --name my-release \
+  --set persistence.enabled=true,persistence.size=200Gi \
+    stable/influxdb
+```
+
+The above command enables persistence and changes the size of the requested data volume to 200GB.
+
+Alternatively, a YAML file that specifies the values for the parameters can be provided while installing the chart. For example,
+
+```bash
+$ helm install --name my-release -f values.yaml stable/influxdb
+```
+
+> **Tip**: You can use the default [values.yaml](values.yaml)
+
+## Persistence
+
+The [InfluxDB](https://hub.docker.com/_/influxdb/) image stores data in the `/var/lib/influxdb` directory in the container.
+
+The chart mounts a [Persistent Volume](http://kubernetes.io/docs/user-guide/persistent-volumes/) at this location. The volume is created using dynamic volume provisioning.
+
+## Starting with authentication
+
+In `values.yaml` change `.Values.config.http.auth_enabled` to `true`.
+
+Influxdb requires also a user to be set in order for authentication to be enforced. See more details [here](https://docs.influxdata.com/influxdb/v1.2/query_language/authentication_and_authorization/#set-up-authentication).
+
+To handle this setup on startup, a job can be enabled in `values.yaml` by setting `.Values.setDefaultUser.enabled` to `true`.
+
+Make sure to uncomment or configure the job settings after enabling it. If a password is not set, a random password will be generated.
 ## Redis
 
 [Redis](http://redis.io/) is an advanced key-value cache and store. It is often referred to as a data structure server since keys can contain strings, hashes, lists, sets, sorted sets, bitmaps and hyperloglogs.
@@ -652,6 +734,166 @@ The chart mounts a [Persistent Volume](http://kubernetes.io/docs/user-guide/pers
 ## Account
 
 Template to simple create Accounts
+# Grafana Helm Chart
+
+* Installs the web dashboarding system [Grafana](http://grafana.org/)
+
+## TL;DR;
+
+```console
+$ helm install stable/grafana
+```
+
+## Installing the Chart
+
+To install the chart with the release name `my-release`:
+
+```console
+$ helm install --name my-release stable/grafana
+```
+
+## Uninstalling the Chart
+
+To uninstall/delete the my-release deployment:
+
+```console
+$ helm delete my-release
+```
+
+The command removes all the Kubernetes components associated with the chart and deletes the release.
+
+
+## Configuration
+
+
+| Parameter                       | Description                                   | Default                                                 |
+|---------------------------------|-----------------------------------------------|---------------------------------------------------------|
+| `replicas`                      | Number of nodes                               | `1`                                                     |
+| `deploymentStrategy`            | Deployment strategy                           | `RollingUpdate`                                         |
+| `securityContext`               | Deployment securityContext                    | `{"runAsUser": 472, "fsGroup": 472}`                    |
+| `image.repository`              | Image repository                              | `grafana/grafana`                                       |
+| `image.tag`                     | Image tag. (`Must be >= 5.0.0`)               | `5.2.3`                                                 |
+| `image.pullPolicy`              | Image pull policy                             | `IfNotPresent`                                          |
+| `service.type`                  | Kubernetes service type                       | `ClusterIP`                                             |
+| `service.port`                  | Kubernetes port where service is exposed      | `9000`                                                  |
+| `service.annotations`           | Service annotations                           | `80`                                                    |
+| `service.labels`                | Custom labels                                 | `{}`                                                    |
+| `ingress.enabled`               | Enables Ingress                               | `false`                                                 |
+| `ingress.annotations`           | Ingress annotations                           | `{}`                                                    |
+| `ingress.labels`                | Custom labels                                 | `{}`                                                    |
+| `ingress.hosts`                 | Ingress accepted hostnames                    | `[]`                                                    |
+| `ingress.tls`                   | Ingress TLS configuration                     | `[]`                                                    |
+| `resources`                     | CPU/Memory resource requests/limits           | `{}`                                                    |
+| `nodeSelector`                  | Node labels for pod assignment                | `{}`                                                    |
+| `tolerations`                   | Toleration labels for pod assignment          | `[]`                                                    |
+| `affinity`                      | Affinity settings for pod assignment          | `{}`                                                    |
+| `persistence.enabled`           | Use persistent volume to store data           | `false`                                                 |
+| `persistence.size`              | Size of persistent volume claim               | `10Gi`                                                  |
+| `persistence.existingClaim`     | Use an existing PVC to persist data           | `nil`                                                   |
+| `persistence.storageClassName`  | Type of persistent volume claim               | `nil`                                                   |
+| `persistence.accessModes`       | Persistence access modes                      | `[]`                                                    |
+| `persistence.subPath`           | Mount a sub dir of the persistent volume      | `""`                                                    |
+| `schedulerName`                 | Alternate scheduler name                      | `nil`                                                   |
+| `env`                           | Extra environment variables passed to pods    | `{}`                                                    |
+| `envFromSecret`                 | Name of a Kubenretes secret (must be manually created in the same namespace) containing values to be added to the environment | `""` |
+| `extraSecretMounts`             | Additional grafana server secret mounts       | `[]`                                                    |
+| `datasources`                   | Configure grafana datasources                 | `{}`                                                    |
+| `dashboardProviders`            | Configure grafana dashboard providers         | `{}`                                                    |
+| `dashboards`                    | Dashboards to import                          | `{}`                                                    |
+| `dashboardsConfigMaps`          | ConfigMaps reference that contains dashboards | `{}`                                                    |
+| `grafana.ini`                   | Grafana's primary configuration               | `{}`                                                    |
+| `ldap.existingSecret`           | The name of an existing secret containing the `ldap.toml` file, this must have the key `ldap-toml`. | `""` |
+| `ldap.config  `                 | Grafana's LDAP configuration                  | `""`                                                    |
+| `annotations`                   | Deployment annotations                        | `{}`                                                    |
+| `podAnnotations`                | Pod annotations                               | `{}`                                                    |
+| `sidecar.dashboards.enabled`    | Enabled the cluster wide search for dashboards and adds/updates/deletes them in grafana | `false`       |
+| `sidecar.dashboards.label`      | Label that config maps with dashboards should have to be added | `false`                                |
+| `sidecar.datasources.enabled`   | Enabled the cluster wide search for datasources and adds/updates/deletes them in grafana |`false`       |
+| `sidecar.datasources.label`     | Label that config maps with datasources should have to be added | `false`                               |
+| `smtp.existingSecret`           | The name of an existing secret containing the SMTP credentials, this must have the keys `user` and `password`. | `""` |
+
+## Sidecar for dashboards
+
+If the parameter `sidecar.dashboards.enabled` is set, a sidecar container is deployed in the grafana pod. This container watches all config maps in the cluster and filters out the ones with a label as defined in `sidecar.dashboards.label`. The files defined in those configmaps are written to a folder and accessed by grafana. Changes to the configmaps are monitored and the imported dashboards are deleted/updated. A recommendation is to use one configmap per dashboard, as an reduction of multiple dashboards inside one configmap is currently not properly mirrored in grafana.
+Example dashboard config:
+```
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: sample-grafana-dashboard
+  labels:
+     grafana_dashboard: 1
+data:
+  k8s-dashboard.json: |-
+  [...]
+```
+
+## Sidecar for datasources
+
+If the parameter `sidecar.datasource.enabled` is set, a sidecar container is deployed in the grafana pod. This container watches all config maps in the cluster and filters out the ones with a label as defined in `sidecar.datasources.label`. The files defined in those configmaps are written to a folder and accessed by grafana on startup. Using these yaml files, the data sources in grafana can be modified.
+
+Example datasource config adapted from [Grafana](http://docs.grafana.org/administration/provisioning/#example-datasource-config-file):
+```
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: sample-grafana-datasource
+  labels:
+     grafana_datasource: 1
+data:
+	datasource.yaml: |-
+		# config file version
+		apiVersion: 1
+
+		# list of datasources that should be deleted from the database
+		deleteDatasources:
+		  - name: Graphite
+		    orgId: 1
+
+		# list of datasources to insert/update depending
+		# whats available in the database
+		datasources:
+		  # <string, required> name of the datasource. Required
+		- name: Graphite
+		  # <string, required> datasource type. Required
+		  type: graphite
+		  # <string, required> access mode. proxy or direct (Server or Browser in the UI). Required
+		  access: proxy
+		  # <int> org id. will default to orgId 1 if not specified
+		  orgId: 1
+		  # <string> url
+		  url: http://localhost:8080
+		  # <string> database password, if used
+		  password:
+		  # <string> database user, if used
+		  user:
+		  # <string> database name, if used
+		  database:
+		  # <bool> enable/disable basic auth
+		  basicAuth:
+		  # <string> basic auth username
+		  basicAuthUser:
+		  # <string> basic auth password
+		  basicAuthPassword:
+		  # <bool> enable/disable with credentials headers
+		  withCredentials:
+		  # <bool> mark as default datasource. Max one per org
+		  isDefault:
+		  # <map> fields that will be converted to json and stored in json_data
+		  jsonData:
+		     graphiteVersion: "1.1"
+		     tlsAuth: true
+		     tlsAuthWithCACert: true
+		  # <string> json object of data that will be encrypted.
+		  secureJsonData:
+		    tlsCACert: "..."
+		    tlsClientCert: "..."
+		    tlsClientKey: "..."
+		  version: 1
+		  # <bool> allow users to edit datasources from the UI.
+		  editable: false
+
+```
 # Wekan
 
 Helm chart for [Wekan](https://wekan.io).
