@@ -44,6 +44,8 @@ spec:
           imagePullPolicy: {{ .Values.downloadDashboardsImage.pullPolicy }}
           command: ["sh", "/etc/grafana/download_dashboards.sh"]
           volumeMounts:
+            - name: {{ template "grafana.fullname" . }}-backup
+              mountPath: {{ .Values.backup.directory }}
             - name: config
               mountPath: "/etc/grafana/download_dashboards.sh"
               subPath: download_dashboards.sh
@@ -154,8 +156,6 @@ spec:
               mountPath: {{ .mountPath }}
               readOnly: {{ .readOnly }}
           {{- end }}
-            - name: {{ template "grafana.fullname" . }}-backup
-              mountPath: {{ .Values.backup.directory }}
           ports:
             - name: service
               containerPort: {{ .Values.service.port }}
