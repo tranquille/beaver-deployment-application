@@ -44,8 +44,6 @@ spec:
           imagePullPolicy: {{ .Values.downloadDashboardsImage.pullPolicy }}
           command: ["sh", "/etc/grafana/download_dashboards.sh"]
           volumeMounts:
-            - name: {{ template "grafana.fullname" . }}-backup
-              mountPath: {{ .Values.backup.directory }}
             - name: config
               mountPath: "/etc/grafana/download_dashboards.sh"
               subPath: download_dashboards.sh
@@ -105,6 +103,9 @@ spec:
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           volumeMounts:
+            - name: {{ template "grafana.fullname" . }}-backup
+              mountPath: {{ .Values.backup.directory }}
+              subPath: grafana
             - name: config
               mountPath: "/etc/grafana/grafana.ini"
               subPath: grafana.ini
