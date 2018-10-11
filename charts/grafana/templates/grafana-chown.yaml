@@ -10,7 +10,7 @@ metadata:
 spec:
   template:
     spec:
-      restartPolicy: Never
+      restartPolicy: OnFailure
       containers:
       - name: {{ template "grafana.fullname" . }}-chown-backup-directory
         command: [chown,"472:472", /var/lib/grafana/backups]

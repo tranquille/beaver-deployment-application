@@ -50,9 +50,9 @@ service:
 ingress:
   enabled: true
   hosts:
-    - grafana.infra.wild-beavers.de
+    - grafana.paas-intern01.obi.dmz
   annotations:
-    kubernetes.io/ingress.class: nginx
+    kubernetes.io/ingress.class: kong-intern
     # kubernetes.io/tls-acme: "true"
   labels: {}
   path: /
