@@ -26,7 +26,7 @@ spec:
         - name: DB_DUMP_BEGIN
           value: {{ .Values.backup.begin | quote}}
         - name: DB_DUMP_TARGET
-          value: {{ printf "%s%s" .Values.backup.directory .Release.Namespace | quote }}
+          value: {{ printf "%s%s/%s" .Values.backup.directory .Release.Namespace .Release.Name | quote }}
         - name: DB_SERVER
           value: {{ template "mariadb.fullname" . }}
         - name: DB_PORT
