@@ -53,7 +53,7 @@ spec:
         - name: MARIADB_DATABASE
           value: {{ default "" .Values.mariadbDatabase | quote }}
         ports:
-        - name: mysql
+        - name: {{ template "mariadb.fullname" . }}
           containerPort: 3306
         livenessProbe:
           exec:

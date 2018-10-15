@@ -17,9 +17,9 @@ metadata:
 spec:
   type: {{ .Values.service.type }}
   ports:
-  - name: mysql
+  - name: {{ template "mariadb.fullname" . }}
     port: 3306
-    targetPort: mysql
+    targetPort: 3306
 {{- if .Values.service.nodePort }}
     nodePort: {{ .Values.service.nodePort }}
 {{- end }}
