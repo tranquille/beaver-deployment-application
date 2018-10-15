@@ -2,7 +2,7 @@ apiVersion: v1
 entries:
   account-creator:
   - appVersion: 4.0.8
-    created: 2018-10-15T14:58:42.611556665+02:00
+    created: 2018-10-15T16:32:06.680290469+02:00
     description: account create simple
     digest: 5fbb77d1a3b503540bd28c570e9a0109a383a1d41a518a1b1a1e20f01c589b17
     engine: gotpl
@@ -17,7 +17,7 @@ entries:
   ambassador:
   - apiVersion: v1
     appVersion: 0.29.0
-    created: 2018-10-15T14:58:42.61239879+02:00
+    created: 2018-10-15T16:32:06.680602407+02:00
     description: A Helm chart for Datawire Ambassador
     digest: a09c9b8901f368f890c78ce417c8e56c03007455de93cca16ba3b5f11d1a06ce
     engine: gotpl
@@ -32,7 +32,7 @@ entries:
     version: 0.1.2
   application-deploy:
   - apiVersion: v1
-    created: 2018-10-15T14:58:42.613092075+02:00
+    created: 2018-10-15T16:32:06.680810949+02:00
     description: Wild Beavers Helm Chart
     digest: 3acb842d8a3aef68964a11a81a15279e4f5b9721df3e72e49e19901a2627075b
     icon: https://gitlab.com/gitlab-com/gitlab-artwork/raw/master/logo/logo-square.png
@@ -42,7 +42,7 @@ entries:
     version: 0.1.14
   auto-deploy-app:
   - apiVersion: v1
-    created: 2018-10-15T14:58:42.613598368+02:00
+    created: 2018-10-15T16:32:06.680974922+02:00
     description: Wild Beavers Helm Chart
     digest: f0eb5b014f7bd38440dd1074e5dcad0fce07a03fc96bd58e760ec173c709df4d
     icon: https://gitlab.com/gitlab-com/gitlab-artwork/raw/master/logo/logo-square.png
@@ -53,7 +53,7 @@ entries:
   docker-registry:
   - apiVersion: v1
     appVersion: 2.6.2
-    created: 2018-10-15T14:58:42.613982406+02:00
+    created: 2018-10-15T16:32:06.681297613+02:00
     description: A Helm chart for Docker Registry
     digest: ee0d2b456e798181a372d484d40c23fe02c9a9c6234dba7e8e45494434638566
     home: https://hub.docker.com/_/registry/
@@ -68,10 +68,10 @@ entries:
     - https://wildbeavers.github.io/beaver-deployment-application/docker-registry-1.0.6.tgz
     version: 1.0.6
   gitlab-ce:
-  - created: 2018-10-15T14:58:42.618316241+02:00
+  - created: 2018-10-15T16:32:06.684619792+02:00
     deprecated: true
     description: GitLab Community Edition
-    digest: 2a11f8df5348b00c6e49a56104152c28d658809904d8f193ab8690eac41301cc
+    digest: 26cea678ca63b889f3f86059e50947dc2c28bf63abcc65ac7fe5d2c75c881ff1
     home: https://about.gitlab.com
     icon: https://gitlab.com/uploads/group/avatar/6543/gitlab-logo-square.png
     keywords:
@@ -91,7 +91,7 @@ entries:
     urls:
     - https://wildbeavers.github.io/beaver-deployment-application/gitlab-ce-0.2.2.tgz
     version: 0.2.2
-  - created: 2018-10-15T14:58:42.616846483+02:00
+  - created: 2018-10-15T16:32:06.682938487+02:00
     deprecated: true
     description: GitLab Community Edition
     digest: 6acff60adf8503cb3eb87134ef29bd4bfb2ef47d9aa037de8e68feeb7bdaa7b8
@@ -116,9 +116,9 @@ entries:
     version: 0.2.1
   grafana:
   - appVersion: 5.2.3
-    created: 2018-10-15T14:58:42.619192396+02:00
+    created: 2018-10-15T16:32:06.685258271+02:00
     description: The leading tool for querying and visualizing time series and metrics.
-    digest: f9fca9a8e1a76675a3a95f4a3bac862c754f76a549c456035cfa747e6ae011fe
+    digest: 731a4a6075877ae7f1be5d5dd4a2f38714851f8f1540bbeb4c4155a0f4a9f2f7
     engine: gotpl
     home: https://grafana.net
     icon: https://raw.githubusercontent.com/grafana/grafana/master/public/img/logo_transparent_400x.png
@@ -137,7 +137,7 @@ entries:
   kong:
   - apiVersion: v1
     appVersion: 0.40.0
-    created: 2018-10-15T14:58:42.626133042+02:00
+    created: 2018-10-15T16:32:06.690522694+02:00
     description: Kong is open-source API Gateway and Microservices Management Layer,
       delivering high performance and reliability.
     digest: dab129c94cb96320303a70bb3787b5bb817971ddf331bffac4f1c9de67d6b890
@@ -155,7 +155,7 @@ entries:
     version: 0.2.7
   - apiVersion: v1
     appVersion: 0.12.3
-    created: 2018-10-15T14:58:42.624706473+02:00
+    created: 2018-10-15T16:32:06.688249651+02:00
     description: Kong is open-source API Gateway and Microservices Management Layer,
       delivering high performance and reliability.
     digest: edf56af60e2ac11b75bac2e4f600808ca4092791b803a2541542c7c9ea86b5a4
@@ -173,7 +173,7 @@ entries:
     version: 0.2.6
   - apiVersion: v1
     appVersion: 0.12.3
-    created: 2018-10-15T14:58:42.622198251+02:00
+    created: 2018-10-15T16:32:06.686558601+02:00
     description: Kong is open-source API Gateway and Microservices Management Layer,
       delivering high performance and reliability.
     digest: 1546dd8c67effb5c574fa3932357f6c900b700f7d7699dcc465b710a387605ee
@@ -191,7 +191,7 @@ entries:
     version: 0.2.4
   mariadb:
   - appVersion: 10.1.31
-    created: 2018-10-15T14:58:42.62661621+02:00
+    created: 2018-10-15T16:32:06.691444302+02:00
     description: Fast, reliable, scalable, and easy to use open-source relational
       database system. MariaDB Server is intended for mission-critical, heavy-load
       production systems as well as for embedding into mass-deployed software.
@@ -216,7 +216,7 @@ entries:
     version: 2.1.14
   mongodb:
   - appVersion: 3.6.4
-    created: 2018-10-15T14:58:42.62700609+02:00
+    created: 2018-10-15T16:32:06.692054979+02:00
     description: NoSQL document-oriented database that stores JSON-like documents
       with dynamic schemas, simplifying the integration of data in content-driven
       applications.
@@ -239,7 +239,7 @@ entries:
     version: 2.0.4
   portus:
   - apiVersion: v1
-    created: 2018-10-15T14:58:42.629197644+02:00
+    created: 2018-10-15T16:32:06.693177671+02:00
     description: A Portus Helm chart for Kubernetes. Portus is an authorization and
       user interface for the next generation of the Docker registry.
     digest: bc4c3573f151be2ab176b76be8f73e6750a15da72a40c0d135051ca57fb6f080
@@ -254,7 +254,7 @@ entries:
     - https://wildbeavers.github.io/beaver-deployment-application/portus-0.1.0.tgz
     version: 0.1.0
   postgresql:
-  - created: 2018-10-15T14:58:42.630062766+02:00
+  - created: 2018-10-15T16:32:06.693979075+02:00
     description: Object-relational database management system (ORDBMS) with an emphasis
       on extensibility and on standards-compliance.
     digest: f85d68ee9ab04bf54f61af6a6ea0c693a261eaf6fdbf83b0617ba6e8bacd1d7b
@@ -277,7 +277,7 @@ entries:
     version: 0.9.3
   redis:
   - appVersion: 4.0.8
-    created: 2018-10-15T14:58:42.631197175+02:00
+    created: 2018-10-15T16:32:06.694403421+02:00
     description: Open source, advanced key-value store. It is often referred to as
       a data structure server since keys can contain strings, hashes, lists, sets
       and sorted sets.
@@ -301,11 +301,11 @@ entries:
   wekan:
   - apiVersion: v1
     appVersion: v0.92
-    created: 2018-10-15T14:58:42.632121366+02:00
+    created: 2018-10-15T16:32:06.694726249+02:00
     description: The open-source Trello-like kanban
     digest: e2de688f29219dd70776af07a5a4bf8f0c3b573fc01e1b048c42353788f97482
     name: wekan
     urls:
     - https://wildbeavers.github.io/beaver-deployment-application/wekan-0.1.0.tgz
     version: 0.1.0
-generated: 2018-10-15T14:58:42.611079799+02:00
+generated: 2018-10-15T16:32:06.679960407+02:00
