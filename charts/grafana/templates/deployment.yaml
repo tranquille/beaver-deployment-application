@@ -105,6 +105,7 @@ spec:
           volumeMounts:
             - name: {{ template "grafana.fullname" . }}-backup
               mountPath: {{ .Values.backup.directory }}
+              subPath: grafana
             - name: config
               mountPath: "/etc/grafana/grafana.ini"
               subPath: grafana.ini
@@ -294,4 +295,3 @@ spec:
           secret:
             secretName: {{ .secretName }}
       {{- end }}
-
