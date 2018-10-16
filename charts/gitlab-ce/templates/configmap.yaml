@@ -30,19 +30,10 @@ data:
     gitlab_rails['redis_host'] = ENV['REDIS_HOST'];
     gitlab_rails['redis_port'] = '6379'
     gitlab_rails['initial_shared_runners_registration_token'] = "token"
-
-    gitlab_rails['registry_enabled'] = true
-    gitlab_rails['registry_host'] = "registry.gitlab.example.com"
-    gitlab_rails['registry_port'] = "5005"
-    gitlab_rails['registry_api_url'] = "http://localhost:5000"
-    gitlab_rails['registry_path'] = "/var/opt/gitlab/gitlab-rails/shared/registry"
-    gitlab_rails['registry_issuer'] = "omnibus-gitlab-issuer"
-
     gitlab_rails['registry_enabled'] = true
     gitlab_rails['registry_host'] = "{{ default "registry.paas-prod01.obi.dmz" .Values.registryHost }}"
     gitlab_rails['registry_api_url'] = "http://{{ default "registry.paas-prod01.obi.dmz" .Values.registryHost }}"
     registry['registry_http_addr'] = "{{ default "registry.paas-prod01.obi.dmz" .Values.registryHost }}"
-
     gitlab_rails['initial_root_password'] = 'password'
     gitlab_rails['usage_ping_enabled'] = false
     gitlab_monitor['enable'] = true
