@@ -32,6 +32,18 @@ spec:
         ports:
         - containerPort: {{ .Values.service.internalPort }}
           name: http
+        readinessProbe:
+          httpGet:
+            path: /readiness
+            port: {{ .Values.service.internalPort }}
+          initialDelaySeconds: 5
+          periodSeconds: 10
+        livenessProbe:
+          httpGet:
+            path: /liveness
+            port: {{ .Values.service.internalPort }}
+          initialDelaySeconds: 3
+          periodSeconds: 3
         env:
         {{- range $key, $val := .Values.env }}
         - name: {{ $key | upper }}
