@@ -1,0 +1,18 @@
+{{- if .Values.ingress.prefunction.enabled -}}
+apiVersion: configuration.konghq.com/v1
+kind: KongPlugin
+metadata:
+  name: "{{ template "fullname" . }}-pre-functions"
+  labels:
+    app: "{{ template "name" . }}"
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+    release: "{{ .Release.Name }}"
+    heritage: "{{ .Release.Service }}"
+config:
+  functions:
+  - "local useragent = kong.request.get_header(\"user-agent\") if useragent == \"Go-http-client/1.1\"
+    then \treturn kong.response.exit(511, \"Network Authentication Required\") end
+    local schema = kong.request.get_forwarded_scheme() if schema == \"http\" then
+    \tkong.response.set_header(\"Location\", \"https://\".. ngx.var.host .. ngx.var.request_uri)
+    \treturn kong.response.exit(301, \"Redirect Http Request to Https\") end"
+{{- end -}}

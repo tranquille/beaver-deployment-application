@@ -27,6 +27,8 @@ ingress:
   path: /
   config:
     enabled: false
+  prefunction:
+    enabled: false
 
 env:
   log_level: info
