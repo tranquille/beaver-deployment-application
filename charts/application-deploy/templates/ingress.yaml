@@ -11,7 +11,7 @@ metadata:
   annotations:
     kubernetes.io/ingress.class: "kong-{{ .Values.ingress.class }}"
 {{- if .Values.ingress.prefunction.enabled }}
-    pre-function.plugin.konghq.com: "{{ template "fullname" . }}-function-plugin"
+    pre-function.plugin.konghq.com: "{{ template "fullname" . }}-pre-functions"
 {{- end }}
 spec:
   rules:
