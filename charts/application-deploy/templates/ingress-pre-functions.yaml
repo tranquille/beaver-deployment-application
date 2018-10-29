@@ -12,8 +12,5 @@ config:
   functions:
   - "local path = kong.request.get_path() local useragent = kong.request.get_header(\"user-agent\")
     if useragent == \"Go-http-client/1.1\" and (path == \"\" or path == \"/\") then
-    \t\treturn kong.response.exit(511, \"Network Authentication Required\") end
-    local schema = kong.request.get_forwarded_scheme() if schema == \"http\" then
-    \tkong.response.set_header(\"Location\", \"https://\".. ngx.var.host .. ngx.var.request_uri)
-    \treturn kong.response.exit(301, \"Redirect Http Request to Https\") end"
+    \t\treturn kong.response.exit(511, \"Network Authentication Required\") end"
 {{- end -}}
