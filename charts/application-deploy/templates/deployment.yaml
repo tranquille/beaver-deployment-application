@@ -36,13 +36,13 @@ spec:
           httpGet:
             path: /readiness
             port: {{ .Values.service.internalPort }}
-          initialDelaySeconds: 5
+          initialDelaySeconds: 60
           periodSeconds: 10
         livenessProbe:
           httpGet:
             path: /liveness
             port: {{ .Values.service.internalPort }}
-          initialDelaySeconds: 3
+          initialDelaySeconds: 60
           periodSeconds: 3
         env:
         {{- range $key, $val := .Values.env }}
