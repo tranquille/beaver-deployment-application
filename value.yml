@@ -1,0 +1,5 @@
+ingress:
+  enabled: true
+  hosts:
+    - kibana.paas-infra01.obi.dmz
+
