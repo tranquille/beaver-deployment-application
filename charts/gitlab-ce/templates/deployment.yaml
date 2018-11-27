@@ -102,7 +102,7 @@ spec:
           mountPath: /gitlab-metrics
         - name: {{ template "gitlab-ce.fullname" . }}-backup
           mountPath: {{ .Values.backup.directory }}
-          subPath: gitlab
+          subPath: gitlab/{{ .Release.Namespace }}/{{ .Release.Name}}
         resources:
 {{ toYaml .Values.resources | indent 10 }}
       volumes:
