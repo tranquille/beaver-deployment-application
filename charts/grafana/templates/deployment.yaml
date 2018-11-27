@@ -105,7 +105,7 @@ spec:
           volumeMounts:
             - name: {{ template "grafana.fullname" . }}-backup
               mountPath: {{ .Values.backup.directory }}
-              subPath: grafana
+              subPath: grafana/{{ .Release.Namespace }}/{{ .Release.Name}}
             - name: config
               mountPath: "/etc/grafana/grafana.ini"
               subPath: grafana.ini
