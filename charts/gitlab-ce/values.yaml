@@ -14,7 +14,7 @@ image: gitlab/gitlab-ce:11.3.0-ce.0
 ##
 externalUrl: https://gitlab.wild-beavers.de/
 
-registryHost: registry.paas-prod01.obi.dmz
+registryHost: docker-reg.wild-beavers.de
 
 ## Change the initial default admin password if set. If not set, you'll be
 ## able to set it when you first visit your install.
@@ -153,4 +153,3 @@ backup:
   rawNfsReadOnly: false
   volumeClaim: false
   storageClassName: ""
-
