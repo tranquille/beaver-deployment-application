@@ -9,7 +9,9 @@ metadata:
     release: "{{ .Release.Name }}"
     heritage: "{{ .Release.Service }}"
   annotations:
+{{- if .Values.ingress.class }}
     kubernetes.io/ingress.class: "kong-{{ .Values.ingress.class }}"
+{{- end }}
 {{- if .Values.ingress.prefunction.enabled }}
     pre-function.plugin.konghq.com: "{{ template "fullname" . }}-pre-functions"
 {{- end }}
